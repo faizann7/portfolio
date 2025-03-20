@@ -1,0 +1,69 @@
+export interface Project {
+    id: string;
+    title: string;
+    subtitle: string;
+    summary: string;
+    tags: string[];
+    image: string;
+    year: string;
+    color: string;
+    hoverColor: string;
+}
+
+export const projects: Project[] = [
+    {
+        id: "cinefatic",
+        title: "Cinefatic",
+        subtitle: "Reimagined Karachi's movie-ticket booking experience",
+        summary: "Leading the UX/UI design for a revolutionary movie booking app in Karachi.",
+        tags: ["Mobile App", "UX Design", "Ticketing", "Entertainment"],
+        image: "/images/cinefaticthumb.png",
+        year: "2023",
+        color: "bg-indigo-100",
+        hoverColor: "bg-indigo-200"
+    },
+    {
+        id: "swapp",
+        title: "Swapp - Car Rental",
+        subtitle: "Improving Swapp's checkout conversion rate from 1.5 to 2.4%",
+        summary: "Redesigning the rental experience for both tenants and landlords.",
+        tags: ["Mobile App", "UX Design", "Car Rental", "Conversion Rate"],
+        image: "/images/Swapp Thumb.png",
+        year: "2022-Present",
+        color: "bg-red-100",
+        hoverColor: "bg-red-200"
+    },
+    {
+        id: "route-helper",
+        title: "Route Helper - Retailo Technologies",
+        subtitle: "Overhauled route planning with real-time dashboards, cut planning time by 51%",
+        summary: "Creating an intuitive dashboard for logistics route planning.",
+        tags: ["Product Design", "SaaS", "B2B", "Web App", "Route Optimization", "Logistics"],
+        image: "/images/Pre Route Helper.png",
+        year: "2021",
+        color: "bg-amber-50",
+        hoverColor: "bg-amber-100"
+    },
+    {
+        id: "inbounding-medzmore",
+        title: "Inbounding - MEDZnMORE",
+        subtitle: "Created a real-time data validation tool ensuring 99% accuracy and <0.5% errors",
+        summary: "Building a custom data validation system for medical supplies inventory.",
+        tags: ["Product Design", "SaaS", "B2B", "Web App", "Inventory Management", "Data Validation"],
+        image: "/images/MEDZnMORE Thumb.png",
+        year: "2021",
+        color: "bg-indigo-100",
+        hoverColor: "bg-indigo-200"
+    },
+    {
+        id: "rider-app-medzmore",
+        title: "Rider App - MEDZnMORE",
+        subtitle: "Delivered with route optimization and real-time order tracking",
+        summary: "Designing a mobile app for delivery riders to optimize routes and track orders.",
+        tags: ["Mobile App", "Operations", "Fleet Management", "Delivery"],
+        image: "/images/Rider App Thumb.png",
+        year: "2020",
+        color: "bg-cyan-100",
+        hoverColor: "bg-cyan-200"
+    }
+]; 
