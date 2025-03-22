@@ -1,6 +1,10 @@
-import Link from "next/link";
+'use client';
 
-export default function About() {
+import Link from "next/link";
+import { Suspense } from "react";
+import { SearchParamsProvider } from "../components/SearchParamsProvider";
+
+function AboutContent() {
     const skills = [
         { category: "Design", items: ["UI Design", "UX Research", "Wireframing", "Prototyping", "Design Systems"] },
         { category: "Tools", items: ["Figma", "Adobe XD", "Sketch", "Photoshop", "Illustrator"] },
@@ -104,5 +108,15 @@ export default function About() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function About() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchParamsProvider>
+                <AboutContent />
+            </SearchParamsProvider>
+        </Suspense>
     );
 } 

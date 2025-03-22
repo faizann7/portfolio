@@ -9,13 +9,15 @@ A modern, minimalist portfolio website for UX/Product Designers built with Next.
 - Responsive layout for all device sizes
 - Light mode design
 - Optimized for performance
+- SEO friendly with structured data
+- Error boundaries for graceful error handling
 
 ## Tech Stack
 
 - **Framework**: Next.js
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
-- **Deployment**: Vercel (recommended)
+- **Deployment**: GitHub Pages
 
 ## Getting Started
 
@@ -62,13 +64,41 @@ yarn dev
 - Adjust typography and spacing as needed
 - Modify animations in the Framer Motion components
 
-## Deployment
+## Deployment to GitHub Pages
 
-The easiest way to deploy your portfolio is using [Vercel](https://vercel.com/), the platform from the creators of Next.js:
+This portfolio is configured for deployment to GitHub Pages:
 
-1. Push your code to a Git repository (GitHub, GitLab, BitBucket)
-2. Import the project into Vercel
-3. Vercel will detect Next.js and set up the optimal build settings automatically
+1. Update the `next.config.js` file with your repository name:
+```js
+const nextConfig = {
+  output: 'export',
+  basePath: '/your-repo-name',
+  assetPrefix: '/your-repo-name/',
+  // other config...
+};
+```
+
+2. Push your code to GitHub
+
+3. Enable GitHub Pages in your repository settings:
+   - Go to Settings > Pages
+   - Set the source to GitHub Actions
+
+4. The GitHub Action workflow will automatically build and deploy your site
+
+## Pre-Launch Checklist
+
+Before launching your portfolio, make sure to check the `LAUNCH_CHECKLIST.md` file for a comprehensive list of tasks to ensure your site is production-ready.
+
+## Production Features
+
+- Google Analytics integration
+- Dynamic meta tags for SEO
+- Structured data (JSON-LD) for rich snippets
+- Error boundaries for graceful error handling
+- Optimized image loading with Next.js Image
+- Font preloading for better performance
+- Sitemap and robots.txt generation
 
 ## License
 

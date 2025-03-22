@@ -1,5 +1,9 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+import { SearchParamsProvider } from "../components/SearchParamsProvider";
 
 interface PlaygroundItem {
     id: string;
@@ -64,7 +68,7 @@ const playgroundItems: PlaygroundItem[] = [
     }
 ];
 
-export default function Playground() {
+function PlaygroundContent() {
     const filterLabels = [
         { id: "all", label: "All" },
         { id: "design", label: "Design" },
@@ -128,5 +132,15 @@ export default function Playground() {
                 ))}
             </div>
         </div>
+    );
+}
+
+export default function Playground() {
+    return (
+        <Suspense fallback={<div>Loading playground...</div>}>
+            <SearchParamsProvider>
+                <PlaygroundContent />
+            </SearchParamsProvider>
+        </Suspense>
     );
 } 

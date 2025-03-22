@@ -1,6 +1,10 @@
-import Link from "next/link";
+'use client';
 
-export default function Resume() {
+import Link from "next/link";
+import { Suspense } from "react";
+import { SearchParamsProvider } from "../components/SearchParamsProvider";
+
+function ResumeContent() {
     return (
         <div className="pt-24 md:pt-32 pb-16">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
@@ -167,5 +171,15 @@ export default function Resume() {
                 </Link>
             </div>
         </div>
+    );
+}
+
+export default function Resume() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <SearchParamsProvider>
+                <ResumeContent />
+            </SearchParamsProvider>
+        </Suspense>
     );
 } 

@@ -1,9 +1,13 @@
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "./data/projects";
 import WorkCard from "./components/WorkCard";
+import { Suspense } from "react";
+import { SearchParamsProvider } from "./components/SearchParamsProvider";
 
-export default function Home() {
+function HomeContent() {
   return (
     <div className="min-h-screen flex flex-col pt-24 md:pt-32">
       <div className="mb-16 md:mb-24">
@@ -118,5 +122,15 @@ export default function Home() {
         </Link>
       </div>
     </div>
-  )
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchParamsProvider>
+        <HomeContent />
+      </SearchParamsProvider>
+    </Suspense>
+  );
 }
