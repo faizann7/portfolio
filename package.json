@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build",
+    "analyze": "ANALYZE=true NODE_OPTIONS=--max_old_space_size=4096 next build -c analyze-bundle.js",
     "export": "next build && touch out/.nojekyll",
     "debug": "node --version && npm --version && next --version"
   },

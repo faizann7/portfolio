@@ -6,13 +6,13 @@ const SEO = {
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://faizaanalam.github.io/portfolio',
+        url: 'https://faizann7.github.io/portfoliooo',
         siteName: 'Faizan Alam Portfolio',
         title: 'Faizan | UX/Product Designer',
         description: 'Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
         images: [
             {
-                url: 'https://faizaanalam.github.io/portfolio/images/og-image.jpg',
+                url: 'https://faizann7.github.io/portfoliooo/images/og-image.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Faizan Alam - UX/Product Designer',

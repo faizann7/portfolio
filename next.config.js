@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
-// Simpler configuration to avoid TypeError issues
-let nextConfig = {
+// Define base Next.js config
+const nextConfig = {
     output: 'export',
     basePath: process.env.NODE_ENV === 'production' ? '/portfoliooo' : '',
     assetPrefix: process.env.NODE_ENV === 'production' ? '/portfoliooo/' : '',
@@ -34,16 +34,5 @@ let nextConfig = {
     reactStrictMode: true,
 };
 
-try {
-    // Only add bundle analyzer in analyze mode
-    if (process.env.ANALYZE === 'true') {
-        const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: true });
-        nextConfig = withBundleAnalyzer(nextConfig);
-    }
-    module.exports = nextConfig;
-} catch (error) {
-    // Ensure error is an instance of Error
-    const errorInstance = error instanceof Error ? error : new Error(String(error));
-    console.error('Error in next.config.js:', errorInstance);
-    module.exports = nextConfig;
-} 
+// Simple module.exports without try/catch
+module.exports = nextConfig; 
