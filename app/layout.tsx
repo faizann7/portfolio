@@ -4,13 +4,14 @@ import Navbar from "./components/Navbar";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import StructuredData from "./components/StructuredData";
 import { SearchParamsProvider } from "./components/SearchParamsProvider";
-import { getAssetPath } from "./utils/assets";
+import { getAssetPath, getImagePath } from "./utils/assets";
 import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Faizan | UX/Product Designer",
   description: "Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
+  // GitHub Pages Specific: Hardcoded paths for icons to ensure they work in static export
   icons: {
     icon: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
     apple: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
@@ -23,7 +24,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // We need to do this to avoid build-time/server-side rendering issues
+  // GitHub Pages Specific: Manually constructing font URLs with the correct base path
+  // This is needed because GitHub Pages serves content from a subpath
   const bookFontUrl = process.env.NODE_ENV === 'production'
     ? '/portfoliooo/fonts/CircularStd-Book.woff'
     : '/fonts/CircularStd-Book.woff';
@@ -41,7 +43,7 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'} />
 
-        {/* Favicon - with cache busting */}
+        {/* GitHub Pages Specific: Favicon paths with base path prefix for production */}
         <link
           rel="icon"
           href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
@@ -56,7 +58,7 @@ export default function RootLayout({
           href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
         />
 
-        {/* Font preloading */}
+        {/* Font preloading with GitHub Pages-aware paths */}
         <link
           rel="preload"
           href={bookFontUrl}
@@ -79,7 +81,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
-        {/* Inline script to fix font loading issues in production */}
+        {/* GitHub Pages Specific: Inline script to fix font loading issues in production */}
         <Script id="font-loading-fix" strategy="beforeInteractive">
           {`
             // This script helps preload fonts with the correct paths in production
@@ -101,6 +103,8 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
+        {/* GitHub Pages Specific: SearchParamsProvider needed because useSearchParams doesn't 
+            work with static export on GitHub Pages */}
         <SearchParamsProvider>
           <GoogleAnalytics />
         </SearchParamsProvider>

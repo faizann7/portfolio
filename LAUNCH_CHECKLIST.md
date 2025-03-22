@@ -18,6 +18,10 @@
 - [x] Fix "use client" with generateStaticParams runtime error
   - [x] Removed 'use client' directive from [project]/page.tsx
   - [x] Confirmed ProjectClient.tsx is properly set up as a client component
+- [x] Document GitHub Pages-specific code implementations
+  - [x] Created GITHUB_PAGES.md documentation
+  - [x] Added clarifying comments to asset utility functions
+  - [x] Added comments in layout.tsx explaining GitHub Pages accommodations
 - [ ] Run `npm run build` locally to ensure there are no build errors
 - [ ] Test the site locally with `npm run dev`
 - [ ] Verify all links work correctly, including internal navigation
@@ -28,6 +32,20 @@
 - [x] Test all case study pages to ensure they load properly
 - [ ] Verify images load correctly and are properly optimized
 - [ ] Run a Lighthouse audit to check performance, accessibility, SEO, and best practices
+
+## Accessibility Requirements (HIGH PRIORITY)
+- [ ] Ensure proper heading hierarchy across all pages
+  - [ ] Each page should have exactly one h1 element
+  - [ ] Headings should follow proper hierarchy (h1 > h2 > h3, no skipping)
+  - [ ] Semantic headings should be used (not just styled to look like headings)
+- [ ] Implement proper keyboard navigation
+  - [ ] All interactive elements must be focusable
+  - [ ] Focus indicators must be visible
+  - [ ] Tabbing order should be logical and follow visual layout
+- [ ] Check and fix contrast ratios for all text
+  - [ ] Normal text should have a contrast ratio of at least 4.5:1
+  - [ ] Large text (18pt or 14pt bold) should have a contrast ratio of at least 3:1
+  - [ ] Use a tool like WebAIM's Contrast Checker or Lighthouse audit to verify
 
 ## After Deploying to GitHub Pages
 - [ ] Verify the site is accessible at your GitHub Pages URL

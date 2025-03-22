@@ -14,17 +14,14 @@ function HomeContent() {
         <h1 className="text-5xl md:text-7xl font-bold mb-8">
           Hi, I'm Faizan
         </h1>
-        <p className="text-xl md:text-2xl max-w-2xl">
-          UX/Product designer at <Link href="https://swapp.com" className="underline underline-offset-4 hover:text-gray-600 transition-colors">Swapp</Link>. I love working with early-stage teams, blending UX, UI, and business strategy to launch impactful features.
+        <p className="text-xl md:text-2xl">
+          UX/Product designer at <Link href="https://www.linkedin.com/company/joinswapp/" className="underline underline-offset-4 hover:text-gray-600 transition-colors">Swapp, UAE</Link>. I love working with early-stage teams, blending UX, UI, and business strategy to launch impactful features.
         </p>
       </div>
 
       <div className="mb-16">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold" id="work">Work</h2>
-          <Link href="/#work" className="text-lg hover:text-gray-600 transition-colors">
-            View all
-          </Link>
+        <div className="flex justify-center items-center mb-8">
+          <h2 className="text-3xl font-bold" id="work">- Work</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-6">
