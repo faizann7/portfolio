@@ -12,8 +12,9 @@ export const metadata: Metadata = {
   description: "Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
   icons: {
-    icon: process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png',
-    apple: process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png',
+    icon: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
+    apple: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
+    shortcut: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
   },
 };
 
@@ -40,15 +41,19 @@ export default function RootLayout({
       <head>
         <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'} />
 
-        {/* Favicon */}
+        {/* Favicon - with cache busting */}
         <link
           rel="icon"
-          href={process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}
+          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
           type="image/png"
         />
         <link
+          rel="shortcut icon"
+          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
+        />
+        <link
           rel="apple-touch-icon"
-          href={process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}
+          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
         />
 
         {/* Font preloading */}
