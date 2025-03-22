@@ -5,6 +5,10 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "../../components/SearchParamsProvider";
 import { CaseStudyData } from "./page";
+import { getImagePath } from "../../utils/assets";
+
+// Helper function for image paths
+const processImagePath = (path: string) => getImagePath(path);
 
 interface ProjectClientProps {
     project: any;

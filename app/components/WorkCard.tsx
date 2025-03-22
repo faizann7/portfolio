@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { getImagePath } from "../utils/assets";
 
 interface WorkCardProps {
     title: string;
@@ -38,6 +39,9 @@ const WorkCard = ({
     const bgColor = getBgColor(color);
     const hoverBgColor = getBgColor(hoverColor);
 
+    // Process the image path for GitHub Pages compatibility
+    const processedImagePath = getImagePath(image);
+
     return (
         <Link href={link} className="group block h-full">
             <motion.div
@@ -67,7 +71,7 @@ const WorkCard = ({
                     </div>
                     <div className="relative w-[80%] mx-auto overflow-hidden rounded-md transform transition-transform duration-500 group-hover:scale-105">
                         <Image
-                            src={image}
+                            src={processedImagePath}
                             alt={title}
                             width={500}
                             height={300}

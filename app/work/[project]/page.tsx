@@ -3,6 +3,27 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { projects } from "../../data/projects";
 import ProjectClient from "./ProjectClient";
+import { getImagePath } from "../../utils/assets";
+
+// Helper component for case study images
+const CaseStudyImage = ({ src, alt, width, height, className }: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    className?: string;
+}) => {
+    const processedSrc = getImagePath(src);
+    return (
+        <Image
+            src={processedSrc}
+            alt={alt}
+            width={width}
+            height={height}
+            className={className}
+        />
+    );
+};
 
 // Add generateStaticParams function to specify all possible project values
 export async function generateStaticParams() {
@@ -192,7 +213,7 @@ const projectsData = {
                         </ul>
 
                         <div className="w-full my-12 rounded-lg">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/riderapp/Old Screen.png"
                                 alt="Original rider app screen showing accessibility issues"
                                 width={500}
