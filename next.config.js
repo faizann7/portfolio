@@ -34,10 +34,14 @@ let nextConfig = {
     reactStrictMode: true,
 };
 
-// Only add bundle analyzer in analyze mode
-if (process.env.ANALYZE === 'true') {
-    const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: true });
-    nextConfig = withBundleAnalyzer(nextConfig);
-}
-
-module.exports = nextConfig; 
+try {
+    // Only add bundle analyzer in analyze mode
+    if (process.env.ANALYZE === 'true') {
+        const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: true });
+        nextConfig = withBundleAnalyzer(nextConfig);
+    }
+    module.exports = nextConfig;
+} catch (error) {
+    console.error('Error in next.config.js:', error);
+    module.exports = nextConfig;
+} 
