@@ -325,7 +325,7 @@ const projectsData = {
                         </p>
 
                         <div className="w-full my-12 flex justify-center">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/riderapp/Calendar & Shift Cards.png"
                                 alt="Calendar and shift cards interface showing empty state and active shifts"
                                 width={1200}
@@ -340,7 +340,7 @@ const projectsData = {
                         </p>
 
                         <div className="w-full my-12 flex justify-center">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/riderapp/Clocking In (Start Your Day).png"
                                 alt="Rider app screens showing the clocking in process"
                                 width={1200}
@@ -355,7 +355,7 @@ const projectsData = {
                         </p>
 
                         <div className="w-full my-12 flex justify-center">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/riderapp/Accepting New Trips.png"
                                 alt="Rider app screens showing trip management and acceptance flow"
                                 width={1200}
@@ -370,7 +370,7 @@ const projectsData = {
                         </p>
 
                         <div className="w-full my-12 flex justify-center">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/riderapp/Break Management.png"
                                 alt="Rider app screens showing break management system with countdowns"
                                 width={1200}
@@ -461,7 +461,7 @@ export default function ProjectPage({ params }: PageProps) {
                         </p>
 
                         <div className="w-full my-12 rounded-md overflow-hidden">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/cinefatic/Current Method.png"
                                 alt="Current movie booking method in Karachi"
                                 width={768}

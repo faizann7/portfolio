@@ -117,6 +117,8 @@ Key points:
 
 ### Common Issues
 
+For a detailed guide on common errors and solutions, see the [Troubleshooting Guide](./docs/TROUBLESHOOTING.md).
+
 #### 404 Errors for Assets
 
 If assets like images fail to load on GitHub Pages:
