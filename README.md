@@ -1,105 +1,146 @@
-# UX/Product Designer Portfolio
+# Portfolio Website
 
-A modern, minimalist portfolio website for UX/Product Designers built with Next.js, Tailwind CSS, and Framer Motion.
+A Next.js-based portfolio website optimized for deployment on GitHub Pages.
 
-## Features
+## Table of Contents
 
-- Clean, minimalist design with bold typography
-- Subtle micro-interactions and animations
-- Responsive layout for all device sizes
-- Light mode design
-- Optimized for performance
-- SEO friendly with structured data
-- Error boundaries for graceful error handling
+- [Project Overview](#project-overview)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Important Considerations](#important-considerations)
+- [Troubleshooting](#troubleshooting)
 
-## Tech Stack
+## Project Overview
 
-- **Framework**: Next.js
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Deployment**: GitHub Pages
+This is a professional portfolio website built with Next.js, showcasing work examples, case studies, and contact information. The site is specifically configured to work with GitHub Pages deployment.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.x or later
+- Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/portfoliooo.git
+   cd portfoliooo
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Start the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Visit `http://localhost:3000` to see the application running
+
+## Project Structure
+
+```
+portfolio/
+├── app/                  # Main application code
+│   ├── components/       # Reusable UI components
+│   ├── data/             # Data files (projects, etc.)
+│   ├── utils/            # Utility functions
+│   ├── work/             # Case study pages
+│   │   └── [project]/    # Dynamic project pages
+│   ├── layout.tsx        # Root layout component
+│   └── page.tsx          # Home page
+├── public/               # Static assets
+│   └── images/           # Image files
+├── docs/                 # Documentation files
+└── next.config.js        # Next.js configuration
+```
+
+## Deployment
+
+This project is configured for GitHub Pages deployment using GitHub Actions.
+
+### Automatic Deployment
+
+1. Push changes to the main branch
+2. GitHub Actions will automatically build and deploy the site
+3. The site will be available at `https://yourusername.github.io/portfoliooo/`
+
+### Manual Deployment
+
+If needed, you can deploy manually:
+
 ```bash
-git clone <repository-url>
-cd portfolio
+npm run build
+npm run export
 ```
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+Then copy the contents of the `out` directory to your GitHub Pages branch.
 
-3. Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Important Considerations
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+### Asset Handling
 
-## Customization
+When deploying to GitHub Pages, the site is served from a sub-path (`/portfoliooo/`) rather than the root. This requires special handling for assets like images.
 
-### Content
+See [Image Path Documentation](./docs/IMAGE_PATHS.md) for detailed guidance on handling image paths.
 
-- Update the personal information in `app/page.tsx`
-- Replace placeholder images in the `public/images` directory
-- Modify the project details in the `ProjectCard` components
+Key points:
 
-### Styling
+1. Always use the provided utilities:
+   - `getImagePath()` for regular image paths 
+   - `CaseStudyImage` component for case study images
 
-- Customize colors in `app/globals.css`
-- Adjust typography and spacing as needed
-- Modify animations in the Framer Motion components
+2. In data files:
+   - Either use relative paths and process them at render time
+   - Or use the `basePath` constant directly in the data file
 
-## Deployment to GitHub Pages
+3. Never hardcode absolute paths in your components
 
-This portfolio is configured for deployment to GitHub Pages:
+### Adding New Pages
 
-1. Update the `next.config.js` file with your repository name:
-```js
-const nextConfig = {
-  output: 'export',
-  basePath: '/your-repo-name',
-  assetPrefix: '/your-repo-name/',
-  // other config...
-};
-```
+1. For regular pages, add them to the `app` directory following Next.js file-based routing
+2. For case studies:
+   - Add the project to `app/data/projects.ts`
+   - Add the project ID to `generateStaticParams()` in `app/work/[project]/page.tsx`
+   - Add detailed case study content in the page file
 
-2. Push your code to GitHub
+## Troubleshooting
 
-3. Enable GitHub Pages in your repository settings:
-   - Go to Settings > Pages
-   - Set the source to GitHub Actions
+### Common Issues
 
-4. The GitHub Action workflow will automatically build and deploy your site
+#### 404 Errors for Assets
 
-## Pre-Launch Checklist
+If assets like images fail to load on GitHub Pages:
 
-Before launching your portfolio, make sure to check the `LAUNCH_CHECKLIST.md` file for a comprehensive list of tasks to ensure your site is production-ready.
+1. Check that you're using the path utilities correctly
+2. Verify that the file exists in the correct location
+3. Check for typos in path names (especially case-sensitivity)
 
-## Production Features
+#### Missing Pages on GitHub Pages
 
-- Google Analytics integration
-- Dynamic meta tags for SEO
-- Structured data (JSON-LD) for rich snippets
-- Error boundaries for graceful error handling
-- Optimized image loading with Next.js Image
-- Font preloading for better performance
-- Sitemap and robots.txt generation
+Ensure the page is included in the `generateStaticParams()` function for any dynamic routes.
+
+#### Console Error for `.txt?_rsc=10ksn` Files
+
+These are normal Next.js prefetching requests and can be safely ignored. They're part of the React Server Components mechanism.
+
+#### Ad Blocker Warnings
+
+Warnings about Google Analytics or other tracking scripts being blocked are expected when users have ad blockers and don't affect site functionality.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+[License information]
+
+## Contact
+
+For questions or collaboration, reach out at [your contact info].

@@ -58,7 +58,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                     {/* Hero image section - full width */}
                     <div className="w-full mb-16 rounded-xl overflow-hidden">
                         <Image
-                            src={projectId === "rider-app-medzmore" ? "/images/riderapp/riderapp_main.png" : "/images/cinefatic/Cinefatic Main.png"}
+                            src={processImagePath(projectId === "rider-app-medzmore" ? "/images/riderapp/riderapp_main.png" : "/images/cinefatic/Cinefatic Main.png")}
                             alt={`${project.title} main screen`}
                             width={1400}
                             height={800}
@@ -110,7 +110,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                                         <div key={index} className="w-full rounded-xl overflow-hidden">
                                             {screen.image && (
                                                 <Image
-                                                    src={screen.image}
+                                                    src={processImagePath(screen.image)}
                                                     alt={screen.title}
                                                     width={768}
                                                     height={400}

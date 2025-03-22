@@ -542,7 +542,7 @@ export default function ProjectPage({ params }: PageProps) {
                             To address these pain points, I designed Cinefatic as a comprehensive movie discovery and booking application tailored specifically for the Karachi market. The core features of the app include:
                         </p>
                         <div className="w-full my-12 rounded-md overflow-hidden">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/cinefatic/Features.png"
                                 alt="Cinefatic key features"
                                 width={768}
@@ -574,7 +574,7 @@ export default function ProjectPage({ params }: PageProps) {
                             The final design features a clean, cinema-inspired dark interface that puts content forward while creating an immersive feel. I used vibrant accent colors to highlight key actions and create visual interest.
                         </p>
                         <div className="w-full my-12 rounded-md overflow-hidden">
-                            <Image
+                            <CaseStudyImage
                                 src="/images/cinefatic/image homepage.png"
                                 alt="Cinefatic homepage design"
                                 width={768}
