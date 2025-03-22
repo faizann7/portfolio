@@ -40,4 +40,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# IDE specific files
 .cursorrules
+.idea/
+.vscode/
+
+# Local development files
+*.local
+
+# Build artifacts that shouldn't be tracked
+/analyze/
+/dist/
+/.swc/
