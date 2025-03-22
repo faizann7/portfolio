@@ -3,8 +3,8 @@
 // Simpler configuration to avoid TypeError issues
 let nextConfig = {
     output: 'export',
-    basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
-    assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
+    basePath: process.env.NODE_ENV === 'production' ? '/portfoliooo' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/portfoliooo/' : '',
 
     images: {
         unoptimized: true,
@@ -42,6 +42,8 @@ try {
     }
     module.exports = nextConfig;
 } catch (error) {
-    console.error('Error in next.config.js:', error);
+    // Ensure error is an instance of Error
+    const errorInstance = error instanceof Error ? error : new Error(String(error));
+    console.error('Error in next.config.js:', errorInstance);
     module.exports = nextConfig;
 } 

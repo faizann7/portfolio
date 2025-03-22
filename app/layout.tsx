@@ -8,7 +8,7 @@ import { SearchParamsProvider } from "./components/SearchParamsProvider";
 export const metadata: Metadata = {
   title: "Faizan | UX/Product Designer",
   description: "Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizaanalam.github.io/portfolio'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizaanalam.github.io/portfolio'} />
+        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'} />
         <link
           rel="preload"
           href="/fonts/CircularStd-Book.woff"

@@ -47,7 +47,7 @@ jobs:
           echo "Starting Next.js build..."
           NODE_ENV=production NODE_OPTIONS="--max-old-space-size=4096" npm run build
         env:
-          NEXT_PUBLIC_BASE_URL: https://faizaanalam.github.io/portfolio
+          NEXT_PUBLIC_BASE_URL: https://faizann7.github.io/portfoliooo
           
       - name: Create .nojekyll file
         run: touch ./out/.nojekyll

@@ -2,7 +2,7 @@ const SEO = {
     titleTemplate: '%s | Faizan - UX/Product Designer',
     defaultTitle: 'Faizan | UX/Product Designer',
     description: 'Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
-    canonical: 'https://faizaanalam.github.io/portfolio',
+    canonical: 'https://faizann7.github.io/portfoliooo',
     openGraph: {
         type: 'website',
         locale: 'en_US',
