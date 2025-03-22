@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true',
-});
+// Fix the bundleAnalyzer import to be compatible with CommonJS
+const withBundleAnalyzer = process.env.ANALYZE === 'true'
+    ? require('@next/bundle-analyzer')({
+        enabled: true,
+    })
+    : (config) => config;
 
 const isProd = process.env.NODE_ENV === 'production';
 const repoName = 'portfolio'; // GitHub repository name
