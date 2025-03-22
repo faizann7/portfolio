@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title: "Faizan | UX/Product Designer",
   description: "Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
+  icons: {
+    icon: process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png',
+    apple: process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +39,19 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'} />
+
+        {/* Favicon */}
+        <link
+          rel="icon"
+          href={process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}
+          type="image/png"
+        />
+        <link
+          rel="apple-touch-icon"
+          href={process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}
+        />
+
+        {/* Font preloading */}
         <link
           rel="preload"
           href={bookFontUrl}
