@@ -9,7 +9,7 @@
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
     "export": "next build && touch out/.nojekyll",
-    "debug": "node debug-build.js"
+    "debug": "node --version && npm --version && next --version"
   },
   "dependencies": {
     "framer-motion": "^12.5.0",

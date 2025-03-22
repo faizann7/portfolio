@@ -1,21 +1,13 @@
 /** @type {import('next').NextConfig} */
-// Fix the bundleAnalyzer import to be compatible with CommonJS
-const withBundleAnalyzer = process.env.ANALYZE === 'true'
-    ? require('@next/bundle-analyzer')({
-        enabled: true,
-    })
-    : (config) => config;
 
-const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'portfolio'; // GitHub repository name
-
-const nextConfig = {
-    output: 'export', // Enable static exports for GitHub Pages
-    basePath: isProd ? `/${repoName}` : '',
-    assetPrefix: isProd ? `/${repoName}/` : '',
+// Simpler configuration to avoid TypeError issues
+let nextConfig = {
+    output: 'export',
+    basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
 
     images: {
-        unoptimized: true, // Required for static export
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
@@ -42,4 +34,10 @@ const nextConfig = {
     reactStrictMode: true,
 };
 
-module.exports = withBundleAnalyzer(nextConfig); 
+// Only add bundle analyzer in analyze mode
+if (process.env.ANALYZE === 'true') {
+    const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: true });
+    nextConfig = withBundleAnalyzer(nextConfig);
+}
+
+module.exports = nextConfig; 
