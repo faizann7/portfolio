@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "../components/SearchParamsProvider";
 
@@ -15,20 +16,40 @@ function AboutContent() {
         {
             company: "Swapp",
             role: "Lead UX/Product Designer",
-            period: "2022 - Present",
+            period: "Nov 2024 - Present",
             description: "Leading the design team in creating a seamless rental experience platform. Responsible for the end-to-end design process from research to implementation."
         },
         {
-            company: "Fintech Startup",
-            role: "UI/UX Designer",
-            period: "2020 - 2022",
-            description: "Designed intuitive interfaces for complex financial data visualization. Conducted user research and testing to optimize the user experience."
+            company: "Retailo Technologies",
+            role: "Product Designer",
+            period: "Sep 2023 - Oct 2024",
+            description: "Designed digital solutions for B2B e-commerce platform focused on retail supply chain optimization. Created user-centered interfaces and workflows for both retailers and suppliers."
         },
         {
-            company: "Design Agency",
-            role: "Junior Designer",
-            period: "2018 - 2020",
-            description: "Worked on various client projects across different industries. Developed skills in rapid prototyping and collaborative design."
+            company: "AdPolice",
+            role: "UI/UX Designer",
+            period: "Mar 2024 - Jul 2024",
+            description: "Designed intuitive interfaces for advertising compliance and brand safety tools. Conducted user research and usability testing to improve product experiences."
+        },
+        {
+            company: "MEDZnMORE",
+            role: "UI/UX Designer",
+            period: "Nov 2022 - Jun 2023",
+            description: "Created digital healthcare experiences for medication delivery and pharmacy management platforms. Developed design systems and user flows for multiple products."
+        },
+        {
+            company: "Freelance",
+            role: "UI/UX Designer",
+            period: "Dec 2021 - Present",
+            description: "Worked with various clients across industries on digital product design, branding, and web development projects."
+        }
+    ];
+
+    const education = [
+        {
+            institution: "Institute of Business Administration (IBA)",
+            degree: "Bachelor of Science in Computer Science",
+            period: "Aug 2018 - Jul 2022"
         }
     ];
 
@@ -40,22 +61,25 @@ function AboutContent() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
                 <div className="md:col-span-1">
-                    <div className="w-full aspect-square bg-gray-100 rounded-lg mb-6">
-                        {/* Replace with actual profile image */}
-                        <div className="w-full h-full flex items-center justify-center text-gray-400">
-                            <span>Profile Image</span>
-                        </div>
+                    <div className="w-full aspect-square rounded-lg mb-6 overflow-hidden relative">
+                        <Image
+                            src="/images/me.jpg"
+                            alt="Faizan's Profile Picture"
+                            fill
+                            style={{ objectFit: "cover" }}
+                            priority
+                        />
                     </div>
                 </div>
                 <div className="md:col-span-2">
                     <p className="text-xl mb-6">
-                        I'm a UX/Product designer with a passion for creating intuitive and impactful digital experiences. With over 5 years of experience in the field, I specialize in translating complex problems into simple, elegant solutions.
+                        Hey, I'm Faizan! I'm a Product Designer with a passion for creating intuitive and impactful digital experiences. With a background in Computer Science from IBA, I combine technical understanding with creative problem-solving to design elegant solutions.
                     </p>
                     <p className="text-xl mb-6">
-                        My approach combines strong user research with creative problem-solving. I believe that great design should be invisible, allowing users to accomplish their goals without friction or confusion.
+                        Currently, I'm leading design at Swapp, where we're creating a seamless rental experience platform. I specialize in translating complex problems into simple, user-centered interfaces and experiences.
                     </p>
                     <p className="text-xl">
-                        When I'm not designing, you can find me exploring hiking trails, experimenting with new cooking recipes, or attending local tech meetups to stay connected with the design community.
+                        When I'm not designing, you can find me playing football, gaming, watching Netflix, or working on side projects. I'm always open to discussing new opportunities for both full-time roles and freelance projects.
                     </p>
                 </div>
             </div>
@@ -73,6 +97,23 @@ function AboutContent() {
                                 <span>{exp.period}</span>
                             </div>
                             <p className="text-lg">{exp.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="mb-20">
+                <h2 className="text-3xl font-bold mb-8">Education</h2>
+                <div className="space-y-12">
+                    {education.map((edu, index) => (
+                        <div key={index} className="border-l-2 border-gray-200 pl-8 relative">
+                            <div className="absolute top-0 left-[-9px] w-4 h-4 rounded-full bg-gray-200"></div>
+                            <h3 className="text-2xl font-bold mb-1">{edu.institution}</h3>
+                            <div className="flex flex-col md:flex-row md:items-center text-gray-600 mb-3">
+                                <span className="font-medium">{edu.degree}</span>
+                                <span className="hidden md:block mx-2">•</span>
+                                <span>{edu.period}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
