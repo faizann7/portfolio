@@ -4,6 +4,8 @@
 :root {
   --background: #ffffff;
   --foreground: #121212;
+  --link-color: #121212;
+  --link-hover-color: #4f46e5;
 }
 
 @theme inline {
@@ -15,6 +17,8 @@
   :root {
     --background: #ffffff;
     --foreground: #121212;
+    --link-color: #121212;
+    --link-hover-color: #4f46e5;
   }
 }
 

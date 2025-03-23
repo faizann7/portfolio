@@ -6,6 +6,7 @@ import { projects } from "./data/projects";
 import WorkCard from "./components/WorkCard";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "./components/SearchParamsProvider";
+import ScribbleLink from "./components/ScribbleLink";
 
 function HomeContent() {
   return (
@@ -15,7 +16,7 @@ function HomeContent() {
           Hi, I'm Faizan
         </h1>
         <p className="text-xl md:text-2xl">
-          UX/Product designer at <Link href="https://www.linkedin.com/company/joinswapp/" className="underline underline-offset-4 hover:text-gray-600 transition-colors">Swapp, UAE</Link>. I love working with early-stage teams, blending UX, UI, and business strategy to launch impactful features.
+          UX/Product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp, UAE</ScribbleLink>. I love working with early-stage teams, blending UX, UI, and business strategy to launch impactful features.
         </p>
       </div>
 
@@ -101,23 +102,52 @@ function HomeContent() {
         </div>
       </div>
 
-      <div>
+      {/* Playground Section */}
+      <div className="mb-20">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold">Playground</h2>
-          <Link href="/playground" className="text-lg hover:text-gray-600 transition-colors">
-            View all
-          </Link>
+          <ScribbleLink href="/playground">View all</ScribbleLink>
         </div>
 
-        <Link href="/playground" className="group">
-          <div className="bg-gray-100 h-80 rounded-2xl overflow-hidden transition-all duration-300 ease-out-expo group-hover:shadow-md group-hover:bg-gray-200 relative">
-            <div className="absolute inset-0 p-6 flex flex-col justify-end">
-              <h3 className="text-2xl font-bold mb-2">Playground</h3>
-              <p className="opacity-80 group-hover:opacity-100 transition-all duration-300 ease-out-expo">Explore side projects & experiments</p>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-gray-100 h-64 rounded-2xl overflow-hidden transition-all duration-300 ease-out-expo hover:shadow-sm hover:bg-gray-200 relative group">
+            <Link href="/playground/ui-experiments" className="absolute inset-0">
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <h3 className="text-2xl font-bold mb-2">UI Experiments</h3>
+                <p className="opacity-80 group-hover:opacity-100 transition-all duration-300 ease-out-expo">Design explorations & UI concepts</p>
+              </div>
+            </Link>
           </div>
-        </Link>
+          <div className="bg-gray-100 h-64 rounded-2xl overflow-hidden transition-all duration-300 ease-out-expo hover:shadow-sm hover:bg-gray-200 relative group">
+            <Link href="/playground/illustrations" className="absolute inset-0">
+              <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                <h3 className="text-2xl font-bold mb-2">Illustrations</h3>
+                <p className="opacity-80 group-hover:opacity-100 transition-all duration-300 ease-out-expo">Digital art & illustrations</p>
+              </div>
+            </Link>
+          </div>
+        </div>
       </div>
+
+      {/* Let's Connect Section */}
+      <div className="mb-20">
+        <div className="flex justify-center items-center mb-8">
+          <h2 className="text-3xl font-bold">- Let's Connect</h2>
+        </div>
+        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-10">
+          <ScribbleLink href="https://www.linkedin.com/in/yourprofile" isExternal={true}>LinkedIn</ScribbleLink>
+          <ScribbleLink href="https://dribbble.com/yourprofile" isExternal={true}>Dribbble</ScribbleLink>
+          <ScribbleLink href="mailto:your-email@example.com" isExternal={true}>Email</ScribbleLink>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-gray-200 mt-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-600">© {new Date().getFullYear()} Faizan</p>
+          <p className="text-gray-400 text-sm mt-2 md:mt-0">iteration # i lost count honestly</p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import ScribbleLink from "./ScribbleLink";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,25 +51,24 @@ export default function Navbar() {
         <nav className={`fixed top-0 left-0 w-full py-4 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
             <div className="max-w-[1120px] w-full mx-auto flex justify-between items-center relative">
                 {/* Logo */}
-                <Link
+                <ScribbleLink
                     href="/"
                     className="text-2xl font-bold relative group"
                 >
                     <span className="transition-colors duration-300 group-hover:text-gray-600">fz.</span>
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
-                </Link>
+                </ScribbleLink>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-8">
+                <div className="hidden md:flex space-x-8 items-center py-1">
                     {navLinks.map((link) => (
-                        <Link
+                        <ScribbleLink
                             key={link.href}
                             href={link.href}
-                            className={`relative py-1 group transition-colors duration-300 hover:text-gray-600 ${pathname === link.href ? 'font-medium' : ''}`}
+                            className={pathname === link.href ? 'font-medium' : ''}
                         >
                             {link.label}
-                            <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo ${pathname === link.href ? 'w-full' : ''}`}></span>
-                        </Link>
+                        </ScribbleLink>
                     ))}
                 </div>
 
@@ -94,23 +94,21 @@ export default function Navbar() {
             >
                 <div className="flex flex-col justify-center items-center h-full space-y-8 p-8 text-center">
                     {navLinks.map((link, index) => (
-                        <Link
+                        <div
                             key={link.href}
-                            href={link.href}
-                            className={`text-2xl relative group transition-all duration-300 hover:text-gray-600 
-                                ${pathname === link.href ? 'font-medium' : ''}
-                                ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                            className={`transition-all duration-400 ease-out-expo ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                             style={{
-                                transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms',
-                                transitionProperty: 'opacity, transform',
-                                transitionDuration: '400ms',
-                                transitionTimingFunction: 'cubic-bezier(0.19, 1, 0.22, 1)'
+                                transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms'
                             }}
-                            onClick={toggleMenu}
                         >
-                            <span>{link.label}</span>
-                            <span className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo ${pathname === link.href ? 'w-full' : ''}`}></span>
-                        </Link>
+                            <ScribbleLink
+                                href={link.href}
+                                className={`text-2xl ${pathname === link.href ? 'font-medium' : ''}`}
+                                onClick={toggleMenu}
+                            >
+                                {link.label}
+                            </ScribbleLink>
+                        </div>
                     ))}
                 </div>
             </div>
