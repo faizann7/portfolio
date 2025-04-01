@@ -1,9 +1,11 @@
 'use client';
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "../components/SearchParamsProvider";
+import ScribbleLink from "../components/ScribbleLink";
 
 function AboutContent() {
     const skills = [
@@ -140,9 +142,13 @@ function AboutContent() {
 
             <div className="border-t border-gray-200 pt-12">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-                    <Link href="/resume" className="text-lg hover:text-gray-600 mb-4 md:mb-0 transition-colors">
+                    <ScribbleLink
+                        href="https://drive.google.com/file/d/1gyosN_XzZuGf0G3ZLqy0W_ppAdtLa3Au/view"
+                        isExternal={true}
+                        className="text-lg mb-4 md:mb-0"
+                    >
                         View my resume
-                    </Link>
+                    </ScribbleLink>
                     <Link href="/contact" className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
                         Get in touch
                     </Link>

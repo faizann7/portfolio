@@ -14,6 +14,7 @@ interface WorkCardProps {
     index: number;
     color?: string;
     hoverColor?: string;
+    comingSoon?: boolean;
 }
 
 const WorkCard = ({
@@ -24,7 +25,8 @@ const WorkCard = ({
     tags,
     index,
     color = "bg-gray-100",
-    hoverColor = "bg-gray-200"
+    hoverColor = "bg-gray-200",
+    comingSoon = false
 }: WorkCardProps) => {
     // Extract or use the color values correctly
     const getBgColor = (colorValue: string) => {
@@ -42,8 +44,21 @@ const WorkCard = ({
     // Process the image path for GitHub Pages compatibility
     const processedImagePath = getImagePath(image);
 
+    // Wrapper component that conditionally renders Link or div based on comingSoon
+    const CardWrapper = ({ children }: { children: React.ReactNode }) => {
+        return comingSoon ? (
+            <div className="group block h-full cursor-not-allowed">
+                {children}
+            </div>
+        ) : (
+            <Link href={link} className="group block h-full">
+                {children}
+            </Link>
+        );
+    };
+
     return (
-        <Link href={link} className="group block h-full">
+        <CardWrapper>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -61,7 +76,9 @@ const WorkCard = ({
                 />
                 <div className="pt-6 px-6 h-full flex flex-col relative z-10">
                     <div className="mb-auto">
-                        <h3 className="text-2xl font-medium mb-2">{title}</h3>
+                        <div className="flex items-center mb-2">
+                            <h3 className="text-2xl font-medium">{title}</h3>
+                        </div>
                         <p className="text-lg mb-4">{subtitle}</p>
                         <div className="flex flex-wrap gap-2 mb-6">
                             {tags.slice(0, 3).map((tag) => (
@@ -75,12 +92,19 @@ const WorkCard = ({
                             alt={title}
                             width={500}
                             height={300}
-                            className="object-cover w-full"
+                            className={`object-cover w-full ${comingSoon ? 'opacity-80' : ''}`}
                         />
+                        {comingSoon && (
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="bg-white/90 text-gray-800 font-semibold px-4 py-2 rounded-md shadow-lg">
+                                    Coming Soon
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </motion.div>
-        </Link>
+        </CardWrapper>
     );
 };
 

@@ -8,6 +8,7 @@ export interface Project {
     year: string;
     color: string;
     hoverColor: string;
+    comingSoon?: boolean;
 }
 
 // The base path for GitHub Pages
@@ -34,7 +35,8 @@ export const projects: Project[] = [
         image: `${basePath}/images/Swapp Thumb.png`,
         year: "2022-Present",
         color: "bg-red-100",
-        hoverColor: "bg-red-200"
+        hoverColor: "bg-red-200",
+        comingSoon: true
     },
     {
         id: "route-helper",
@@ -45,7 +47,8 @@ export const projects: Project[] = [
         image: `${basePath}/images/Pre Route Helper.png`,
         year: "2021",
         color: "bg-amber-50",
-        hoverColor: "bg-amber-100"
+        hoverColor: "bg-amber-100",
+        comingSoon: true
     },
     {
         id: "inbounding-medzmore",
@@ -56,7 +59,8 @@ export const projects: Project[] = [
         image: `${basePath}/images/MEDZnMORE Thumb.png`,
         year: "2021",
         color: "bg-indigo-100",
-        hoverColor: "bg-indigo-200"
+        hoverColor: "bg-indigo-200",
+        comingSoon: true
     },
     {
         id: "rider-app-medzmore",

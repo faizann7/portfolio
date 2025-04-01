@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './ScribbleLink.module.css';
 
@@ -17,6 +17,16 @@ export default function ScribbleLink({
     isExternal = false,
     onClick
 }: ScribbleLinkProps) {
+    const [isActive, setIsActive] = useState(false);
+
+    const handleClick = (e: React.MouseEvent) => {
+        setIsActive(true);
+        // Reset after transition completes
+        setTimeout(() => setIsActive(false), 300);
+
+        if (onClick) onClick(e);
+    };
+
     const LinkContent = () => (
         <>
             <span>{children}</span>
@@ -41,12 +51,13 @@ export default function ScribbleLink({
         return (
             <a
                 href={href}
-                className={`${styles.link} ${styles['link--carme']} ${className}`}
+                className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'text-gray-400' : 'hover:text-gray-600'}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={onClick}
+                onClick={handleClick}
             >
                 <LinkContent />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
             </a>
         );
     }
@@ -54,11 +65,12 @@ export default function ScribbleLink({
     return (
         <Link
             href={href}
-            className={`${styles.link} ${styles['link--carme']} ${className}`}
-            prefetch={false}
-            onClick={onClick}
+            className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'text-gray-400' : 'hover:text-gray-600'}`}
+            prefetch={true}
+            onClick={handleClick}
         >
             <LinkContent />
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
         </Link>
     );
 } 

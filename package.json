@@ -12,7 +12,7 @@
     "debug": "node --version && npm --version && next --version"
   },
   "dependencies": {
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.6.2",
     "gsap": "^3.12.7",
     "next": "15.2.2",
     "react": "^19.0.0",

@@ -6,6 +6,10 @@ import StructuredData from "./components/StructuredData";
 import { SearchParamsProvider } from "./components/SearchParamsProvider";
 import { getAssetPath, getImagePath } from "./utils/assets";
 import Script from "next/script";
+import { AnimatePresence } from "framer-motion";
+import PageTransition from "./components/PageTransition";
+import MotionConfig from "./components/MotionConfig";
+import NavigationProgress from "./components/NavigationProgress";
 
 export const metadata: Metadata = {
   title: "Faizan | UX/Product Designer",
@@ -117,6 +121,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
+        <NavigationProgress />
         {/* GitHub Pages Specific: SearchParamsProvider needed because useSearchParams doesn't 
             work with static export on GitHub Pages */}
         <SearchParamsProvider>
@@ -136,7 +141,13 @@ export default function RootLayout({
         <Navbar />
         <div className="max-w-[1120px] mx-auto pt-16">
           <main className="px-4">
-            {children}
+            <MotionConfig>
+              <AnimatePresence mode="wait">
+                <PageTransition>
+                  {children}
+                </PageTransition>
+              </AnimatePresence>
+            </MotionConfig>
           </main>
         </div>
       </body>

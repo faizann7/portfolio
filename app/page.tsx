@@ -38,6 +38,7 @@ function HomeContent() {
                 index={0}
                 color={projects[0].color}
                 hoverColor="#CAC2FF"
+                comingSoon={projects[0].comingSoon}
               />
             </div>
             <div className="md:col-span-2">
@@ -50,6 +51,7 @@ function HomeContent() {
                 index={1}
                 color={projects[1].color}
                 hoverColor="#FFD6D6"
+                comingSoon={projects[1].comingSoon}
               />
             </div>
           </div>
@@ -66,6 +68,7 @@ function HomeContent() {
                 index={2}
                 color={projects[2].color}
                 hoverColor="#F7E8CA"
+                comingSoon={projects[2].comingSoon}
               />
             </div>
           </div>
@@ -82,6 +85,7 @@ function HomeContent() {
                 index={3}
                 color={projects[3].color}
                 hoverColor="#CAC2FF"
+                comingSoon={projects[3].comingSoon}
               />
             </div>
             {projects.length > 4 && (
@@ -95,6 +99,7 @@ function HomeContent() {
                   index={4}
                   color={projects[4].color}
                   hoverColor="#B8E8FF"
+                  comingSoon={projects[4].comingSoon}
                 />
               </div>
             )}

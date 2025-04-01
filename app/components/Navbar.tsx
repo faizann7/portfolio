@@ -44,11 +44,11 @@ export default function Navbar() {
         { href: "/#work", label: "work" },
         { href: "/playground", label: "playground" },
         { href: "/about", label: "about" },
-        { href: "/resume", label: "resume" },
+        { href: "https://drive.google.com/file/d/1gyosN_XzZuGf0G3ZLqy0W_ppAdtLa3Au/view", label: "resume", isExternal: true },
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 w-full py-4 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
+        <nav className={`fixed top-0 left-0 w-full py-2 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
             <div className="max-w-[1120px] w-full mx-auto flex justify-between items-center relative">
                 {/* Logo */}
                 <ScribbleLink
@@ -66,6 +66,7 @@ export default function Navbar() {
                             key={link.href}
                             href={link.href}
                             className={pathname === link.href ? 'font-medium' : ''}
+                            isExternal={link.isExternal}
                         >
                             {link.label}
                         </ScribbleLink>
@@ -105,6 +106,7 @@ export default function Navbar() {
                                 href={link.href}
                                 className={`text-2xl ${pathname === link.href ? 'font-medium' : ''}`}
                                 onClick={toggleMenu}
+                                isExternal={link.isExternal}
                             >
                                 {link.label}
                             </ScribbleLink>
