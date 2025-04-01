@@ -1,28 +1,23 @@
 const SEO = {
-    titleTemplate: '%s | Faizan - UX/Product Designer',
-    defaultTitle: 'Faizan | UX/Product Designer',
-    description: 'Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
+    titleTemplate: '%s | Muhammad Faizan - UX/Product Designer',
+    defaultTitle: 'Muhammad Faizan | UX/Product Designer',
+    description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
     canonical: 'https://faizann7.github.io/portfoliooo',
     openGraph: {
         type: 'website',
         locale: 'en_US',
         url: 'https://faizann7.github.io/portfoliooo',
-        siteName: 'Faizan Alam Portfolio',
-        title: 'Faizan | UX/Product Designer',
-        description: 'Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
+        siteName: 'Muhammad Faizan Portfolio',
+        title: 'Muhammad Faizan | UX/Product Designer',
+        description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
         images: [
             {
                 url: 'https://faizann7.github.io/portfoliooo/images/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Faizan Alam - UX/Product Designer',
+                alt: 'Muhammad Faizan - UX/Product Designer',
             },
         ],
-    },
-    twitter: {
-        handle: '@FaizanAlam',
-        site: '@FaizanAlam',
-        cardType: 'summary_large_image',
     },
     additionalMetaTags: [
         {

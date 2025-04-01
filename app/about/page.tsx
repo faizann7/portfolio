@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "../components/SearchParamsProvider";
 import ScribbleLink from "../components/ScribbleLink";
+import { getImagePath } from "../utils/assets";
 
 function AboutContent() {
     const skills = [
@@ -65,8 +66,8 @@ function AboutContent() {
                 <div className="md:col-span-1">
                     <div className="w-full aspect-square rounded-lg mb-6 overflow-hidden relative">
                         <Image
-                            src="/images/me.jpg"
-                            alt="Faizan's Profile Picture"
+                            src={getImagePath("/images/me.jpg")}
+                            alt="Muhammad Faizan's Profile Picture"
                             fill
                             style={{ objectFit: "cover" }}
                             priority
@@ -75,7 +76,7 @@ function AboutContent() {
                 </div>
                 <div className="md:col-span-2">
                     <p className="text-xl mb-6">
-                        Hey, I'm Faizan! I'm a Product Designer with a passion for creating intuitive and impactful digital experiences. With a background in Computer Science from IBA, I combine technical understanding with creative problem-solving to design elegant solutions.
+                        Hey, I'm Muhammad Faizan! I'm a Product Designer with a passion for creating intuitive and impactful digital experiences. With a background in Computer Science from IBA, I combine technical understanding with creative problem-solving to design elegant solutions.
                     </p>
                     <p className="text-xl mb-6">
                         Currently, I'm leading design at Swapp, where we're creating a seamless rental experience platform. I specialize in translating complex problems into simple, user-centered interfaces and experiences.

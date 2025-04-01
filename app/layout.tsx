@@ -12,8 +12,8 @@ import MotionConfig from "./components/MotionConfig";
 import NavigationProgress from "./components/NavigationProgress";
 
 export const metadata: Metadata = {
-  title: "Faizan | UX/Product Designer",
-  description: "Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
+  title: "Muhammad Faizan | UX/Product Designer",
+  description: "Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
   // GitHub Pages Specific: Hardcoded paths for icons to ensure they work in static export
   icons: {
@@ -132,9 +132,9 @@ export default function RootLayout({
           type="Person"
           data={{
             sameAs: [
-              'https://www.linkedin.com/in/faizanalam/',
-              'https://github.com/faizaanalam',
-              'https://dribbble.com/faizanalam'
+              'https://www.linkedin.com/in/faizann/',
+              'https://dribbble.com/faizan07',
+              'mailto:mohammad.faizan6th@gmail.com'
             ]
           }}
         />

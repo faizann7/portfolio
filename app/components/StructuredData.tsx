@@ -22,18 +22,18 @@ export default function StructuredData({ type = 'WebSite', data = {} }: Structur
         structuredData = {
             ...structuredData,
             '@type': 'Person',
-            name: 'Faizan Alam',
+            name: 'Muhammad Faizan',
             jobTitle: 'UX/Product Designer',
-            url: 'https://faizaanalam.github.io/portfolio',
+            url: 'https://faizann7.github.io/portfoliooo',
             ...data,
         };
     } else if (type === 'WebSite') {
         structuredData = {
             ...structuredData,
             '@type': 'WebSite',
-            name: 'Faizan Alam Portfolio',
-            description: 'Portfolio of Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
-            url: 'https://faizaanalam.github.io/portfolio',
+            name: 'Muhammad Faizan Portfolio',
+            description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
+            url: 'https://faizann7.github.io/portfoliooo',
             ...data,
         };
     } else if (type === 'Article' || type === 'Project') {
