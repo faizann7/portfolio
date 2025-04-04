@@ -80,11 +80,6 @@ const WorkCard = ({
                             <h3 className="text-2xl font-medium">{title}</h3>
                         </div>
                         <p className="text-lg mb-4">{subtitle}</p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                            {tags.slice(0, 3).map((tag) => (
-                                <span key={tag} className="bg-white/70 px-3 py-1 text-sm rounded-full">{tag}</span>
-                            ))}
-                        </div>
                     </div>
                     <div className="relative w-[80%] mx-auto overflow-hidden rounded-md transform transition-transform duration-500 group-hover:scale-105">
                         <Image

@@ -26,9 +26,9 @@ function HomeContent() {
         </div>
 
         <div className="grid grid-cols-1 gap-6">
-          {/* Row 1: 40% 60% */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="md:col-span-2">
+          {/* Row 1: 50% 50% - Cinefatic and Swapp */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="md:col-span-1">
               <WorkCard
                 title={projects[0].title}
                 subtitle={projects[0].subtitle}
@@ -41,7 +41,7 @@ function HomeContent() {
                 comingSoon={projects[0].comingSoon}
               />
             </div>
-            <div className="md:col-span-2">
+            <div className="md:col-span-1">
               <WorkCard
                 title={projects[1].title}
                 subtitle={projects[1].subtitle}
@@ -56,9 +56,9 @@ function HomeContent() {
             </div>
           </div>
 
-          {/* Row 2: 100% */}
+          {/* Row 2: 60% 40% - Route Helper and Rider App */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            <div className="md:col-span-5">
+            <div className="md:col-span-3">
               <WorkCard
                 title={projects[2].title}
                 subtitle={projects[2].subtitle}
@@ -71,38 +71,19 @@ function HomeContent() {
                 comingSoon={projects[2].comingSoon}
               />
             </div>
-          </div>
-
-          {/* Row 3: 60% 40% */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            <div className="md:col-span-3">
+            <div className="md:col-span-2">
               <WorkCard
-                title={projects[3].title}
-                subtitle={projects[3].subtitle}
-                image={projects[3].image}
-                link={`/work/${projects[3].id}`}
-                tags={projects[3].tags}
+                title={projects[4].title}
+                subtitle={projects[4].subtitle}
+                image={projects[4].image}
+                link={`/work/${projects[4].id}`}
+                tags={projects[4].tags}
                 index={3}
-                color={projects[3].color}
-                hoverColor="#CAC2FF"
-                comingSoon={projects[3].comingSoon}
+                color={projects[4].color}
+                hoverColor="#B8E8FF"
+                comingSoon={projects[4].comingSoon}
               />
             </div>
-            {projects.length > 4 && (
-              <div className="md:col-span-2">
-                <WorkCard
-                  title={projects[4].title}
-                  subtitle={projects[4].subtitle}
-                  image={projects[4].image}
-                  link={`/work/${projects[4].id}`}
-                  tags={projects[4].tags}
-                  index={4}
-                  color={projects[4].color}
-                  hoverColor="#B8E8FF"
-                  comingSoon={projects[4].comingSoon}
-                />
-              </div>
-            )}
           </div>
         </div>
       </div>

@@ -73,8 +73,8 @@ export interface CaseStudyData {
 const projectsData = {
     "cinefatic": {
         description: "A reimagined movie-ticket booking experience for Karachi's cinemagoers. The app focuses on easy discovery, seamless booking, and enhanced movie experiences.",
-        role: "Lead Product Designer",
-        duration: "6 months, 2023",
+        role: "UI & UX Designer",
+        duration: "2022",
         overview: "Cinefatic aims to revolutionize how people in Karachi discover and book movie tickets. I led the design process from research to implementation, focusing on creating an intuitive and delightful experience.",
         challenges: [
             "Adapting to local market needs and payment preferences",
@@ -439,9 +439,9 @@ export default function ProjectPage({ params }: PageProps) {
     // For Cinefatic, define detailed case study content
     const cinefaticCaseStudy: CaseStudyData = {
         description: "A reimagined movie-ticket booking experience for Karachi's cinemagoers. The app focuses on easy discovery, seamless booking, and enhanced movie experiences.",
-        role: "Lead Product Designer",
-        duration: "6 months, 2023",
-        overview: "Cinefatic is a movie ticket booking app designed to solve a long-standing frustration faced by people in Karachi—lack of an easy way to book tickets online for cinemas like Nueplex.\n\nThis case study explores the research, validation, and problem discovery processes that led to the creation of a seamless and user-friendly solution, aimed at modernizing how people in Karachi book movie tickets",
+        role: "UI & UX Designer",
+        duration: "2022",
+        overview: "Cinefatic aims to revolutionize how people in Karachi discover and book movie tickets. I led the design process from research to implementation, focusing on creating an intuitive and delightful experience.",
         sections: [
             {
                 title: "Discovery",
