@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { projects } from "../../data/projects";
 import ProjectClient from "./ProjectClient";
 import { getImagePath } from "../../utils/assets";
+import Footer from "../../components/Footer";
 
 // Helper component for case study images
 const CaseStudyImage = ({ src, alt, width, height, className }: {
@@ -635,5 +636,10 @@ export default function ProjectPage({ params }: PageProps) {
         };
     }
 
-    return <ProjectClient project={project} caseStudyData={caseStudyData} projectId={projectId} />;
+    return (
+        <>
+            <ProjectClient project={project} caseStudyData={caseStudyData} projectId={projectId} />
+            <Footer />
+        </>
+    );
 } 

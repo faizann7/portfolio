@@ -88,32 +88,7 @@ function HomeContent() {
         </div>
       </div>
 
-      {/* Playground Section */}
-      <div className="mb-20">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-3xl font-bold">Playground</h2>
-          <ScribbleLink href="/playground">View all</ScribbleLink>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gray-100 h-64 rounded-2xl overflow-hidden transition-all duration-300 ease-out-expo hover:shadow-sm hover:bg-gray-200 relative group">
-            <Link href="/playground/ui-experiments" className="absolute inset-0">
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <h3 className="text-2xl font-bold mb-2">UI Experiments</h3>
-                <p className="opacity-80 group-hover:opacity-100 transition-all duration-300 ease-out-expo">Design explorations & UI concepts</p>
-              </div>
-            </Link>
-          </div>
-          <div className="bg-gray-100 h-64 rounded-2xl overflow-hidden transition-all duration-300 ease-out-expo hover:shadow-sm hover:bg-gray-200 relative group">
-            <Link href="/playground/illustrations" className="absolute inset-0">
-              <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <h3 className="text-2xl font-bold mb-2">Illustrations</h3>
-                <p className="opacity-80 group-hover:opacity-100 transition-all duration-300 ease-out-expo">Digital art & illustrations</p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {/* Let's Connect Section */}
       <div className="mb-20">

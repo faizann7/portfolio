@@ -63,6 +63,14 @@
         font-style: italic;
         font-display: swap;
     }
+
+    @font-face {
+        font-family: 'Gloria Hallelujah';
+        src: url('/fonts/GloriaHallelujah.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 }
 
 /* For production with GitHub Pages basePath */
@@ -128,6 +136,14 @@
         src: url('/portfoliooo/fonts/CircularStd-BlackItalic.woff') format('woff');
         font-weight: 900;
         font-style: italic;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Gloria Hallelujah';
+        src: url('/portfoliooo/fonts/GloriaHallelujah.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
         font-display: swap;
     }
 }

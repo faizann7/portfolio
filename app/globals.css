@@ -45,3 +45,36 @@ body {
 .animate-progress {
   animation: progress linear forwards;
 }
+
+/* Playground page specific styles */
+.card {
+  height: 350px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 899px) {
+  .card {
+    height: 300px;
+  }
+}
