@@ -20,8 +20,8 @@ export function getAssetPath(path: string): string {
     }
 
     // Don't double-add the path
-    if (process.env.NODE_ENV === 'production' && !path.startsWith('/portfoliooo')) {
-        return `/portfoliooo${path}`;
+    if (process.env.NODE_ENV === 'production' && !path.startsWith('/portfolio')) {
+        return `/portfolio${path}`;
     }
 
     return path;
@@ -32,7 +32,7 @@ export function getAssetPath(path: string): string {
  * This is particularly important for GitHub Pages deployment where all assets need 
  * to be prefixed with the repository name
  */
-export const BASE_PATH = process.env.NODE_ENV === 'production' ? '/portfoliooo' : '';
+export const BASE_PATH = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
 /**
  * Function to specifically fix image paths for GitHub Pages deployment
@@ -53,10 +53,10 @@ export function getImagePath(path: string): string {
     if (path.startsWith('/')) {
         if (process.env.NODE_ENV === 'production') {
             // Make sure we don't add the prefix twice
-            if (path.startsWith('/portfoliooo/')) {
+            if (path.startsWith('/portfolio/')) {
                 return path;
             }
-            return `/portfoliooo${path}`;
+            return `/portfolio${path}`;
         }
     }
 

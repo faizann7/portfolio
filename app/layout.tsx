@@ -14,12 +14,12 @@ import NavigationProgress from "./components/NavigationProgress";
 export const metadata: Metadata = {
   title: "Muhammad Faizan | UX/Product Designer",
   description: "Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfolio'),
   // GitHub Pages Specific: Hardcoded paths for icons to ensure they work in static export
   icons: {
-    icon: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
-    apple: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
-    shortcut: `${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
+    icon: `${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
+    apple: `${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
+    shortcut: `${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,
   },
 };
 
@@ -31,35 +31,35 @@ export default function RootLayout({
   // GitHub Pages Specific: Manually constructing font URLs with the correct base path
   // This is needed because GitHub Pages serves content from a subpath
   const bookFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfoliooo/fonts/CircularStd-Book.woff'
+    ? '/portfolio/fonts/CircularStd-Book.woff'
     : '/fonts/CircularStd-Book.woff';
 
   const mediumFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfoliooo/fonts/CircularStd-Medium.woff'
+    ? '/portfolio/fonts/CircularStd-Medium.woff'
     : '/fonts/CircularStd-Medium.woff';
 
   const boldFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfoliooo/fonts/CircularStd-Bold.woff'
+    ? '/portfolio/fonts/CircularStd-Bold.woff'
     : '/fonts/CircularStd-Bold.woff';
 
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfoliooo'} />
+        <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfolio'} />
 
         {/* GitHub Pages Specific: Favicon paths with base path prefix for production */}
         <link
           rel="icon"
-          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
+          href={`${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
           type="image/png"
         />
         <link
           rel="shortcut icon"
-          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
+          href={`${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
         />
         <link
           rel="apple-touch-icon"
-          href={`${process.env.NODE_ENV === 'production' ? '/portfoliooo/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
+          href={`${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
         />
 
         {/* Font preloading with GitHub Pages-aware paths */}
@@ -91,7 +91,7 @@ export default function RootLayout({
             // This script helps preload fonts with the correct paths in production
             (function() {
               const fontFiles = ['CircularStd-Book.woff', 'CircularStd-Medium.woff', 'CircularStd-Bold.woff'];
-              const prefix = window.location.hostname.includes('github.io') ? '/portfoliooo' : '';
+              const prefix = window.location.hostname.includes('github.io') ? '/portfolio' : '';
               
               fontFiles.forEach(function(file) {
                 const link = document.createElement('link');

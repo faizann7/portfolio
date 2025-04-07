@@ -12,7 +12,7 @@ export interface Project {
 }
 
 // The base path for GitHub Pages
-const basePath = process.env.NODE_ENV === 'production' ? '/portfoliooo' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
 export const projects: Project[] = [
     {

@@ -24,7 +24,7 @@ export default function StructuredData({ type = 'WebSite', data = {} }: Structur
             '@type': 'Person',
             name: 'Muhammad Faizan',
             jobTitle: 'UX/Product Designer',
-            url: 'https://faizann7.github.io/portfoliooo',
+            url: 'https://faizann7.github.io/portfolio',
             ...data,
         };
     } else if (type === 'WebSite') {
@@ -33,7 +33,7 @@ export default function StructuredData({ type = 'WebSite', data = {} }: Structur
             '@type': 'WebSite',
             name: 'Muhammad Faizan Portfolio',
             description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
-            url: 'https://faizann7.github.io/portfoliooo',
+            url: 'https://faizann7.github.io/portfolio',
             ...data,
         };
     } else if (type === 'Article' || type === 'Project') {

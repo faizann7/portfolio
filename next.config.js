@@ -3,8 +3,8 @@
 // Define base Next.js config
 const nextConfig = {
     output: 'export',
-    basePath: process.env.NODE_ENV === 'production' ? '/portfoliooo' : '',
-    assetPrefix: process.env.NODE_ENV === 'production' ? '/portfoliooo/' : '',
+    basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
 
     images: {
         unoptimized: true,

@@ -77,7 +77,7 @@
 @media screen and (min-width: 0px) {
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-Book.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-Book.woff') format('woff');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
@@ -85,7 +85,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-BookItalic.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-BookItalic.woff') format('woff');
         font-weight: 400;
         font-style: italic;
         font-display: swap;
@@ -93,7 +93,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-Medium.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-Medium.woff') format('woff');
         font-weight: 500;
         font-style: normal;
         font-display: swap;
@@ -101,7 +101,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-MediumItalic.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-MediumItalic.woff') format('woff');
         font-weight: 500;
         font-style: italic;
         font-display: swap;
@@ -109,7 +109,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-Bold.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-Bold.woff') format('woff');
         font-weight: 700;
         font-style: normal;
         font-display: swap;
@@ -117,7 +117,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-BoldItalic.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-BoldItalic.woff') format('woff');
         font-weight: 700;
         font-style: italic;
         font-display: swap;
@@ -125,7 +125,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-Black.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-Black.woff') format('woff');
         font-weight: 900;
         font-style: normal;
         font-display: swap;
@@ -133,7 +133,7 @@
 
     @font-face {
         font-family: 'CircularStd';
-        src: url('/portfoliooo/fonts/CircularStd-BlackItalic.woff') format('woff');
+        src: url('/portfolio/fonts/CircularStd-BlackItalic.woff') format('woff');
         font-weight: 900;
         font-style: italic;
         font-display: swap;
@@ -141,7 +141,7 @@
 
     @font-face {
         font-family: 'Gloria Hallelujah';
-        src: url('/portfoliooo/fonts/GloriaHallelujah.woff2') format('woff2');
+        src: url('/portfolio/fonts/GloriaHallelujah.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
         font-display: swap;
