@@ -65,7 +65,7 @@ export const projects: Project[] = [
     {
         id: "rider-app-medzmore",
         title: "Rider App - MEDZnMORE",
-        subtitle: "Delivered with route optimization and real-time order tracking",
+        subtitle: "Last-mile delivery app for Tabiyat.pk with live tracking and optimized rider navigation",
         summary: "Designing a mobile app for delivery riders to optimize routes and track orders.",
         tags: ["Mobile App", "Operations", "Fleet Management", "Delivery"],
         image: `${basePath}/images/Rider App Thumb.png`,

@@ -227,7 +227,7 @@ function PlaygroundContent() {
 
     return (
         <>
-            <div className="pt-24 md:pt-32 pb-16 max-w-[90rem] mx-auto px-6">
+            <div className="pt-24 md:pt-32 pb-16 mx-auto">
                 <div className="mb-12 md:mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">Playground</h1>
                 </div>

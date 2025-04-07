@@ -3,15 +3,15 @@ import Link from 'next/link';
 import styles from './ScribbleLink.module.css';
 
 interface ScribbleLinkProps {
-    href: string;
+    href?: string;
     children: React.ReactNode;
     className?: string;
     isExternal?: boolean;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent) => void;
 }
 
 export default function ScribbleLink({
-    href,
+    href = '#',
     children,
     className = '',
     isExternal = false,

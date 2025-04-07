@@ -1,10 +1,31 @@
 'use client';
 
+import { useState } from 'react';
 import ScribbleLink from "./ScribbleLink";
 
 export default function Footer() {
+    const [showToast, setShowToast] = useState(false);
+    const email = 'mohammad.faizan6th@gmail.com';
+
+    const copyEmailToClipboard = (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(email).then(() => {
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 2000);
+        });
+    };
+
     return (
         <>
+            {/* Toast Notification */}
+            {showToast && (
+                <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center z-50">
+                    <div className="bg-black text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-up">
+                        Email copied to clipboard!
+                    </div>
+                </div>
+            )}
+
             {/* Let's Connect Section */}
             <div className="mb-20">
                 <div className="flex justify-center items-center mb-8">
@@ -13,7 +34,7 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-10">
                     <ScribbleLink href="https://www.linkedin.com/in/faizann/" isExternal={true}>LinkedIn</ScribbleLink>
                     <ScribbleLink href="https://dribbble.com/faizan07" isExternal={true}>Dribbble</ScribbleLink>
-                    <ScribbleLink href="mailto:mohammad.faizan6th@gmail.com" isExternal={true}>Email</ScribbleLink>
+                    <ScribbleLink onClick={copyEmailToClipboard}>Email</ScribbleLink>
                 </div>
             </div>
 
