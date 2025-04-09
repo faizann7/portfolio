@@ -52,3 +52,4 @@ next-env.d.ts
 /analyze/
 /dist/
 /.swc/
+cursor-rules.md

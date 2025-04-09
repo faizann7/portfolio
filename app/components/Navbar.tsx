@@ -27,12 +27,23 @@ export default function Navbar() {
     // Prevent body scroll when menu is open
     useEffect(() => {
         if (isMenuOpen) {
-            document.body.style.overflow = "hidden";
+            // Store current scroll position
+            const scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
         } else {
-            document.body.style.overflow = "unset";
+            // Restore scroll position
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
         }
         return () => {
-            document.body.style.overflow = "unset";
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
         };
     }, [isMenuOpen]);
 
@@ -48,7 +59,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 w-full py-2 px-4 md:px-6 flex justify-between items-center z-50 transition-all duration-300 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
+        <nav className={`fixed top-0 left-0 w-full py-2 px-4 md:px-6 flex justify-between items-center z-[100] transition-all duration-200 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
             <div className="max-w-[1120px] w-full mx-auto flex justify-between items-center relative">
                 {/* Logo */}
                 <ScribbleLink
@@ -75,7 +86,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden w-8 h-8 flex items-center justify-center z-50"
+                    className="md:hidden w-8 h-8 flex items-center justify-center z-[110]"
                     onClick={toggleMenu}
                     aria-label="Toggle menu"
                     aria-expanded={isMenuOpen}
@@ -90,16 +101,23 @@ export default function Navbar() {
 
             {/* Mobile Menu - Using transform and opacity for smooth transitions */}
             <div
-                className={`fixed inset-0 bg-white z-40 transition-transform duration-500 ease-out-expo md:hidden ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'} ${isMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+                className={`fixed inset-0 w-screen h-screen bg-white/95 backdrop-blur-sm z-[90] transform transition-transform duration-300 ease-out-expo md:hidden ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
+                style={{
+                    opacity: isMenuOpen ? 1 : 0,
+                    visibility: isMenuOpen ? 'visible' : 'hidden',
+                    transition: 'transform 300ms ease-out-expo, opacity 200ms ease-out',
+                }}
                 aria-hidden={!isMenuOpen}
             >
-                <div className="flex flex-col justify-center items-center h-full space-y-8 p-8 text-center">
+                <div className="flex flex-col justify-center items-center min-h-screen w-full p-8 text-center">
                     {navLinks.map((link, index) => (
                         <div
                             key={link.href}
-                            className={`transition-all duration-400 ease-out-expo ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                            className="transform transition-transform duration-200 ease-out-expo"
                             style={{
-                                transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms'
+                                opacity: isMenuOpen ? 1 : 0,
+                                transform: `translateY(${isMenuOpen ? 0 : 20}px)`,
+                                transition: `transform 200ms ease-out ${index * 50}ms, opacity 200ms ease-out ${index * 50}ms`
                             }}
                         >
                             <ScribbleLink
