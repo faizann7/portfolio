@@ -129,7 +129,7 @@ function AboutContent() {
                     </div>
                 </div>
                 <p className="text-5xl font-medium max-w-3xl">
-                    Hi, I'm Faizan, a UX/Product designer currently working etc..
+                    Hi, I'm Faizan, a UX/Product Designer
                 </p>
             </div>
 
@@ -140,13 +140,10 @@ function AboutContent() {
                     <h2 className="font-['Gloria_Hallelujah'] text-xl text-purple-600 mb-6">how it started</h2>
                     <div className="text-xl space-y-8">
                         <p>
-                            I've always been drawn to the intersection of design and technology. During COVID, I discovered UX and realized how much it resonated with my passion for problem-solving and empathy.
+                            I've always had a knack for design and technology. While I discovered UX during COVID, it truly clicked when I studied Human-Computer Interaction and Psychology together. That semester shaped how I think about people, behavior, and digital experiences. Collaborating with friends on real-world problems made me realize how design could drive meaningful impact.
                         </p>
                         <p>
-                            Studying Human-Computer Interaction and psychology in the same semester opened my eyes to the power of user-centric thinking. I loved collaborating with friends to tackle real-world challenges and witnessing the tangible impact of our solutions.
-                        </p>
-                        <p>
-                            Since then, I've dedicated myself to UX Design, identifying core problems, understanding user needs, and bridging those with business goals. It's been an incredible journey, and I'm excited to continue creating meaningful, human-centered experiences that make a positive difference.
+                            Since then, I've been deeply involved in UX Design, identifying user pain points, empathizing with real needs, and solving for both users and business goals. I'm especially drawn to projects where design thinking, research, and usability come together to shape impactful outcomes.
                         </p>
                     </div>
                 </section>
@@ -156,21 +153,26 @@ function AboutContent() {
                     <h2 className="font-['Gloria_Hallelujah'] text-xl text-blue-600 mb-6">what I'm currently doing</h2>
                     <div className="text-xl space-y-8">
                         <p>
-                            Right now, I'm designing digital experiences at Swapp, a car rental platform, where I'm
-                            focused on making booking and browsing smoother, smarter, and more intuitive. From
-                            redesigning the checkout flow to optimizing search filters, my work is all about
-                            creating an experience that puts the user first.
+                            Right now, I'm leading product design efforts at Swapp (outsourced by Retailo Technologies), a car rental platform based in Dubai, UAE. I oversee all design efforts end-to-end, helping make car rentals seamless and accessible for both residents and tourists through intuitive, hassle-free booking experiences.
                         </p>
                         <p>
-                            I'm also deep into accessibility, ensuring every design meets WCAG standards and is
-                            usable for a diverse audience. On the technical side, I collaborate closely with
-                            developers to make sure everything we ship is polished, responsive, and pixel-perfect.
+                            I'm part of the product team, where I wear multiple hats: conducting research, redesigning the checkout experience, optimizing filters, and ensuring accessibility compliance. Every design decision I make supports both user experience and measurable business goals. I also collaborate closely with developers to ensure our designs are polished, responsive, and production-ready.
                         </p>
                         <p>
-                            Beyond Swapp, I occasionally take on freelance projects, helping B2B, SaaS, and
-                            eCommerce brands improve their user experience and visual storytelling. Whether I'm
-                            hosting a workshop, building a design system, or mapping out complex workflows, my
-                            goal always remains the same: creating thoughtful, user-centered solutions.
+                            With a background in Computer Science, I occasionally dabble in code too, mostly frontend, which helps bridge the gap between design and development. And with vibe coding on the rise, bringing your ideas to life has never been easier.
+                        </p>
+                        <p>
+                            Outside of work, you'll find me gaming, watching movies and shows, or diving into new curiosities like astronomy, sports, or learning unexpected new skills just for the fun of it.
+                        </p>
+                        <p>
+                            Some things I'm building:
+                            <ul className="list-disc pl-6 mt-2">
+                                <li>An AI-powered edtech platform — think ChatGPT with built-in quizzing and flashcards for long-term learning.</li>
+                                <li>A voice-based expense tracker — just speak your daily expenses, and it logs everything automatically.</li>
+                            </ul>
+                        </p>
+                        <p>
+                            Let's connect if you want to collaborate, explore a new idea, or just nerd out about design.
                         </p>
                     </div>
                 </section>

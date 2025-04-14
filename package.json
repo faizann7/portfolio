@@ -12,6 +12,7 @@
     "debug": "node --version && npm --version && next --version"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "framer-motion": "^12.6.2",
     "gsap": "^3.12.7",
     "next": "15.2.2",
