@@ -12,18 +12,30 @@ import Footer from "./components/Footer";
 function HomeContent() {
   return (
     <div className="min-h-screen flex flex-col pt-24 md:pt-32">
-      <div className="mb-16 md:mb-24">
-        <h1 className="text-5xl md:text-7xl font-bold mb-8">
-          Hi, I'm Faizan
+      <div className="mb-12 md:mb-24 text-center px-4 md:px-8">
+        <p className="text-lg md:text-2xl mb-4 md:mb-6">
+          Hi, I'm Faizan <span className="inline-block animate-wave">👋</span>
+        </p>
+        <h1
+          className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6"
+          style={{
+            fontFamily: "'EB Garamond', serif",
+            fontWeight: 600,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em'
+          }}
+        >
+          Building Real Impact Through Human-Centered Design
         </h1>
-        <p className="text-xl md:text-2xl">
-          UX/Product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp, UAE</ScribbleLink>. I love working with early-stage teams, blending UX, UI, and business strategy to launch impactful features.
+        <p className="text-lg md:text-2xl">
+          currently working as a product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp</ScribbleLink>
         </p>
       </div>
 
+
       <div className="mb-16">
         <div className="flex justify-center items-center mb-8">
-          <h2 className="text-3xl font-bold" id="work">- Work</h2>
+          <h2 className="text-3xl font-bold" id="work">- case studies</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-6">
@@ -38,7 +50,9 @@ function HomeContent() {
                 tags={projects[0].tags}
                 index={0}
                 color={projects[0].color}
-                hoverColor="#CAC2FF"
+                hoverColor={projects[0].hoverColor}
+                darkColor={projects[0].darkColor}
+                darkHoverColor={projects[0].darkHoverColor}
                 comingSoon={projects[0].comingSoon}
               />
             </div>
@@ -51,7 +65,9 @@ function HomeContent() {
                 tags={projects[1].tags}
                 index={1}
                 color={projects[1].color}
-                hoverColor="#FFD6D6"
+                hoverColor={projects[1].hoverColor}
+                darkColor={projects[1].darkColor}
+                darkHoverColor={projects[1].darkHoverColor}
                 comingSoon={projects[1].comingSoon}
               />
             </div>
@@ -68,7 +84,9 @@ function HomeContent() {
                 tags={projects[2].tags}
                 index={2}
                 color={projects[2].color}
-                hoverColor="#F7E8CA"
+                hoverColor={projects[2].hoverColor}
+                darkColor={projects[2].darkColor}
+                darkHoverColor={projects[2].darkHoverColor}
                 comingSoon={projects[2].comingSoon}
               />
             </div>
@@ -81,7 +99,9 @@ function HomeContent() {
                 tags={projects[4].tags}
                 index={3}
                 color={projects[4].color}
-                hoverColor="#B8E8FF"
+                hoverColor={projects[4].hoverColor}
+                darkColor={projects[4].darkColor}
+                darkHoverColor={projects[4].darkHoverColor}
                 comingSoon={projects[4].comingSoon}
               />
             </div>

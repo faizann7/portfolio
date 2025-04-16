@@ -11,16 +11,63 @@ interface PlaygroundItem {
     image: string;
     bgColor: string;
     hoverBgColor: string;
+    darkBgColor: string;
+    darkHoverBgColor: string;
     alt: string;
 }
 
 // Reusable card component
 function PlaygroundCard({ item, onClick }: { item: PlaygroundItem, onClick: () => void }) {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // Check if we're in dark mode
+    useEffect(() => {
+        const checkDarkMode = () => {
+            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const isDarkThemeClass = document.documentElement.classList.contains('dark-theme');
+
+            setIsDarkMode(darkModeMediaQuery.matches || isDarkThemeClass);
+        };
+
+        // Initial check
+        checkDarkMode();
+
+        // Listen for changes
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        darkModeMediaQuery.addEventListener('change', checkDarkMode);
+
+        // Watch for theme class changes
+        const observer = new MutationObserver(checkDarkMode);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        return () => {
+            darkModeMediaQuery.removeEventListener('change', checkDarkMode);
+            observer.disconnect();
+        };
+    }, []);
+
+    // Determine the background styles based on dark/light mode
+    const bgColorClass = isDarkMode ? item.darkBgColor : item.bgColor;
+    const hoverBgColorClass = isDarkMode ? item.darkHoverBgColor : item.hoverBgColor;
+
     return (
         <div
-            className={`card ${item.bgColor} hover:${item.hoverBgColor} rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer hover:-translate-y-1`}
+            className="card rounded-2xl overflow-hidden"
+            style={{
+                backgroundColor: bgColorClass,
+                transition: 'var(--theme-transition), transform 0.3s ease'
+            }}
             role="article"
             onClick={onClick}
+            onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = hoverBgColorClass;
+            }}
+            onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = bgColorClass;
+            }}
         >
             <div className="image-wrapper">
                 <Image
@@ -95,29 +142,40 @@ function ImageModal({
 
     return (
         <div
-            className="fixed inset-0 bg-black/90 z-50 flex justify-center items-center p-10"
+            className="fixed inset-0 bg-black/95 z-50 flex justify-center items-center p-10"
             onClick={(e) => e.target === e.currentTarget && onClose()}
+            style={{
+                backdropFilter: 'blur(8px)'
+            }}
         >
             <button
-                className="absolute right-8 top-8 text-white text-4xl font-bold hover:text-gray-300"
+                className="absolute right-8 top-8 text-white text-4xl font-bold hover:text-gray-300 transition-colors duration-300"
                 onClick={onClose}
+                aria-label="Close modal"
             >
                 &times;
             </button>
             <button
                 className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white text-2xl py-4 px-6 rounded-lg transition-colors duration-300"
                 onClick={onPrev}
+                aria-label="Previous image"
             >
                 &lt;
             </button>
-            <img
-                src={currentImage}
-                alt="Enlarged project"
-                className="max-w-[90%] max-h-[90vh] object-contain rounded-lg"
-            />
+            <div className="relative max-w-[90%] max-h-[90vh]">
+                <img
+                    src={currentImage}
+                    alt="Enlarged project"
+                    className="max-w-full max-h-[90vh] object-contain rounded-lg"
+                    style={{
+                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)'
+                    }}
+                />
+            </div>
             <button
                 className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white text-2xl py-4 px-6 rounded-lg transition-colors duration-300"
                 onClick={onNext}
+                aria-label="Next image"
             >
                 &gt;
             </button>
@@ -129,71 +187,91 @@ const playgroundItems: PlaygroundItem[] = [
     {
         id: "cinefatic",
         image: "/images/play/Cinefatic Thumb.png",
-        bgColor: "bg-purple-100/50",
-        hoverBgColor: "bg-purple-200/80",
+        bgColor: "rgba(203, 194, 255, 0.5)",
+        hoverBgColor: "rgba(213, 207, 255, 0.8)",
+        darkBgColor: "rgba(59, 31, 46, 0.7)",
+        darkHoverBgColor: "rgba(76, 42, 59, 0.9)",
         alt: "Cinefatic Mobile App"
     },
     {
         id: "cinefatic-web",
         image: "/images/play/Cinefatic Web Thumb.png",
-        bgColor: "bg-indigo-100/50",
-        hoverBgColor: "bg-indigo-200/80",
+        bgColor: "rgba(199, 210, 254, 0.5)",
+        hoverBgColor: "rgba(224, 231, 255, 0.8)",
+        darkBgColor: "rgba(55, 48, 163, 0.5)",
+        darkHoverBgColor: "rgba(67, 56, 202, 0.7)",
         alt: "Cinefatic Web App"
     },
     {
         id: "blog",
         image: "/images/play/Blog.png",
-        bgColor: "bg-amber-100/50",
-        hoverBgColor: "bg-amber-200/80",
+        bgColor: "rgba(254, 226, 179, 0.5)",
+        hoverBgColor: "rgba(255, 241, 221, 0.8)",
+        darkBgColor: "rgba(146, 64, 14, 0.5)",
+        darkHoverBgColor: "rgba(180, 83, 9, 0.7)",
         alt: "Blog Website"
     },
     {
         id: "gallery-app",
         image: "/images/play/Gallleryapp.png",
-        bgColor: "bg-violet-100/50",
-        hoverBgColor: "bg-violet-200/80",
+        bgColor: "rgba(221, 214, 254, 0.5)",
+        hoverBgColor: "rgba(233, 229, 255, 0.8)",
+        darkBgColor: "rgba(109, 40, 217, 0.4)",
+        darkHoverBgColor: "rgba(124, 58, 237, 0.6)",
         alt: "Gallery App"
     },
     {
         id: "picture-app",
         image: "/images/play/pictureapp.png",
-        bgColor: "bg-pink-100/50",
-        hoverBgColor: "bg-pink-200/80",
+        bgColor: "rgba(249, 199, 228, 0.5)",
+        hoverBgColor: "rgba(252, 219, 236, 0.8)",
+        darkBgColor: "rgba(131, 24, 67, 0.5)",
+        darkHoverBgColor: "rgba(157, 23, 77, 0.7)",
         alt: "Picture App"
     },
     {
         id: "job-portal",
         image: "/images/play/jobapp.png",
-        bgColor: "bg-rose-100/50",
-        hoverBgColor: "bg-rose-200/80",
+        bgColor: "rgba(254, 202, 202, 0.5)",
+        hoverBgColor: "rgba(254, 226, 226, 0.8)",
+        darkBgColor: "rgba(153, 27, 27, 0.5)",
+        darkHoverBgColor: "rgba(185, 28, 28, 0.7)",
         alt: "Job Search App"
     },
     {
         id: "inbounding",
         image: "/images/play/inbounding.png",
-        bgColor: "bg-sky-100/50",
-        hoverBgColor: "bg-sky-200/80",
+        bgColor: "rgba(186, 230, 253, 0.5)",
+        hoverBgColor: "rgba(224, 242, 254, 0.8)",
+        darkBgColor: "rgba(3, 105, 161, 0.5)",
+        darkHoverBgColor: "rgba(7, 89, 133, 0.7)",
         alt: "Inbounding Website"
     },
     {
         id: "techniax",
         image: "/images/play/techniax.png",
-        bgColor: "bg-emerald-100/50",
-        hoverBgColor: "bg-emerald-200/80",
+        bgColor: "rgba(167, 243, 208, 0.5)",
+        hoverBgColor: "rgba(209, 250, 229, 0.8)",
+        darkBgColor: "rgba(6, 78, 59, 0.5)",
+        darkHoverBgColor: "rgba(4, 120, 87, 0.7)",
         alt: "Techniax Agency"
     },
     {
         id: "profileapp",
         image: "/images/play/Profile Thumb.png",
-        bgColor: "bg-blue-100/50",
-        hoverBgColor: "bg-blue-200/80",
+        bgColor: "rgba(191, 219, 254, 0.5)",
+        hoverBgColor: "rgba(219, 234, 254, 0.8)",
+        darkBgColor: "rgba(30, 58, 138, 0.5)",
+        darkHoverBgColor: "rgba(30, 64, 175, 0.7)",
         alt: "Profile Design"
     },
     {
         id: "saas",
         image: "/images/play/saasapp.png",
-        bgColor: "bg-teal-100/50",
-        hoverBgColor: "bg-teal-200/80",
+        bgColor: "rgba(153, 246, 228, 0.5)",
+        hoverBgColor: "rgba(204, 251, 241, 0.8)",
+        darkBgColor: "rgba(17, 94, 89, 0.5)",
+        darkHoverBgColor: "rgba(15, 118, 110, 0.7)",
         alt: "SaaS Dashboard"
     }
 ];

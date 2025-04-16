@@ -59,15 +59,20 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 w-full py-2 px-4 md:px-6 flex justify-between items-center z-[100] transition-all duration-200 ease-out-expo ${scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"}`}>
+        <nav className={`fixed top-0 left-0 w-full py-2 px-4 md:px-6 flex justify-between items-center z-[100] transition-all duration-300 ease-out-expo ${scrolled ? "backdrop-blur-md bg-black/[0.02] shadow-[0_2px_8px_rgba(0,0,0,0.04)]" : ""}`}
+            style={{
+                color: 'var(--navbar-text)',
+                transition: 'var(--theme-transition)'
+            }}
+        >
             <div className="max-w-[1120px] w-full mx-auto flex justify-between items-center relative">
                 {/* Logo */}
                 <ScribbleLink
                     href="/"
                     className="text-2xl font-bold relative group"
                 >
-                    <span className="transition-colors duration-300 group-hover:text-gray-600">fz.</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
+                    <span className="transition-colors duration-300 group-hover:opacity-80">fz.</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current group-hover:w-full transition-all duration-300 ease-out-expo"></span>
                 </ScribbleLink>
 
                 {/* Desktop Menu */}
@@ -76,7 +81,7 @@ export default function Navbar() {
                         <ScribbleLink
                             key={link.href}
                             href={link.href}
-                            className={pathname === link.href ? 'font-medium' : ''}
+                            className={`hover:text-[var(--navbar-text)] ${pathname === link.href ? 'font-medium' : ''}`}
                             isExternal={link.isExternal}
                         >
                             {link.label}
@@ -92,17 +97,21 @@ export default function Navbar() {
                     aria-expanded={isMenuOpen}
                 >
                     <div className="relative w-6 h-5">
-                        <span className={`absolute block h-0.5 w-full bg-black rounded-sm transition-all duration-300 ease-out-expo ${isMenuOpen ? 'top-2 rotate-45' : 'top-0'}`}></span>
-                        <span className={`absolute top-2 block h-0.5 w-full bg-black rounded-sm transition-opacity duration-300 ease-out-expo ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                        <span className={`absolute block h-0.5 w-full bg-black rounded-sm transition-all duration-300 ease-out-expo ${isMenuOpen ? 'bottom-2 -rotate-45' : 'bottom-0'}`}></span>
+                        <span className={`absolute block h-0.5 w-full rounded-sm transition-all duration-300 ease-out-expo ${isMenuOpen ? 'top-2 rotate-45' : 'top-0'}`}
+                            style={{ backgroundColor: 'var(--navbar-text)' }}></span>
+                        <span className={`absolute top-2 block h-0.5 w-full rounded-sm transition-opacity duration-300 ease-out-expo ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}
+                            style={{ backgroundColor: 'var(--navbar-text)' }}></span>
+                        <span className={`absolute block h-0.5 w-full rounded-sm transition-all duration-300 ease-out-expo ${isMenuOpen ? 'bottom-2 -rotate-45' : 'bottom-0'}`}
+                            style={{ backgroundColor: 'var(--navbar-text)' }}></span>
                     </div>
                 </button>
             </div>
 
             {/* Mobile Menu - Using transform and opacity for smooth transitions */}
             <div
-                className={`fixed inset-0 w-screen h-screen bg-white/95 backdrop-blur-sm z-[90] transform transition-transform duration-300 ease-out-expo md:hidden ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
+                className={`fixed inset-0 w-screen h-screen backdrop-blur-sm z-[90] transform transition-transform duration-300 ease-out-expo md:hidden ${isMenuOpen ? 'translate-y-0' : 'translate-y-full'}`}
                 style={{
+                    background: 'var(--bg-dark)',
                     opacity: isMenuOpen ? 1 : 0,
                     visibility: isMenuOpen ? 'visible' : 'hidden',
                     transition: 'transform 300ms ease-out-expo, opacity 200ms ease-out',
@@ -122,7 +131,7 @@ export default function Navbar() {
                         >
                             <ScribbleLink
                                 href={link.href}
-                                className={`text-2xl ${pathname === link.href ? 'font-medium' : ''}`}
+                                className={`text-2xl hover:text-[var(--navbar-text)] ${pathname === link.href ? 'font-medium' : ''}`}
                                 onClick={toggleMenu}
                                 isExternal={link.isExternal}
                             >

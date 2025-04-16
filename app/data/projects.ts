@@ -8,6 +8,8 @@ export interface Project {
     year: string;
     color: string;
     hoverColor: string;
+    darkColor?: string;
+    darkHoverColor?: string;
     comingSoon?: boolean;
 }
 
@@ -23,8 +25,10 @@ export const projects: Project[] = [
         tags: ["Mobile App", "UX Design", "Ticketing", "Entertainment"],
         image: `${basePath}/images/cinefaticthumb.png`,
         year: "2023",
-        color: "bg-indigo-100",
-        hoverColor: "bg-indigo-200"
+        color: "var(--bg-cinefatic)",
+        hoverColor: "#D5CFFF",
+        darkColor: "var(--bg-cinefatic)",
+        darkHoverColor: "#4C2A3B"
     },
     {
         id: "swapp",
@@ -34,8 +38,10 @@ export const projects: Project[] = [
         tags: ["Mobile App", "UX Design", "Car Rental", "Conversion Rate"],
         image: `${basePath}/images/Swapp Thumb.png`,
         year: "2022-Present",
-        color: "bg-red-100",
-        hoverColor: "bg-red-200",
+        color: "var(--bg-swapp)",
+        hoverColor: "#FFE6E6",
+        darkColor: "var(--bg-swapp)",
+        darkHoverColor: "#9E3A4E",
         comingSoon: true
     },
     {
@@ -46,8 +52,10 @@ export const projects: Project[] = [
         tags: ["Product Design", "SaaS", "B2B", "Web App", "Route Optimization", "Logistics"],
         image: `${basePath}/images/Pre Route Helper.png`,
         year: "2021",
-        color: "bg-amber-50",
-        hoverColor: "bg-amber-100",
+        color: "var(--bg-retailo)",
+        hoverColor: "#FFF8E6",
+        darkColor: "var(--bg-retailo)",
+        darkHoverColor: "#104B0A",
         comingSoon: true
     },
     {
@@ -58,8 +66,10 @@ export const projects: Project[] = [
         tags: ["Product Design", "SaaS", "B2B", "Web App", "Inventory Management", "Data Validation"],
         image: `${basePath}/images/MEDZnMORE Thumb.png`,
         year: "2021",
-        color: "bg-indigo-100",
-        hoverColor: "bg-indigo-200",
+        color: "#E5E1FF",
+        hoverColor: "#EFECFF",
+        darkColor: "#2D1F42",
+        darkHoverColor: "#382752",
         comingSoon: true
     },
     {
@@ -70,7 +80,9 @@ export const projects: Project[] = [
         tags: ["Mobile App", "Operations", "Fleet Management", "Delivery"],
         image: `${basePath}/images/Rider App Thumb.png`,
         year: "2020",
-        color: "bg-cyan-100",
-        hoverColor: "bg-cyan-200"
+        color: "var(--bg-rider-app)",
+        hoverColor: "#E6F2FF",
+        darkColor: "var(--bg-rider-app)",
+        darkHoverColor: "#4448A3"
     }
 ]; 

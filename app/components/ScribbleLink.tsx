@@ -51,13 +51,15 @@ export default function ScribbleLink({
         return (
             <a
                 href={href}
-                className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'text-gray-400' : 'hover:text-gray-600'}`}
+                className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'opacity-70' : ''}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleClick}
+                style={{
+                    color: 'var(--link-color)'
+                }}
             >
                 <LinkContent />
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
             </a>
         );
     }
@@ -65,12 +67,14 @@ export default function ScribbleLink({
     return (
         <Link
             href={href}
-            className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'text-gray-400' : 'hover:text-gray-600'}`}
+            className={`${styles.link} ${styles['link--carme']} ${className} ${isActive ? 'opacity-70' : ''}`}
             prefetch={true}
             onClick={handleClick}
+            style={{
+                color: 'var(--link-color)'
+            }}
         >
             <LinkContent />
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black group-hover:w-full transition-all duration-300 ease-out-expo"></span>
         </Link>
     );
 } 

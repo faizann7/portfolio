@@ -42,8 +42,16 @@ export default function RootLayout({
     ? '/portfolio/fonts/CircularStd-Bold.woff'
     : '/fonts/CircularStd-Bold.woff';
 
+  const garamondFontUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/EBGaramond-VariableFont_wght.woff2'
+    : '/fonts/EBGaramond-VariableFont_wght.woff2';
+
+  const garamondItalicFontUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/EBGaramond-Italic-VariableFont_wght.woff2'
+    : '/fonts/EBGaramond-Italic-VariableFont_wght.woff2';
+
   return (
-    <html lang="en">
+    <html lang="en" className="dark-theme">
       <head>
         <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfolio'} />
 
@@ -84,13 +92,33 @@ export default function RootLayout({
           type="font/woff"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href={garamondFontUrl}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href={garamondItalicFontUrl}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
         {/* GitHub Pages Specific: Inline script to fix font loading issues in production */}
         <Script id="font-loading-fix" strategy="beforeInteractive">
           {`
             // This script helps preload fonts with the correct paths in production
             (function() {
-              const fontFiles = ['CircularStd-Book.woff', 'CircularStd-Medium.woff', 'CircularStd-Bold.woff'];
+              const fontFiles = [
+                'CircularStd-Book.woff', 
+                'CircularStd-Medium.woff', 
+                'CircularStd-Bold.woff',
+                'EBGaramond-VariableFont_wght.woff2',
+                'EBGaramond-Italic-VariableFont_wght.woff2'
+              ];
               const prefix = window.location.hostname.includes('github.io') ? '/portfolio' : '';
               
               fontFiles.forEach(function(file) {
@@ -98,7 +126,7 @@ export default function RootLayout({
                 link.rel = 'preload';
                 link.href = prefix + '/fonts/' + file;
                 link.as = 'font';
-                link.type = 'font/woff';
+                link.type = file.endsWith('.woff2') ? 'font/woff2' : 'font/woff';
                 link.crossOrigin = 'anonymous';
                 document.head.appendChild(link);
               });

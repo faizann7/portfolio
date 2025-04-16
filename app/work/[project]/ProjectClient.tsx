@@ -21,7 +21,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
         <Suspense fallback={<div>Loading project...</div>}>
             <SearchParamsProvider>
                 <div className="pt-24 md:pt-32 pb-16 max-w-5xl mx-auto px-4 sm:px-6">
-                    <Link href="/#work" className="inline-flex items-center text-gray-600 hover:text-black mb-8 group transition-colors">
+                    <Link href="/#work" className="inline-flex items-center black mb-8 group transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 group-hover:-translate-x-1 transition-transform">
                             <path d="m15 18-6-6 6-6" />
                         </svg>
@@ -41,15 +41,15 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                         {/* Project details in 3 columns */}
                         <div className="grid grid-cols-3 gap-8 mt-12">
                             <div>
-                                <h3 className="text-sm uppercase text-gray-500 mb-1">Timeline</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1">Timeline</h3>
                                 <p className="text-lg">{projectId === "rider-app-medzmore" ? "4 weeks" : caseStudyData.duration}</p>
                             </div>
                             <div>
-                                <h3 className="text-sm uppercase text-gray-500 mb-1">Role</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1">Role</h3>
                                 <p className="text-lg">{projectId === "rider-app-medzmore" ? "UX / Product Design" : caseStudyData.role}</p>
                             </div>
                             <div>
-                                <h3 className="text-sm uppercase text-gray-500 mb-1">Tools Used</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1">Tools Used</h3>
                                 <p className="text-lg">{projectId === "cinefatic" ? "Figma, Zoom, Google Forms, Discord" : projectId === "rider-app-medzmore" ? "Figma, Zoom, Google Forms" : "Figma, Principle"}</p>
                             </div>
                         </div>

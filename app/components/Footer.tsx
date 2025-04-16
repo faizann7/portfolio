@@ -20,7 +20,7 @@ export default function Footer() {
             {/* Toast Notification */}
             {showToast && (
                 <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center z-50">
-                    <div className="bg-black text-white px-4 py-2 rounded-lg shadow-lg animate-fade-in-up">
+                    <div className="bg-black dark:bg-white text-white dark:text-black px-4 py-2 rounded-lg shadow-lg animate-fade-in-up">
                         Email copied to clipboard!
                     </div>
                 </div>
@@ -29,7 +29,7 @@ export default function Footer() {
             {/* Let's Connect Section */}
             <div className="mb-20">
                 <div className="flex justify-center items-center mb-8">
-                    <h2 className="text-3xl font-bold">- Let's Connect</h2>
+                    <h2 className="text-3xl font-bold">- let's Connect</h2>
                 </div>
                 <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-10">
                     <ScribbleLink href="https://www.linkedin.com/in/faizann/" isExternal={true}>LinkedIn</ScribbleLink>
@@ -39,10 +39,15 @@ export default function Footer() {
             </div>
 
             {/* Footer */}
-            <footer className="py-8 border-t border-gray-200 mt-auto">
+            <footer className="py-8 mt-auto"
+                style={{
+                    borderTopWidth: '1px',
+                    borderTopColor: 'var(--border-color)',
+                    transition: 'var(--theme-transition)'
+                }}>
                 <div className="flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-600">© {new Date().getFullYear()} Muhammad Faizan</p>
-                    <p className="text-gray-400 text-sm mt-2 md:mt-0">iteration # i lost count honestly</p>
+                    <p style={{ color: 'var(--foreground)', opacity: 0.8 }}>© {new Date().getFullYear()} Muhammad Faizan</p>
+                    <p style={{ color: 'var(--foreground)', opacity: 0.6 }} className="text-sm mt-2 md:mt-0">iteration # i lost count honestly</p>
                 </div>
             </footer>
         </>

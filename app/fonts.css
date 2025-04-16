@@ -71,6 +71,22 @@
         font-style: normal;
         font-display: swap;
     }
+
+    @font-face {
+        font-family: 'EB Garamond';
+        src: url('/fonts/EBGaramond-VariableFont_wght.woff2') format('woff2');
+        font-weight: 400 800;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'EB Garamond';
+        src: url('/fonts/EBGaramond-Italic-VariableFont_wght.woff2') format('woff2');
+        font-weight: 400 800;
+        font-style: italic;
+        font-display: swap;
+    }
 }
 
 /* For production with GitHub Pages basePath */
@@ -144,6 +160,22 @@
         src: url('/portfolio/fonts/GloriaHallelujah.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'EB Garamond';
+        src: url('/portfolio/fonts/EBGaramond-VariableFont_wght.woff2') format('woff2');
+        font-weight: 400 800;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'EB Garamond';
+        src: url('/portfolio/fonts/EBGaramond-Italic-VariableFont_wght.woff2') format('woff2');
+        font-weight: 400 800;
+        font-style: italic;
         font-display: swap;
     }
 }
