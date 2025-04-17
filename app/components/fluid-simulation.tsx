@@ -10,6 +10,15 @@ export default function FluidSimulation() {
         if (!canvasRef.current) return
 
         const canvas = canvasRef.current
+        // Add these styles to ensure the canvas doesn't interfere with interactions
+        canvas.style.position = 'fixed'
+        canvas.style.top = '0'
+        canvas.style.left = '0'
+        canvas.style.width = '100%'
+        canvas.style.height = '100%'
+        canvas.style.zIndex = '0'
+        canvas.style.pointerEvents = 'none' // This prevents the canvas from capturing pointer events
+
         const { gl, ext } = getWebGLContext(canvas)
 
         if (!gl) {
