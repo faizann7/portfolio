@@ -4,15 +4,30 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "./data/projects";
 import WorkCard from "./components/WorkCard";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { SearchParamsProvider } from "./components/SearchParamsProvider";
 import ScribbleLink from "./components/ScribbleLink";
 import Footer from "./components/Footer";
+import FluidSimulation from "./components/fluid-simulation";
+import GlassButton from "./components/GlassButton";
+import Toast from "./components/Toast";
 
 function HomeContent() {
+  const [showToast, setShowToast] = useState(false);
+
+  const handleCopyEmail = async () => {
+    const email = 'mohammad.faizan6th@gmail.com'; // Replace with your email
+    try {
+      await navigator.clipboard.writeText(email);
+      setShowToast(true);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col pt-24 md:pt-32">
-      <div className="mb-12 md:mb-24 text-center px-4 md:px-8">
+      <div className="mb-40 md:mb-32 text-center px-4 md:px-8">
         <p className="text-lg md:text-2xl mb-4 md:mb-6">
           Hi, I'm Faizan <span className="inline-block animate-wave">👋</span>
         </p>
@@ -21,17 +36,24 @@ function HomeContent() {
           style={{
             fontFamily: "'EB Garamond', serif",
             fontWeight: 600,
-            lineHeight: 1.1,
+            lineHeight: 1.15,
             letterSpacing: '-0.02em'
           }}
         >
           Building Real Impact Through Human-Centered Design
         </h1>
-        <p className="text-lg md:text-2xl">
+        <p className="text-lg md:text-2xl mb-8">
           currently working as a product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp</ScribbleLink>
         </p>
+        {/* <div className="flex justify-center gap-4">
+          <GlassButton href="#" variant="primary" className="cursor-pointer" onClick={handleCopyEmail}>
+            Get in Touch
+          </GlassButton>
+          <GlassButton href="#work" variant="secondary">
+            View Recent Work
+          </GlassButton>
+        </div> */}
       </div>
-
 
       <div className="mb-16">
         <div className="flex justify-center items-center mb-8">
@@ -110,6 +132,11 @@ function HomeContent() {
       </div>
 
       <Footer />
+      <Toast
+        message="Email copied to clipboard!"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </div>
   );
 }
@@ -118,6 +145,7 @@ export default function Home() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <SearchParamsProvider>
+        <FluidSimulation />
         <HomeContent />
       </SearchParamsProvider>
     </Suspense>

@@ -53,3 +53,9 @@ next-env.d.ts
 /dist/
 /.swc/
 cursor-rules.md
+/docs
+/LAUNCH_CHECKLIST.md
+/cursor-rules.md
+/tododark.md
+/THEMING.md
+/production-todo.md

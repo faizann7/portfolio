@@ -28,7 +28,7 @@ export const projects: Project[] = [
         color: "var(--bg-cinefatic)",
         hoverColor: "#D5CFFF",
         darkColor: "var(--bg-cinefatic)",
-        darkHoverColor: "#4C2A3B"
+        darkHoverColor: "#422937"
     },
     {
         id: "swapp",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
         color: "var(--bg-swapp)",
         hoverColor: "#FFE6E6",
         darkColor: "var(--bg-swapp)",
-        darkHoverColor: "#9E3A4E",
+        darkHoverColor: "#57232E",
         comingSoon: true
     },
     {
@@ -55,7 +55,7 @@ export const projects: Project[] = [
         color: "var(--bg-retailo)",
         hoverColor: "#FFF8E6",
         darkColor: "var(--bg-retailo)",
-        darkHoverColor: "#104B0A",
+        darkHoverColor: "#282E29",
         comingSoon: true
     },
     {
@@ -81,8 +81,8 @@ export const projects: Project[] = [
         image: `${basePath}/images/Rider App Thumb.png`,
         year: "2020",
         color: "var(--bg-rider-app)",
-        hoverColor: "#E6F2FF",
+        hoverColor: "#20225B",
         darkColor: "var(--bg-rider-app)",
-        darkHoverColor: "#4448A3"
+        darkHoverColor: "#20225B"
     }
 ]; 

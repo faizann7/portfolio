@@ -10,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 import PageTransition from "./components/PageTransition";
 import MotionConfig from "./components/MotionConfig";
 import NavigationProgress from "./components/NavigationProgress";
+import FluidSimulation from "./components/fluid-simulation";
 
 export const metadata: Metadata = {
   title: "Muhammad Faizan | UX/Product Designer",
@@ -148,7 +149,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="antialiased">
+      <body className="antialiased relative">
         <NavigationProgress />
         {/* GitHub Pages Specific: SearchParamsProvider needed because useSearchParams doesn't 
             work with static export on GitHub Pages */}
@@ -167,11 +168,15 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        <div className="max-w-[1120px] mx-auto pt-16">
+        <FluidSimulation />
+
+        <div className="max-w-[1120px] mx-auto pt-16 relative z-10">
           <main className="px-4">
+
             <MotionConfig>
               <AnimatePresence mode="wait">
                 <PageTransition>
+
                   {children}
                 </PageTransition>
               </AnimatePresence>
