@@ -1107,45 +1107,48 @@ export default function FluidSimulation() {
         initFramebuffers()
 
         // Event listeners
-        canvas.addEventListener("mousedown", (e) => {
-            const pointer = pointers[0]
-            const posX = scaleByPixelRatio(e.clientX)
-            const posY = scaleByPixelRatio(e.clientY)
-            updatePointerDownData(pointer, -1, posX, posY)
-            clickSplat(pointer)
-        })
-
-        canvas.addEventListener("mousemove", (e) => {
-            const pointer = pointers[0]
-            const posX = scaleByPixelRatio(e.clientX)
-            const posY = scaleByPixelRatio(e.clientY)
-            updatePointerMoveData(pointer, posX, posY, pointer.color)
-        })
-
-        canvas.addEventListener("touchstart", (e) => {
-            e.preventDefault()
-            const touches = e.targetTouches
-            const pointer = pointers[0]
-
-            if (touches.length > 0) {
-                const posX = scaleByPixelRatio(touches[0].clientX)
-                const posY = scaleByPixelRatio(touches[0].clientY)
-                updatePointerDownData(pointer, touches[0].identifier, posX, posY)
-                clickSplat(pointer)
-            }
-        })
-
-        canvas.addEventListener("touchmove", (e) => {
-            e.preventDefault()
-            const touches = e.targetTouches
-            const pointer = pointers[0]
-
-            if (touches.length > 0) {
-                const posX = scaleByPixelRatio(touches[0].clientX)
-                const posY = scaleByPixelRatio(touches[0].clientY)
-                updatePointerMoveData(pointer, posX, posY, pointer.color)
-            }
-        })
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+        if (!isMobile) {
+            canvas.addEventListener("mousedown", (e) => {
+                const pointer = pointers[0];
+                const posX = scaleByPixelRatio(e.clientX);
+                const posY = scaleByPixelRatio(e.clientY);
+                updatePointerDownData(pointer, -1, posX, posY);
+                clickSplat(pointer);
+            });
+    
+            canvas.addEventListener("mousemove", (e) => {
+                const pointer = pointers[0];
+                const posX = scaleByPixelRatio(e.clientX);
+                const posY = scaleByPixelRatio(e.clientY);
+                updatePointerMoveData(pointer, posX, posY, pointer.color);
+            });
+    
+            canvas.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                const touches = e.targetTouches;
+                const pointer = pointers[0];
+    
+                if (touches.length > 0) {
+                    const posX = scaleByPixelRatio(touches[0].clientX);
+                    const posY = scaleByPixelRatio(touches[0].clientY);
+                    updatePointerDownData(pointer, touches[0].identifier, posX, posY);
+                    clickSplat(pointer);
+                }
+            });
+    
+            canvas.addEventListener("touchmove", (e) => {
+                e.preventDefault();
+                const touches = e.targetTouches;
+                const pointer = pointers[0];
+    
+                if (touches.length > 0) {
+                    const posX = scaleByPixelRatio(touches[0].clientX);
+                    const posY = scaleByPixelRatio(touches[0].clientY);
+                    updatePointerMoveData(pointer, posX, posY, pointer.color);
+                }
+            });
+        }
 
         // Start animation
         update()
