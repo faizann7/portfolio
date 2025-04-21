@@ -2,17 +2,17 @@ const SEO = {
     titleTemplate: '%s | Muhammad Faizan - UX/Product Designer',
     defaultTitle: 'Muhammad Faizan | UX/Product Designer',
     description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
-    canonical: 'https://faizann7.github.io/portfoliooo',
+    canonical: 'https://faizann7.github.io/portfolio',
     openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://faizann7.github.io/portfoliooo',
+        url: 'https://faizann7.github.io/portfolio',
         siteName: 'Muhammad Faizan Portfolio',
         title: 'Muhammad Faizan | UX/Product Designer',
         description: 'Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.',
         images: [
             {
-                url: 'https://faizann7.github.io/portfoliooo/images/og-image.jpg',
+                url: 'https://faizann7.github.io/portfolio/images/og-image.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Muhammad Faizan - UX/Product Designer',

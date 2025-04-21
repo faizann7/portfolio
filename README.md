@@ -26,8 +26,8 @@ This is a professional portfolio website built with Next.js, showcasing work exa
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/portfoliooo.git
-   cd portfoliooo
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
    ```
 
 2. Install dependencies
@@ -72,7 +72,7 @@ This project is configured for GitHub Pages deployment using GitHub Actions.
 
 1. Push changes to the main branch
 2. GitHub Actions will automatically build and deploy the site
-3. The site will be available at `https://yourusername.github.io/portfoliooo/`
+3. The site will be available at `https://yourusername.github.io/portfolio/`
 
 ### Manual Deployment
 
@@ -89,7 +89,7 @@ Then copy the contents of the `out` directory to your GitHub Pages branch.
 
 ### Asset Handling
 
-When deploying to GitHub Pages, the site is served from a sub-path (`/portfoliooo/`) rather than the root. This requires special handling for assets like images.
+When deploying to GitHub Pages, the site is served from a sub-path (`/portfolio/`) rather than the root. This requires special handling for assets like images.
 
 See [Image Path Documentation](./docs/IMAGE_PATHS.md) for detailed guidance on handling image paths.
 

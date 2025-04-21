@@ -136,7 +136,7 @@ export default function RootLayout({
         </Script>
 
         {/* Hotjar Tracking Code */}
-        <Script id="hotjar-tracking" strategy="afterInteractive">
+        <Script id="hotjar-tracking" strategy="lazyOnload">
           {`
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};

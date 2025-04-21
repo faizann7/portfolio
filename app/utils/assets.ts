@@ -2,7 +2,7 @@
  * GitHub Pages Asset Path Utilities
  * 
  * These utilities help manage paths for assets when deploying to GitHub Pages.
- * GitHub Pages serves content from a subpath (e.g., /portfoliooo/), requiring 
+ * GitHub Pages serves content from a subpath (e.g., /portfolio/), requiring 
  * special path handling for all assets.
  */
 
