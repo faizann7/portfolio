@@ -524,7 +524,7 @@ export default function ProjectPage({ params }: PageProps) {
                         </ul>
 
                         <h3 className="text-2xl font-bold mt-12 mb-6">Problem Statement</h3>
-                        <p className="bg-gray-50 border-l-4 border-gray-300 p-4 italic leading-relaxed">
+                        <p className="border-l-4 border-gray-300 p-4 italic leading-relaxed">
                             "People in Karachi face multiple obstacles when trying to book movie tickets for cinemas like Nueplex. The current methods of calling the cinema or visiting in person are time-consuming and inconvenient in a world where users expect seamless online experiences. There is a gap in the market for an app that simplifies the booking process by providing real-time seat selection, integrated payment options, and mobile accessibility for all major cinemas in Karachi."
                         </p>
                     </div>
