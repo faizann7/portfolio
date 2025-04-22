@@ -8,8 +8,6 @@ export interface Project {
     year: string;
     color: string;
     hoverColor: string;
-    darkColor?: string;
-    darkHoverColor?: string;
     comingSoon?: boolean;
 }
 
@@ -26,9 +24,7 @@ export const projects: Project[] = [
         image: `${basePath}/images/cinefaticthumb.png`,
         year: "2023",
         color: "var(--bg-cinefatic)",
-        hoverColor: "#D5CFFF",
-        darkColor: "var(--bg-cinefatic)",
-        darkHoverColor: "#422937"
+        hoverColor: "var(--bg-cinefatic-hover)"
     },
     {
         id: "swapp",
@@ -39,9 +35,7 @@ export const projects: Project[] = [
         image: `${basePath}/images/Swapp Thumb.png`,
         year: "2022-Present",
         color: "var(--bg-swapp)",
-        hoverColor: "#FFE6E6",
-        darkColor: "var(--bg-swapp)",
-        darkHoverColor: "#57232E",
+        hoverColor: "var(--bg-swapp-hover)",
         comingSoon: true
     },
     {
@@ -53,9 +47,7 @@ export const projects: Project[] = [
         image: `${basePath}/images/Pre Route Helper.png`,
         year: "2021",
         color: "var(--bg-retailo)",
-        hoverColor: "#FFF8E6",
-        darkColor: "var(--bg-retailo)",
-        darkHoverColor: "#282E29",
+        hoverColor: "var(--bg-retailo-hover)",
         comingSoon: true
     },
     {
@@ -66,10 +58,8 @@ export const projects: Project[] = [
         tags: ["Product Design", "SaaS", "B2B", "Web App", "Inventory Management", "Data Validation"],
         image: `${basePath}/images/MEDZnMORE Thumb.png`,
         year: "2021",
-        color: "#E5E1FF",
-        hoverColor: "#EFECFF",
-        darkColor: "#2D1F42",
-        darkHoverColor: "#382752",
+        color: "var(--bg-cinefatic)",
+        hoverColor: "var(--bg-cinefatic-hover)",
         comingSoon: true
     },
     {
@@ -81,8 +71,6 @@ export const projects: Project[] = [
         image: `${basePath}/images/Rider App Thumb.png`,
         year: "2020",
         color: "var(--bg-rider-app)",
-        hoverColor: "#20225B",
-        darkColor: "var(--bg-rider-app)",
-        darkHoverColor: "#20225B"
+        hoverColor: "var(--bg-rider-app-hover)"
     }
 ]; 

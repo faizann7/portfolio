@@ -52,7 +52,7 @@ export default function RootLayout({
     : '/fonts/EBGaramond-Italic-VariableFont_wght.woff2';
 
   return (
-    <html lang="en" className="dark-theme">
+    <html lang="en">
       <head>
         <link rel="canonical" href={process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfolio'} />
 
@@ -136,7 +136,7 @@ export default function RootLayout({
         </Script>
 
         {/* Hotjar Tracking Code */}
-        <Script id="hotjar-tracking" strategy="lazyOnload">
+        <Script id="hotjar-tracking" strategy="afterInteractive">
           {`
             (function(h,o,t,j,a,r){
                 h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -151,8 +151,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased relative">
         <NavigationProgress />
-        {/* GitHub Pages Specific: SearchParamsProvider needed because useSearchParams doesn't 
-            work with static export on GitHub Pages */}
         <SearchParamsProvider>
           <GoogleAnalytics />
         </SearchParamsProvider>
@@ -172,11 +170,9 @@ export default function RootLayout({
 
         <div className="max-w-[1120px] mx-auto pt-16 relative z-10">
           <main className="px-4">
-
             <MotionConfig>
               <AnimatePresence mode="wait">
                 <PageTransition>
-
                   {children}
                 </PageTransition>
               </AnimatePresence>

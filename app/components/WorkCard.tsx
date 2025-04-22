@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { getImagePath } from "../utils/assets";
-import { useEffect, useState } from "react";
 
 interface WorkCardProps {
     title: string;
@@ -15,8 +14,6 @@ interface WorkCardProps {
     index: number;
     color?: string;
     hoverColor?: string;
-    darkColor?: string;
-    darkHoverColor?: string;
     comingSoon?: boolean;
 }
 
@@ -29,41 +26,8 @@ const WorkCard = ({
     index,
     color = "var(--card-bg)",
     hoverColor = "var(--card-hover-bg)",
-    darkColor,
-    darkHoverColor,
     comingSoon = false
 }: WorkCardProps) => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    // Check if we're in dark mode
-    useEffect(() => {
-        const checkDarkMode = () => {
-            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const isDarkThemeClass = document.documentElement.classList.contains('dark-theme');
-
-            setIsDarkMode(darkModeMediaQuery.matches || isDarkThemeClass);
-        };
-
-        // Initial check
-        checkDarkMode();
-
-        // Listen for changes
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        darkModeMediaQuery.addEventListener('change', checkDarkMode);
-
-        // Watch for theme class changes
-        const observer = new MutationObserver(checkDarkMode);
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class']
-        });
-
-        return () => {
-            darkModeMediaQuery.removeEventListener('change', checkDarkMode);
-            observer.disconnect();
-        };
-    }, []);
-
     // Extract or use the color values correctly
     const getBgColor = (colorValue: string) => {
         if (!colorValue) return '';
@@ -77,12 +41,8 @@ const WorkCard = ({
         return ''; // Use default Tailwind classes
     };
 
-    // Determine which colors to use based on dark/light mode
-    const activeColor = isDarkMode && darkColor ? darkColor : color;
-    const activeHoverColor = isDarkMode && darkHoverColor ? darkHoverColor : hoverColor;
-
-    const bgColor = getBgColor(activeColor);
-    const hoverBgColor = getBgColor(activeHoverColor);
+    const bgColor = getBgColor(color);
+    const hoverBgColor = getBgColor(hoverColor);
 
     // Process the image path for GitHub Pages compatibility
     const processedImagePath = getImagePath(image);
@@ -141,7 +101,7 @@ const WorkCard = ({
                         />
                         {comingSoon && (
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-gray-100 font-semibold px-4 py-2 rounded-md shadow-lg">
+                                <span className="bg-gray-800/90 text-gray-100 font-semibold px-4 py-2 rounded-md shadow-lg">
                                     Coming Soon
                                 </span>
                             </div>

@@ -2,116 +2,32 @@
 @import "./fonts.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #121212;
-  --link-color: #121212;
-  --link-hover-color: #4f46e5;
-  --card-bg: #f3f4f6;
-  --card-hover-bg: #e5e7eb;
-  --navbar-bg: rgba(255, 255, 255, 0.9);
-  --navbar-text: #121212;
-  --border-color: #e5e7eb;
-  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-
-  /* Project-specific backgrounds - Light */
-  --bg-cinefatic: #CAC2FF;
-  --bg-swapp: #FFD6D6;
-  --bg-retailo: #FFF2CC;
-  --bg-rider-app: #CCE5FF;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #121212;
-    --foreground: #e5e7eb;
-    --link-color: #e5e7eb;
-    --link-hover-color: #ffffff;
-    --card-bg: #1f2937;
-    --card-hover-bg: #374151;
-    --navbar-bg: rgba(31, 41, 55, 0.9);
-    --navbar-text: #e5e7eb;
-    --border-color: #374151;
-    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-
-    /* Dark theme gradient */
-    --bg-dark: linear-gradient(180deg, #3F272A 0%, #101218 100%);
-
-    /* Project-specific backgrounds - Dark */
-    --bg-cinefatic: #513243;
-    --bg-swapp: #513243;
-    --bg-retailo: #093B08;
-    --bg-rider-app: #333793;
-  }
-}
-
-.dark-theme {
   --background: #121212;
-  --foreground: #e5e7eb;
+  --foreground: #ffffff;
   --link-color: #e5e7eb;
   --link-hover-color: #ffffff;
+  --text-heading: #EDEDED;
+  --text-paragraph: #ffffff;
   --card-bg: #1f2937;
   --card-hover-bg: #374151;
   --navbar-bg: rgba(31, 41, 55, 0.9);
   --navbar-text: #e5e7eb;
   --border-color: #374151;
   --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
   /* Dark theme gradient */
   --bg-dark: linear-gradient(180deg, #3F272A 0%, #101218 100%);
 
-  /* Project-specific backgrounds - Dark */
+  /* Project-specific backgrounds with their hover states */
   --bg-cinefatic: #3B1F2E;
+  --bg-cinefatic-hover: #422937;
   --bg-swapp: #6D2C39;
+  --bg-swapp-hover: #57232E;
   --bg-retailo: #384039;
+  --bg-retailo-hover: #282E29;
   --bg-rider-app: #292C75;
-
-
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #ffffff;
-    --foreground: #121212;
-    --link-color: #121212;
-    --link-hover-color: #4f46e5;
-    --card-bg: #f3f4f6;
-    --card-hover-bg: #e5e7eb;
-    --navbar-bg: rgba(255, 255, 255, 0.9);
-    --navbar-text: #121212;
-    --border-color: #e5e7eb;
-    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-    /* Project-specific backgrounds - Light */
-    --bg-cinefatic: #CAC2FF;
-    --bg-swapp: #FFD6D6;
-    --bg-retailo: #FFF2CC;
-    --bg-rider-app: #CCE5FF;
-  }
-}
-
-.light-theme {
-  --background: #ffffff;
-  --foreground: #121212;
-  --link-color: #121212;
-  --link-hover-color: #4f46e5;
-  --card-bg: #f3f4f6;
-  --card-hover-bg: #e5e7eb;
-  --navbar-bg: rgba(255, 255, 255, 0.9);
-  --navbar-text: #121212;
-  --border-color: #e5e7eb;
-  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-  /* Project-specific backgrounds - Light */
-  --bg-cinefatic: #CAC2FF;
-  --bg-swapp: #FFD6D6;
-  --bg-retailo: #FFF2CC;
-  --bg-rider-app: #CCE5FF;
+  --bg-rider-app-hover: #1E205A;
 }
 
 html {
@@ -119,23 +35,52 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: var(--bg-dark);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: 'CircularStd', sans-serif;
   transition: var(--theme-transition);
 }
 
-/* Apply dark theme gradient in dark mode */
-.dark-theme body {
-  background: var(--bg-dark);
-  background-attachment: fixed;
+/* Text hierarchy styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: var(--bg-dark);
-    background-attachment: fixed;
-  }
+p {
+  color: var(--text-paragraph);
+}
+
+/* Playground page specific styles */
+.card {
+  height: 350px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card:hover .image-wrapper {
+  transform: scale(1.05);
 }
 
 @keyframes progress {
@@ -168,40 +113,9 @@ body {
   animation: fadeInUp 0.2s ease-out forwards;
 }
 
-/* Playground page specific styles */
-.card {
-  height: 350px;
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.image-wrapper {
-  position: absolute;
-  bottom: -10%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card:hover .image-wrapper {
-  transform: scale(1.05);
-}
-
-.card img {
-  transition: transform 0.3s ease;
-}
-
 @media (max-width: 899px) {
   .card {
-    height: 300px;
+    height: 280px;
   }
 }
 

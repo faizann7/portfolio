@@ -131,7 +131,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                     {/* Footer navigation */}
                     <div className="border-t border-gray-200 pt-16">
                         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <Link href="/#work" className="inline-flex items-center text-lg hover:text-gray-600 mb-4 md:mb-0 group transition-colors">
+                            <Link href="/#work" className="inline-flex items-center black mb-8 group transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 group-hover:-translate-x-1 transition-transform">
                                     <path d="m15 18-6-6 6-6" />
                                 </svg>
@@ -140,6 +140,8 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                             <Link href="/contact" className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
                                 Let's work together
                             </Link>
+
+
                         </div>
                     </div>
                 </div>
