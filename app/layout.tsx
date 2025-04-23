@@ -51,6 +51,23 @@ export default function RootLayout({
     ? '/portfolio/fonts/EBGaramond-Italic-VariableFont_wght.woff2'
     : '/fonts/EBGaramond-Italic-VariableFont_wght.woff2';
 
+  // Add Poly font URLs
+  const polySlimUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/headings/poly-slim.woff'
+    : '/fonts/headings/poly-slim.woff';
+
+  const polyNeutralUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/headings/poly-neutral.woff'
+    : '/fonts/headings/poly-neutral.woff';
+
+  const polyMedianUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/headings/poly-median.woff'
+    : '/fonts/headings/poly-median.woff';
+
+  const polyBulkyUrl = process.env.NODE_ENV === 'production'
+    ? '/portfolio/fonts/headings/poly-bulky.woff'
+    : '/fonts/headings/poly-bulky.woff';
+
   return (
     <html lang="en">
       <head>
@@ -108,6 +125,36 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
 
+        {/* Add Poly font preloads */}
+        <link
+          rel="preload"
+          href={polySlimUrl}
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href={polyNeutralUrl}
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href={polyMedianUrl}
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href={polyBulkyUrl}
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+
         {/* GitHub Pages Specific: Inline script to fix font loading issues in production */}
         <Script id="font-loading-fix" strategy="beforeInteractive">
           {`
@@ -118,7 +165,11 @@ export default function RootLayout({
                 'CircularStd-Medium.woff', 
                 'CircularStd-Bold.woff',
                 'EBGaramond-VariableFont_wght.woff2',
-                'EBGaramond-Italic-VariableFont_wght.woff2'
+                'EBGaramond-Italic-VariableFont_wght.woff2',
+                'headings/poly-slim.woff',
+                'headings/poly-neutral.woff',
+                'headings/poly-median.woff',
+                'headings/poly-bulky.woff'
               ];
               const prefix = window.location.hostname.includes('github.io') ? '/portfolio' : '';
               
