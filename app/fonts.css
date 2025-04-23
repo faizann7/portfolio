@@ -1,3 +1,36 @@
+/* Poly Font Family */
+@font-face {
+    font-family: 'Poly';
+    src: url('/fonts/headings/poly-slim.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poly';
+    src: url('/fonts/headings/poly-neutral.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poly';
+    src: url('/fonts/headings/poly-median.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poly';
+    src: url('/fonts/headings/poly-bulky.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* For local development */
 @media screen and (min-width: 0px) {
     @font-face {

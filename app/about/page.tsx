@@ -126,31 +126,26 @@ function AboutContent() {
                     </div>
                     <div className="text-center">
                         <h1 className="text-xl font-small text-gray-700" style={{
-                            fontFamily: "'EB Garamond', serif",
+                            fontFamily: "Poly",
                             fontWeight: 600,
-                            lineHeight: 1.1
-                        }}>faizan</h1>
+                            lineHeight: 1.1,
+                            color: "#121212"
+                        }}>Muhammad Faizan</h1>
                     </div>
                 </div>
-                <p className="text-5xl font-medium max-w-3xl" style={{
-                    fontFamily: "'EB Garamond', serif",
-                    fontWeight: 600,
-                    lineHeight: 1.1
-                }}>
-                    Hi, I'm Faizan, a UX/Product Designer
-                </p>
+
+                <h2 className="text-4xl font-bold mb-10">Hello again
+                    <span className="inline-block animate-wave">👋🏻</span>
+                </h2>
+
             </div>
 
             {/* Content Sections */}
             <div className="space-y-16 max-w-3xl mx-auto mb-16">
                 {/* How it started section */}
                 <section>
-                    <h2 className=" text-3xl  mb-6" style={{
-                        fontFamily: "'EB Garamond', serif",
-                        fontWeight: 600,
-                        lineHeight: 1.1
-                    }}>How it Started</h2>
-                    <div className="text-xl space-y-8">
+                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-16">how it started</h2>
+                    <div className="text-xl space-y-8 px-4 md:px-0">
                         <p>
                             I've always had a knack for design and technology. While I discovered UX during COVID, it truly clicked when I studied Human-Computer Interaction and Psychology together. That semester shaped how I think about people, behavior, and digital experiences. Collaborating with friends on real-world problems made me realize how design could drive meaningful impact.
                         </p>
@@ -162,12 +157,8 @@ function AboutContent() {
 
                 {/* What I'm currently doing section */}
                 <section>
-                    <h2 className=" text-3xl  mb-6" style={{
-                        fontFamily: "'EB Garamond', serif",
-                        fontWeight: 600,
-                        lineHeight: 1.1
-                    }}>What I'm Currently Doing</h2>
-                    <div className="text-xl space-y-8">
+                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-16">what i'm currently doing</h2>
+                    <div className="text-xl space-y-8 px-4 md:px-0">
                         <p>
                             Right now, I'm leading product design efforts at Swapp (outsourced by Retailo Technologies), a car rental platform based in Dubai, UAE. I oversee all design efforts end-to-end, helping make car rentals seamless and accessible for both residents and tourists through intuitive, hassle-free booking experiences.
                         </p>
@@ -197,16 +188,12 @@ function AboutContent() {
             {/* Experience Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-16 mb-32 max-w-3xl mx-auto">
                 <div>
-                    <h2 className="text-4xl font-bold mb-12 relative" style={{
-                        fontFamily: "'EB Garamond', serif",
-                        fontWeight: 600,
-                        lineHeight: 1.1
-                    }}>Work Experience</h2>
+                    <h2 className="text-4xl font-bold mb-12 relative">Work Experience</h2>
 
                     <div className="space-y-12">
                         {/* Retailo + Swapp (Client Project) */}
                         <div className="group">
-                            <h4 className="text-2xl font-bold">Retailo Technologies</h4>
+                            <h4 className="text-2xl font-medium pb-2">Retailo Technologies</h4>
                             <div className="mt-1 space-y-1">
                                 <div className="text-xl">Product Designer</div>
                                 <div className="opacity-80">Sep 2023 - Present</div>
@@ -214,7 +201,7 @@ function AboutContent() {
 
                             {/* Client Project - Swapp */}
                             <div className="ml-6 mt-4 border-l-2 border-opacity-20 pl-4">
-                                <h5 className="text-xl font-bold">Swapp</h5>
+                                <h5 className="text-xl font-medium pb-2">Swapp</h5>
                                 <div className="space-y-1">
                                     <div className="text-lg">Product Designer</div>
                                     <div className="opacity-80">Nov 2024 - Present</div>
@@ -224,7 +211,7 @@ function AboutContent() {
 
                         {/* AdPolice Contract */}
                         <div className="group">
-                            <h4 className="text-2xl font-bold">AdPolice</h4>
+                            <h4 className="text-2xl font-medium pb-2">AdPolice</h4>
                             <div className="mt-1 space-y-1">
                                 <div className="text-xl">UI/UX Designer <span className="text-sm font-normal opacity-75">(Contract)</span></div>
                                 <div className="opacity-80">Mar 2024 - Jul 2024</div>
@@ -233,7 +220,7 @@ function AboutContent() {
 
                         {/* MEDZnMORE */}
                         <div className="group">
-                            <h4 className="text-2xl font-bold">MEDZnMORE</h4>
+                            <h4 className="text-2xl font-medium pb-2">MEDZnMORE</h4>
                             <div className="mt-1 space-y-1">
                                 <div className="text-xl">Associate Product Designer</div>
                                 <div className="opacity-80">Nov 2022 - Jun 2023</div>
@@ -242,7 +229,7 @@ function AboutContent() {
 
                         {/* Freelance */}
                         <div className="group">
-                            <h4 className="text-2xl font-bold">Freelance</h4>
+                            <h4 className="text-2xl font-medium pb-2">Freelance</h4>
                             <div className="mt-1 space-y-1">
                                 <div className="text-xl">UI/UX Designer</div>
                                 <div className="opacity-80">Dec 2021 - Present</div>
@@ -252,16 +239,12 @@ function AboutContent() {
                 </div>
 
                 <div>
-                    <h2 className="text-4xl font-bold mb-12 relative" style={{
-                        fontFamily: "'EB Garamond', serif",
-                        fontWeight: 600,
-                        lineHeight: 1.1
-                    }}>Education</h2>
+                    <h2 className="text-4xl font-bold mb-12 relative">Education</h2>
 
                     <div className="space-y-12">
                         {education.map((edu, index) => (
                             <div key={index} className="group">
-                                <h4 className="text-2xl font-bold">{edu.institution}</h4>
+                                <h4 className="text-2xl font-medium pb-2">{edu.institution}</h4>
                                 <div className="mt-1 space-y-1">
                                     <div className="text-xl">{edu.degree}</div>
                                     <div className="opacity-80">{edu.period}</div>

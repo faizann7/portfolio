@@ -50,10 +50,18 @@ h4,
 h5,
 h6 {
   color: var(--text-heading);
+  font-family: 'Poly', sans-serif;
+  line-height: 1.1;
+}
+
+/* Keep hero heading with EB Garamond */
+.hero-heading {
+  font-family: 'EB Garamond', serif !important;
 }
 
 p {
   color: var(--text-paragraph);
+  line-height: 1.55;
 }
 
 /* Playground page specific styles */

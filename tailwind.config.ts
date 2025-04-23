@@ -11,6 +11,7 @@ const config: Config = {
             fontFamily: {
                 sans: ['CircularStd', 'sans-serif'],
                 mono: ['var(--font-geist-mono)'],
+                heading: ['Poly', 'sans-serif'],
             },
             maxWidth: {
                 site: '1120px',

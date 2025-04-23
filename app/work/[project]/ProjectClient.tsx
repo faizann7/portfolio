@@ -30,9 +30,9 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
 
                     {/* Header content with max-width */}
                     <div className="mx-auto text-center mb-16" style={{ maxWidth: "768px" }}>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.title}</h1>
+                        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">{project.title}</h1>
                         {projectId === "rider-app-medzmore" && (
-                            <h2 className="text-xl mb-12">Shift Management for tabiyat.pk Riders</h2>
+                            <h2 className="text-xl font-heading font-medium mb-12">Shift Management for tabiyat.pk Riders</h2>
                         )}
                         {projectId !== "rider-app-medzmore" && (
                             <p className="text-xl mb-12">{caseStudyData.description}</p>
@@ -41,15 +41,15 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                         {/* Project details in 3 columns */}
                         <div className="grid grid-cols-3 gap-8 mt-12">
                             <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1">Timeline</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">Timeline</h3>
                                 <p className="text-lg">{projectId === "rider-app-medzmore" ? "4 weeks" : caseStudyData.duration}</p>
                             </div>
                             <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1">Role</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">Role</h3>
                                 <p className="text-lg">{projectId === "rider-app-medzmore" ? "UX / Product Design" : caseStudyData.role}</p>
                             </div>
                             <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1">Tools Used</h3>
+                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">Tools Used</h3>
                                 <p className="text-lg">{projectId === "cinefatic" ? "Figma, Zoom, Google Forms, Discord" : projectId === "rider-app-medzmore" ? "Figma, Zoom, Google Forms" : "Figma, Principle"}</p>
                             </div>
                         </div>

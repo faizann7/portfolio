@@ -29,12 +29,11 @@ function HomeContent() {
     <div className="min-h-screen flex flex-col pt-24 md:pt-32">
       <div className="mb-40 md:mb-32 text-center px-4 md:px-8">
         <p className="text-lg md:text-2xl mb-4 md:mb-6">
-          Hi, I'm Faizan <span className="inline-block animate-wave">👋</span>
+          Hi, I'm Faizan <span className="inline-block animate-wave">👋🏻</span>
         </p>
         <h1
-          className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl mb-4 md:mb-6 hero-heading"
           style={{
-            fontFamily: "'EB Garamond', serif",
             fontWeight: 600,
             lineHeight: 1.15,
             letterSpacing: '-0.02em'
