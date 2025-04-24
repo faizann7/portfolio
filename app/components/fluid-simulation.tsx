@@ -1116,19 +1116,19 @@ export default function FluidSimulation() {
                 updatePointerDownData(pointer, -1, posX, posY);
                 clickSplat(pointer);
             });
-    
+
             canvas.addEventListener("mousemove", (e) => {
                 const pointer = pointers[0];
                 const posX = scaleByPixelRatio(e.clientX);
                 const posY = scaleByPixelRatio(e.clientY);
                 updatePointerMoveData(pointer, posX, posY, pointer.color);
             });
-    
+
             canvas.addEventListener("touchstart", (e) => {
                 e.preventDefault();
                 const touches = e.targetTouches;
                 const pointer = pointers[0];
-    
+
                 if (touches.length > 0) {
                     const posX = scaleByPixelRatio(touches[0].clientX);
                     const posY = scaleByPixelRatio(touches[0].clientY);
@@ -1136,12 +1136,12 @@ export default function FluidSimulation() {
                     clickSplat(pointer);
                 }
             });
-    
+
             canvas.addEventListener("touchmove", (e) => {
                 e.preventDefault();
                 const touches = e.targetTouches;
                 const pointer = pointers[0];
-    
+
                 if (touches.length > 0) {
                     const posX = scaleByPixelRatio(touches[0].clientX);
                     const posY = scaleByPixelRatio(touches[0].clientY);
