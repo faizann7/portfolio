@@ -66,7 +66,7 @@ const WorkCard = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative h-[380px] max-h-[380px] md:h-[460px] md:max-h-[460px] overflow-hidden rounded-2xl transition-all duration-300`}
+                className={`group relative h-[300px] max-h-[300px] md:h-[460px] md:max-h-[460px] overflow-hidden rounded-2xl transition-all duration-300`}
                 style={{
                     backgroundColor: bgColor || 'var(--card-bg)',
                     color: 'var(--foreground)',

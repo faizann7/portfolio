@@ -144,7 +144,7 @@ function AboutContent() {
             <div className="space-y-16 max-w-3xl mx-auto mb-16">
                 {/* How it started section */}
                 <section>
-                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-16">how it started</h2>
+                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-0 md:-ml-16">how it started</h2>
                     <div className="text-xl space-y-8 px-4 md:px-0">
                         <p>
                             I've always had a knack for design and technology. While I discovered UX during COVID, it truly clicked when I studied Human-Computer Interaction and Psychology together. That semester shaped how I think about people, behavior, and digital experiences. Collaborating with friends on real-world problems made me realize how design could drive meaningful impact.
@@ -157,7 +157,7 @@ function AboutContent() {
 
                 {/* What I'm currently doing section */}
                 <section>
-                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-16">what i'm currently doing</h2>
+                    <h2 className="text-3xl font-heading font-medium mb-6 -ml-0 md:-ml-16">what i'm currently doing</h2>
                     <div className="text-xl space-y-8 px-4 md:px-0">
                         <p>
                             Right now, I'm leading product design efforts at Swapp (outsourced by Retailo Technologies), a car rental platform based in Dubai, UAE. I oversee all design efforts end-to-end, helping make car rentals seamless and accessible for both residents and tourists through intuitive, hassle-free booking experiences.
