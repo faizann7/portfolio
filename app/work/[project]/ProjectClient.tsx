@@ -58,7 +58,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                     {/* Hero image section - full width */}
                     <div className="w-full mb-16 rounded-xl overflow-hidden">
                         <Image
-                            src={processImagePath(projectId === "rider-app-medzmore" ? "/images/riderapp/riderapp_main.png" : "/images/cinefatic/Cinefatic Main.png")}
+                            src={processImagePath(projectId === "rider-app-medzmore" ? "/images/riderapp/riderapp_main.png" : "/images/cinefatic/Cinefatic main.webp")}
                             alt={`${project.title} main screen`}
                             width={1400}
                             height={800}
@@ -66,11 +66,29 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                         />
                     </div>
 
+                    {/* Cinefatic Goal section */}
+                    {projectId === "cinefatic" && (
+                        <div className="mx-auto mb-16" style={{ maxWidth: "814px" }}>
+                            <div
+                                style={{ background: "#42292E", color: "#fff", borderRadius: "1rem", padding: "2rem" }}
+                            >
+                                <h2 className="text-3xl font-bold mb-4 flex items-center">The Goal <span className="ml-2">🎯</span></h2>
+                                <p className="text-lg">
+                                    To design a single, reliable app that solves the long-standing frustration faced by people in Karachi, the lack of an easy way to book tickets online for major cinemas like Nueplex.
+                                </p>
+                            </div>
+                        </div>
+                    )}
+
                     {/* Main content wrapper with max-width */}
                     <div className="mx-auto" style={{ maxWidth: "768px" }}>
                         {/* Overview section */}
                         <div className="mb-24">
-                            <h2 className="text-4xl font-bold mb-10">Overview</h2>
+                            {caseStudyData.overviewHeading !== '' && caseStudyData.overviewHeading !== null && (
+                                <h2 className="text-4xl font-bold mb-10">
+                                    {caseStudyData.overviewHeading === undefined ? 'Overview' : caseStudyData.overviewHeading}
+                                </h2>
+                            )}
                             <div className="text-xl space-y-8">
                                 {caseStudyData.overview.split('\n\n').map((paragraph, index) => (
                                     <p key={index}>{paragraph}</p>

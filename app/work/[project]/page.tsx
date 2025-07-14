@@ -26,6 +26,15 @@ const CaseStudyImage = ({ src, alt, width, height, className }: {
     );
 };
 
+// Utility wrapper for wide images
+const WideImageWrapper = ({ children }: { children: React.ReactNode }) => (
+    <div className="w-full flex justify-center my-12">
+        <div style={{ maxWidth: "1120px", width: "100%" }}>
+            {children}
+        </div>
+    </div>
+);
+
 // Add generateStaticParams function to specify all possible project values
 export async function generateStaticParams() {
     return [
@@ -63,6 +72,7 @@ export interface CaseStudyData {
     role: string;
     duration: string;
     overview: string;
+    overviewHeading?: string; // Optional heading for overview section
     challenges?: string[];
     process?: { title: string; description: string; }[];
     sections?: CaseStudySection[];
@@ -442,169 +452,196 @@ export default function ProjectPage({ params }: PageProps) {
         description: "A reimagined movie-ticket booking experience for Karachi's cinemagoers. The app focuses on easy discovery, seamless booking, and enhanced movie experiences.",
         role: "UI & UX Designer",
         duration: "2022",
-        overview: "Cinefatic aims to revolutionize how people in Karachi discover and book movie tickets. I led the design process from research to implementation, focusing on creating an intuitive and delightful experience.",
+        overview: "",
+        overviewHeading: "",
         sections: [
             {
-                title: "Discovery",
+                title: "So, What’s Actually Broken?",
                 content: (
                     <div className="space-y-8">
                         <p>
                             As someone who loves going to the cinema, I often found myself frustrated by the lack of convenient booking options for cinemas in Karachi, especially for Nueplex. Despite living in an era where technology facilitates most aspects of life, the process of booking movie tickets remained outdated and manual.
                         </p>
                         <p>
-                            This initial frustration led me to question if others shared my experience and if there was a broader issue affecting Karachi's movie audience.
+                            This initial frustration led me to question if others shared my experience and if there was a broader issue affecting Karachi’s movie audience. To validate this, I mapped out the real journey people face.
                         </p>
 
-                        <h3 className="text-2xl font-bold mt-12 mb-6">Current Methods of Booking Tickets at Nueplex</h3>
-
+                        <h3 className="text-2xl font-bold mt-16 mb-6">The Ticket-Buying Gauntlet: How it Works Today</h3>
                         <p>
-                            Upon visiting the Nueplex website, I found that while showtimes were available, there was no option to book tickets online. The existing methods for booking tickets involved either going to the cinema in person or calling them over the phone—both time-consuming and inconvenient processes.
+                            My initial research confirmed that for Karachi's main cinemas, there were really only two ways to get a ticket: either going to the cinema in person or calling them over the phone. Both paths were riddled with problem
                         </p>
 
-                        <div className="w-full my-12 rounded-md overflow-hidden">
+                        <WideImageWrapper>
                             <CaseStudyImage
-                                src="/images/cinefatic/Current Method.png"
-                                alt="Current movie booking method in Karachi"
-                                width={768}
-                                height={500}
+                                src="/images/cinefatic/Storyboard.webp"
+                                alt="Cinefatic key features"
+                                width={1200}
+                                height={800}
                                 className="w-full h-auto"
                             />
-                        </div>
+                        </WideImageWrapper>
+                    </div>
+                )
+            },
+            {
+                title: "Understanding the Market Landscape",
+                content: (
+                    <div className="space-y-8">
                         <p>
-                            My research revealed a significant pain point: Karachi's cinemagoers needed a dedicated solution for discovering movies and booking tickets online. The existing methods were cumbersome, often requiring users to navigate through multiple websites or make phone calls.
+                            The user's journey was clearly broken, but I needed to understand the business landscape. Why did this problem still exist? A competitive analysis revealed a clear answer:
                         </p>
                     </div>
                 )
             },
             {
-                title: "Research",
+                title: "The Strategic Pivot: From a Niche Fix to a Market-Wide Solution",
                 content: (
                     <div className="space-y-8">
                         <p>
-                            To validate my assumptions and gain deeper insights, I conducted comprehensive research into the movie-going experience in Karachi.
+                            My initial idea was small: design a booking solution just for Nueplex.
+
+                            However, this research made it clear that a narrow solution would be a missed opportunity. The data showed that a much larger problem affected customers of all major cinemas.
+                            This led to a critical strategic decision: to expand the scope from a single-cinema app to a comprehensive "Fandango-like" application for all of Karachi
+                            This pivot was crucial because it would:
                         </p>
 
-                        <h3 className="text-2xl font-bold mt-16 mb-6">Validating the Assumption</h3>
-                        <p>
-                            To confirm my hypothesis that others were equally frustrated, I conducted initial research by speaking with friends, family, and acquaintances. Their feedback echoed my frustration, reaffirming that the existing methods were indeed inconvenient and outdated. Encouraged by this preliminary validation, I decided to broaden my research scope to gather more structured insights.
-                        </p>
-
-                        <h3 className="text-2xl font-bold mt-12 mb-6">User Research</h3>
-                        <p>
-                            To gather comprehensive data, I conducted surveys and interviews with a diverse group of people, including students, working professionals, and families. I aimed to understand their pain points, preferences, and behaviors regarding movie ticket booking.
-                        </p>
-
-                        <h3 className="text-2xl font-bold mt-12 mb-6">Key Findings</h3>
-                        <ul className="list-disc pl-5 space-y-4">
-                            <li>Inconvenience: Users found it cumbersome to travel to the cinema just to book tickets.</li>
-                            <li>Inefficiency: Phone booking was unreliable, with long wait times and inconsistent reservations.</li>
-                            <li>Lack of Information: Users wanted more clarity on seat availability and pricing but had to rely on limited or outdated information.</li>
-                            <li>Preference for Mobile: Most users preferred a mobile-friendly solution that allowed easy booking on the go.</li>
-                            <li>Desire for Transparency: Users expressed frustration with the lack of clear, real-time updates during the booking process.</li>
+                        <ul className="list-disc pl-5 space-y-2">
+                            <li>Address a broader user demand instead of just one segment</li>
+                            <li>Capture a significant, untapped market gap</li>
+                            <li>Create a much stronger competitive advantage by becoming the definitive, all-in-one platform</li>
                         </ul>
-
-                        <h3 className="text-2xl font-bold mt-12 mb-6">Market Research</h3>
-                        <p>
-                            I extended my research to analyze existing movie booking platforms and related services within Karachi. Key findings included:
-                        </p>
-                        <ul className="list-disc pl-5 space-y-4">
-                            <li>Limited Options: Very few platforms support online movie ticket booking.</li>
-                            <li>Centralized Booking Apps: Websites like Bookme.pk and Bookmyshow.pk exist, but they do not cater to Nueplex or Atrium Cinemas.</li>
-                            <li>Competitive Analysis: Apps like Fandango in other markets provide a more complete solution, integrating showtimes, seat selection, and secure payments—something currently missing in Karachi.</li>
-                        </ul>
-
-                        <h3 className="text-2xl font-bold mt-12 mb-6">Decision to Expand Scope</h3>
-                        <p>
-                            Initially, my focus was on designing a solution specifically for Nueplex. However, after conducting thorough research and identifying significant market gaps, I decided to expand the scope to create a Fandango-like application for all cinemas in Karachi. This decision was driven by several factors:
-                        </p>
-                        <ul className="list-disc pl-5 space-y-4">
-                            <li>User Demand: Research indicated that users were frustrated with the booking processes of multiple cinemas, not just Nueplex. Expanding the scope would address a broader audience and solve a larger problem.</li>
-                            <li>Market Gap: Analysis showed that there were no existing apps in Karachi that provided a comprehensive movie ticket booking service for all major cinemas.</li>
-                            <li>Competitive Advantage: Creating an all-inclusive app would position the product as a one-stop solution for movie enthusiasts in Karachi, similar to how Fandango operates in other markets.</li>
-                        </ul>
-
-                        <h3 className="text-2xl font-bold mt-12 mb-6">Problem Statement</h3>
-                        <p className="border-l-4 border-gray-300 p-4 italic leading-relaxed">
-                            "People in Karachi face multiple obstacles when trying to book movie tickets for cinemas like Nueplex. The current methods of calling the cinema or visiting in person are time-consuming and inconvenient in a world where users expect seamless online experiences. There is a gap in the market for an app that simplifies the booking process by providing real-time seat selection, integrated payment options, and mobile accessibility for all major cinemas in Karachi."
-                        </p>
                     </div>
                 )
             },
             {
-                title: "Ideations & Design",
+                title: "Prioritizing for Maximum Impact",
                 content: (
                     <div className="space-y-8">
-                        <h3 className="text-2xl font-bold mt-10 mb-4">Feature Prioritization</h3>
                         <p>
-                            Based on the identified pain points, features were prioritized to deliver the highest value to users while balancing implementation effort. Using an effort vs. impact matrix, the focus was on solutions that addressed the core booking issues in Karachi's movie ticketing experience.
+                            With a clear goal and a wide range of potential features, the next critical step was to decide what to build first. To deliver the highest value to users quickly, I used an Impact vs. Effort matrix to prioritize the features for a Minimum Viable Product (MVP).
+                        </p>
+                        <p>
+                            The focus was squarely on "Quick Wins", features that were high-impact for the user but relatively low-effort to implement. This data-driven approach ensured the first version of the app would be both meaningful and feasible.
                         </p>
 
-                        <p>
-                            To address these pain points, I designed Cinefatic as a comprehensive movie discovery and booking application tailored specifically for the Karachi market. The core features of the app include:
-                        </p>
-                        <div className="w-full my-12 rounded-md overflow-hidden">
+                        <WideImageWrapper>
                             <CaseStudyImage
                                 src="/images/cinefatic/Features.png"
-                                alt="Cinefatic key features"
-                                width={768}
-                                height={400}
-                                className="w-full h-auto"
-                            />
-                        </div>
-                        <p>
-                            The solution focuses on providing a seamless experience from discovery to booking, with particular attention to the unique needs of the local market, including preferred payment methods and theater-specific booking flows.
-                        </p>
-                    </div>
-                )
-            },
-            {
-                title: "Visual Design",
-                content: (
-                    <div className="space-y-8">
-                        <p>
-                            The homepage serves as the primary entry point and the goal was to create an intuitive and engaging experience that simplifies movie discovery while offering personalized content based on the user's location.
-                        </p>
-                        <p>
-                            Designing the homepage started with solving a simple problem: helping users find cinemas near them effortlessly. The location selector at the top became the key feature, ensuring users could personalize their experience instantly.
-                        </p>
-                        <p>
-                            I also wanted the homepage to feel exciting—something that draws people in. That's why I added a hero section, a big, bold space to highlight featured movies. It lets users watch trailers, save movies to their Wishlist, or dive deeper with just a tap.
-                        </p>
-
-                        <p>
-                            The final design features a clean, cinema-inspired dark interface that puts content forward while creating an immersive feel. I used vibrant accent colors to highlight key actions and create visual interest.
-                        </p>
-                        <div className="w-full my-12 rounded-md overflow-hidden">
-                            <CaseStudyImage
-                                src="/images/cinefatic/image homepage.png"
                                 alt="Cinefatic homepage design"
                                 width={768}
                                 height={500}
                                 className="w-full h-auto"
                             />
-                        </div>
-                        <p>
-                            The app's primary screens include:
-                        </p>
+                        </WideImageWrapper>
+
+                        <h3 className="text-2xl font-bold mt-16 mb-6">Key Features Prioritized for the MVP:</h3>
                         <ul className="list-disc pl-5 space-y-2">
-                            <li>Home with personalized movie recommendations</li>
-                            <li>Movie details with comprehensive information</li>
-                            <li>Theater selection with location-based filtering</li>
-                            <li>Seat selection with intuitive visual interface</li>
-                            <li>Checkout with multiple payment options</li>
+                            <li>Centralized Showtime Listings: Solves the core information-gathering problem</li>
+                            <li>Online Seat Selection Map: Addresses one of the biggest user frustrations found in research.</li>
+                            <li>Digital Payments: Modernizes the process and removes the need for in-person transactions.</li>
                         </ul>
                     </div>
                 )
+            },
+            {
+                title: "Designing the Solution",
+                content: (
+                    <div className="space-y-8">
+                        <h3 className="text-2xl font-bold mt-16 mb-6">Homepage: Driving Engagement by Simplifying Discovery</h3>
+                        <p>
+                            Research showed the existing process for finding a movie was fragmented and frustrating.
+                        </p>
+                        <p>
+                            Users lacked a single, reliable place to get information, making discovery feel like a chore rather than an exciting part of the experience.
+                        </p>
+
+                        <div
+                            className="my-12 relative w-screen left-1/2 -translate-x-1/2 px-4 lg:px-0"
+                        >
+                            <div className="mx-auto max-w-[1120px]">
+                                <CaseStudyImage
+                                    src="/images/cinefatic/Homepage Design.webp"
+                                    alt="Cinefatic homepage design"
+                                    width={1400}
+                                    height={800}
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
+
+                        {/* detail page */}
+
+                        <h3 className="text-2xl font-bold mt-16 mb-6">Detail Page: Building Confidence with Centralized Information</h3>
+                        <p>
+                            Previously, users had no way to get all the necessary information, like ratings, runtimes, and a full list of showtimes, in one place. This forced them to leave the booking process to do more research, creating friction
+                        </p>
+                        <div
+                            className="my-12 relative w-screen left-1/2 -translate-x-1/2 px-4 lg:px-0"
+                        >
+                            <div className="mx-auto max-w-[1120px]">
+                                <CaseStudyImage
+                                    src="/images/cinefatic/Detailpage.webp"
+                                    alt="Cinefatic homepage design"
+                                    width={1400}
+                                    height={800}
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
+
+                        {/* seats and snacks */}
+
+                        <h3 className="text-2xl font-bold mt-16 mb-6">Empowering User Control & Convenience</h3>
+                        <p>
+                            The old booking methods completely lacked user control over seating. Furthermore, buying snacks meant waiting in a separate, often long, queue at the cinema, adding another point of friction to the movie night.
+                        </p>
+                        <div
+                            className="my-12 relative w-screen left-1/2 -translate-x-1/2 px-4 lg:px-0"
+                        >
+                            <div className="mx-auto max-w-[1120px]">
+                                <CaseStudyImage
+                                    src="/images/cinefatic/Seatnsnacks.webp"
+                                    alt="Seats and snacks"
+                                    width={1400}
+                                    height={800}
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
+
+                        {/* guest checkout */}
+
+                        <h3 className="text-2xl font-bold mt-16 mb-6">Onboarding: Maximizing Conversion by Making Sign-ups Optional</h3>
+                        <p>
+                            Industry research proves that forcing users to create an account is a primary driver of cart abandonment. The strategic challenge was to encourage user registration for long-term value without creating friction that would jeopardize the immediate sale
+                        </p>
+                        <div
+                            className="my-12 relative w-screen left-1/2 -translate-x-1/2 px-4 lg:px-0"
+                        >
+                            <div className="mx-auto max-w-[1120px]">
+                                <CaseStudyImage
+                                    src="/images/cinefatic/Guestcheckout.webp"
+                                    alt="Guest checkout"
+                                    width={1400}
+                                    height={800}
+                                    className="w-full h-auto rounded-md"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
+                )
             }
         ],
-        results: "The redesigned Cinefatic app led to a 34% increase in user engagement and a 28% reduction in booking abandonment. User testing showed a significant improvement in satisfaction scores, particularly for the movie discovery and seat selection processes.",
-        finalScreens: [
-            {
-                title: "Main Screen",
-                description: "Home screen with movie recommendations",
-                image: "/images/cinefatic/Cinefatic Main.png"
-            }
-        ]
+        // results: "The redesigned Cinefatic app led to a 34% increase in user engagement and a 28% reduction in booking abandonment. User testing showed a significant improvement in satisfaction scores, particularly for the movie discovery and seat selection processes.",
+        // finalScreens: [
+        //     {
+        //         title: "Main Screen",
+        //         description: "Home screen with movie recommendations",
+        //         image: "/images/cinefatic/Cinefatic main.webp"
+        //     }
+        // ]
     };
 
     // Handle different project data formats with proper type casting

@@ -5,7 +5,6 @@ import { Suspense, useState, useEffect } from "react";
 import { SearchParamsProvider } from "../components/SearchParamsProvider";
 import { getImagePath } from "../utils/assets";
 import Footer from "../components/Footer";
-import FluidSimulation from "../components/fluid-simulation";
 interface PlaygroundItem {
     id: string;
     image: string;
@@ -335,7 +334,6 @@ export default function Playground() {
     return (
         <Suspense fallback={<div>Loading playground...</div>}>
             <SearchParamsProvider>
-                <FluidSimulation />
                 <PlaygroundContent />
             </SearchParamsProvider>
         </Suspense>
