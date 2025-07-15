@@ -6,8 +6,8 @@
   --foreground: #ffffff;
   --link-color: #e5e7eb;
   --link-hover-color: #ffffff;
-  --text-heading: #F9FAFB;
-  --text-paragraph: #D1D5DB;
+  --text-heading: #EDEDED;
+  --text-paragraph: #ffffff;
   --card-bg: #1f2937;
   --card-hover-bg: #374151;
   --navbar-bg: rgba(31, 41, 55, 0.9);
@@ -58,7 +58,6 @@ h6 {
 .hero-heading {
   font-family: 'EB Garamond', serif !important;
 }
-
 
 p {
   color: var(--text-paragraph);
