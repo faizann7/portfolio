@@ -52,7 +52,7 @@ function HomeContent() {
 
         <TextReveal delay={0.6}>
           <p className="text-lg md:text-2xl mb-8">
-            currently working as a product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp</ScribbleLink>
+            currently working as a product designer at <ScribbleLink href="https://www.linkedin.com/company/joinswapp/" isExternal={true}>Swapp car rental</ScribbleLink>
           </p>
         </TextReveal>
       </div>
