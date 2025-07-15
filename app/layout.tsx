@@ -29,45 +29,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // GitHub Pages Specific: Manually constructing font URLs with the correct base path
-  // This is needed because GitHub Pages serves content from a subpath
-  const bookFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/CircularStd-Book.woff'
-    : '/fonts/CircularStd-Book.woff';
-
-  const mediumFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/CircularStd-Medium.woff'
-    : '/fonts/CircularStd-Medium.woff';
-
-  const boldFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/CircularStd-Bold.woff'
-    : '/fonts/CircularStd-Bold.woff';
-
-  const garamondFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/EBGaramond-VariableFont_wght.woff2'
-    : '/fonts/EBGaramond-VariableFont_wght.woff2';
-
-  const garamondItalicFontUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/EBGaramond-Italic-VariableFont_wght.woff2'
-    : '/fonts/EBGaramond-Italic-VariableFont_wght.woff2';
-
-  // Add Poly font URLs
-  const polySlimUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/headings/poly-slim.woff'
-    : '/fonts/headings/poly-slim.woff';
-
-  const polyNeutralUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/headings/poly-neutral.woff'
-    : '/fonts/headings/poly-neutral.woff';
-
-  const polyMedianUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/headings/poly-median.woff'
-    : '/fonts/headings/poly-median.woff';
-
-  const polyBulkyUrl = process.env.NODE_ENV === 'production'
-    ? '/portfolio/fonts/headings/poly-bulky.woff'
-    : '/fonts/headings/poly-bulky.woff';
-
   return (
     <html lang="en">
       <head>
@@ -88,68 +49,68 @@ export default function RootLayout({
           href={`${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`}
         />
 
-        {/* Font preloading with GitHub Pages-aware paths */}
+        {/* Font preloading - using /fonts/ paths that Next.js will prefix automatically */}
         <link
           rel="preload"
-          href={bookFontUrl}
+          href="/fonts/CircularStd-Book.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={mediumFontUrl}
+          href="/fonts/CircularStd-Medium.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={boldFontUrl}
+          href="/fonts/CircularStd-Bold.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={garamondFontUrl}
+          href="/fonts/EBGaramond-VariableFont_wght.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={garamondItalicFontUrl}
+          href="/fonts/EBGaramond-Italic-VariableFont_wght.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
 
-        {/* Add Poly font preloads */}
+        {/* Poly font preloads */}
         <link
           rel="preload"
-          href={polySlimUrl}
+          href="/fonts/headings/poly-slim.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={polyNeutralUrl}
+          href="/fonts/headings/poly-neutral.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={polyMedianUrl}
+          href="/fonts/headings/poly-median.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href={polyBulkyUrl}
+          href="/fonts/headings/poly-bulky.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
