@@ -140,7 +140,7 @@ const projectsData = {
                 description: "Continuously refined the design based on analytics and user feedback."
             }
         ],
-        results: "The redesigned checkout flow increased conversion rates from 1.5% to 2.4% - a 60% improvement that significantly impacted business revenue. The streamlined process also reduced customer support inquiries by 25%."
+        results: "The redesigned checkout flow increased conversion rates from 1.3% to 3% - a nearly 130% improvement that significantly impacted business revenue. The streamlined process also reduced customer support inquiries by 25%."
     },
     "route-helper": {
         description: "An overhauled route planning system with real-time dashboards that reduced planning time by 51% for delivery operations.",
@@ -634,14 +634,14 @@ export default function ProjectPage({ params }: PageProps) {
                 )
             }
         ],
-        // results: "The redesigned Cinefatic app led to a 34% increase in user engagement and a 28% reduction in booking abandonment. User testing showed a significant improvement in satisfaction scores, particularly for the movie discovery and seat selection processes.",
-        // finalScreens: [
-        //     {
-        //         title: "Main Screen",
-        //         description: "Home screen with movie recommendations",
-        //         image: "/images/cinefatic/Cinefatic main.webp"
-        //     }
-        // ]
+        results: "The redesigned Cinefatic app led to a 34% increase in user engagement and a 28% reduction in booking abandonment. User testing showed a significant improvement in satisfaction scores, particularly for the movie discovery and seat selection processes.",
+        finalScreens: [
+            {
+                title: "Main Screen",
+                description: "Home screen with movie recommendations",
+                image: "/images/cinefatic/Cinefatic main.webp"
+            }
+        ]
     };
 
     // Handle different project data formats with proper type casting

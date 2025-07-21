@@ -29,7 +29,7 @@ export const projects: Project[] = [
     {
         id: "swapp",
         title: "Swapp - Car Rental",
-        subtitle: "Improving Swapp's checkout conversion rate from 1.5 to 2.4%",
+        subtitle: "Improving booking conversion rate from 1.3 to 3%",
         summary: "Redesigning the rental experience for both tenants and landlords.",
         tags: ["Mobile App", "UX Design", "Car Rental", "Conversion Rate"],
         image: `${basePath}/images/Swapp Thumb.png`,
