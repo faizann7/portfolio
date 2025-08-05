@@ -9,7 +9,6 @@ import { SearchParamsProvider } from "./components/SearchParamsProvider";
 import ScribbleLink from "./components/ScribbleLink";
 import Footer from "./components/Footer";
 import FluidSimulation from "./components/fluid-simulation";
-import GlassButton from "./components/GlassButton";
 import Toast from "./components/Toast";
 import TextReveal from "./components/TextReveal";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
