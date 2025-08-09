@@ -1,341 +1,366 @@
 'use client';
 
-import Image from "next/image";
-import { Suspense, useState, useEffect } from "react";
-import { SearchParamsProvider } from "../components/SearchParamsProvider";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import styles from "./playground.module.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 import { getImagePath } from "../utils/assets";
 import Footer from "../components/Footer";
-interface PlaygroundItem {
-    id: string;
-    image: string;
-    bgColor: string;
-    hoverBgColor: string;
-    darkBgColor: string;
-    darkHoverBgColor: string;
-    alt: string;
-}
 
-// Reusable card component
-function PlaygroundCard({ item, onClick }: { item: PlaygroundItem, onClick: () => void }) {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+gsap.registerPlugin(ScrollTrigger);
 
-    // Check if we're in dark mode
-    useEffect(() => {
-        const checkDarkMode = () => {
-            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const isDarkThemeClass = document.documentElement.classList.contains('dark-theme');
+export default function PlaygroundPage() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-            setIsDarkMode(darkModeMediaQuery.matches || isDarkThemeClass);
+  // MakeWayGrid-like state and refs
+  const itemRefs = useRef<Array<HTMLElement | null>>([]);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    // ensure refs array is at least large enough
+    const total = itemRefs.current.length;
+    itemRefs.current = itemRefs.current.slice(0, total);
+  }, []);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    let lenis: Lenis | null = null;
+    let tickerFn: ((time: number) => void) | null = null;
+    const container = containerRef.current;
+
+    const preloadBackgroundImages = async () => {
+      const mod: any = await import("imagesloaded");
+      const imagesLoaded = mod.default || mod;
+      return new Promise<void>((resolve) => {
+        const elements = container.querySelectorAll(".column__item-img");
+        imagesLoaded(elements, { background: true }, () => resolve());
+      });
+    };
+
+    const initSmoothScroll = () => {
+      try {
+        lenis = new Lenis({ lerp: 0.15, smoothWheel: true });
+
+        // hook lenis with gsap ticker using a stable reference
+        tickerFn = (time: number) => {
+          lenis?.raf(time * 1000);
         };
+        gsap.ticker.add(tickerFn);
 
-        // Initial check
-        checkDarkMode();
-
-        // Listen for changes
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        darkModeMediaQuery.addEventListener('change', checkDarkMode);
-
-        // Watch for theme class changes
-        const observer = new MutationObserver(checkDarkMode);
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class']
+        lenis.on("scroll", () => {
+          ScrollTrigger.update();
         });
 
-        return () => {
-            darkModeMediaQuery.removeEventListener('change', checkDarkMode);
-            observer.disconnect();
-        };
-    }, []);
+        // scroller proxy for more reliable measurements
+        ScrollTrigger.scrollerProxy(document.documentElement, {
+          scrollTop(value) {
+            if (arguments.length && typeof value === "number") {
+              lenis?.scrollTo(value);
+            }
+            return window.scrollY || document.documentElement.scrollTop || 0;
+          },
+          getBoundingClientRect() {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+          },
+          pinType: "transform",
+        });
 
-    // Determine the background styles based on dark/light mode
-    const bgColorClass = isDarkMode ? item.darkBgColor : item.bgColor;
-    const hoverBgColorClass = isDarkMode ? item.darkHoverBgColor : item.hoverBgColor;
+        ScrollTrigger.defaults({ scroller: document.documentElement as any });
+      } catch {
+        // If Lenis fails or conflicts, continue without it
+        ScrollTrigger.refresh();
+      }
+    };
 
-    return (
-        <div
-            className="card rounded-2xl overflow-hidden"
-            style={{
-                backgroundColor: bgColorClass,
-                transition: 'var(--theme-transition), transform 0.3s ease'
-            }}
-            role="article"
-            onClick={onClick}
-            onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = hoverBgColorClass;
-            }}
-            onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = bgColorClass;
-            }}
-        >
-            <div className="image-wrapper">
-                <Image
-                    src={getImagePath(item.image)}
-                    alt={item.alt}
-                    fill
-                    priority={false}
-                    style={{ objectFit: "cover", objectPosition: "top center" }}
-                    className="transition-transform duration-500 group-hover:scale-105"
-                />
-            </div>
-        </div>
-    );
-}
+    const setupScrollAnimations = () => {
+      const grid = container.querySelector(".columns");
+      if (!grid) return;
+      const columns = Array.from(grid.querySelectorAll(".column"));
+      const items = columns.map((column, colIndex) =>
+        Array.from(column.querySelectorAll(".column__item")).map((el) => ({
+          element: el as HTMLElement,
+          column: colIndex,
+          wrapper: (el as HTMLElement).querySelector(
+            ".column__item-imgwrap"
+          ) as HTMLElement,
+          image: (el as HTMLElement).querySelector(
+            ".column__item-img"
+          ) as HTMLElement,
+        }))
+      );
 
-// Grid row component
-function GridRow({ items, columns, onCardClick }: {
-    items: PlaygroundItem[],
-    columns: 2 | 3,
-    onCardClick: (index: number) => void
-}) {
-    return (
-        <div className={`grid grid-cols-1 ${columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'} gap-8 mb-8 last:mb-0`}>
-            {items.map((item, index) => (
-                <PlaygroundCard
-                    key={item.id}
-                    item={item}
-                    onClick={() => onCardClick(items[0].id === 'cinefatic' ? index :
-                        (columns === 2 ? index + 2 : index + 2 + (items[0].id === 'gallery-app' ? 0 : 5)))}
-                />
-            ))}
-        </div>
-    );
-}
+      const mergedItems = items.flat();
 
-// Modal component
-function ImageModal({
-    isOpen,
-    onClose,
-    currentImage,
-    onPrev,
-    onNext
-}: {
-    isOpen: boolean,
-    onClose: () => void,
-    currentImage: string,
-    onPrev: () => void,
-    onNext: () => void
-}) {
-    // Close modal when Escape key is pressed
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
-            if (e.key === 'ArrowLeft') onPrev();
-            if (e.key === 'ArrowRight') onNext();
-        };
+      if (columns[1]) {
+        gsap.to(columns[1], {
+          ease: "none",
+          scrollTrigger: {
+            trigger: grid,
+            start: "clamp(top bottom)",
+            end: "clamp(bottom top)",
+            scrub: true,
+          },
+          yPercent: -20,
+        });
+      }
 
-        window.addEventListener('keydown', handleKeyDown);
+      mergedItems.forEach((item) => {
+        if (item.column === 1) return;
+        gsap.to(item.wrapper, {
+          ease: "none",
+          startAt: {
+            transformOrigin: item.column === 0 ? "0% 100%" : "100% 100%",
+          },
+          scrollTrigger: {
+            trigger: item.element,
+            start: "clamp(top bottom)",
+            end: "clamp(bottom top)",
+            scrub: true,
+          },
+          rotation: item.column === 0 ? -6 : 6,
+          xPercent: item.column === 0 ? -10 : 10,
+        });
+      });
 
-        // Prevent scrolling when modal is open
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
+      // ensure after layout
+      setTimeout(() => ScrollTrigger.refresh(), 50);
+    };
+
+    let ctx: gsap.Context | null = null;
+    let isMounted = true;
+
+    (async () => {
+      await preloadBackgroundImages();
+      if (!isMounted) return;
+      initSmoothScroll();
+      ctx = gsap.context(() => {
+        setupScrollAnimations();
+      }, container);
+    })();
+
+    return () => {
+      isMounted = false;
+      ctx?.revert();
+      if (tickerFn) gsap.ticker.remove(tickerFn);
+      lenis?.destroy();
+    };
+  }, []);
+
+  const imagePaths = useMemo(
+    () => Array.from({ length: 15 }, (_, i) => `/images/playground/Card-${i + 1}.webp`),
+    []
+  );
+
+  const images = useMemo(() => {
+    const col1: string[] = [];
+    const col2: string[] = [];
+    const col3: string[] = [];
+    imagePaths.forEach((src, idx) => {
+      const prefixed = getImagePath(src);
+      if (idx % 3 === 0) col1.push(prefixed);
+      else if (idx % 3 === 1) col2.push(prefixed);
+      else col3.push(prefixed);
+    });
+    return { col1, col2, col3 };
+  }, [imagePaths]);
+
+  // MakeWayGrid-like behavior
+  const duration = 1; // seconds
+  const ease = "elastic.out(0.5, 0.3)";
+  const scale = 1.8;
+  const maxRotation = 15;
+  const spread = 120; // px push distance multiplier
+  const maxDistance = 600; // px radius of influence
+
+  const resetAll = useCallback(() => {
+    const items = itemRefs.current.filter(Boolean) as HTMLElement[];
+    gsap.killTweensOf(items);
+    items.forEach((el) => {
+      el.style.zIndex = "";
+    });
+    // reset column stacking context priorities
+    const columns = containerRef.current?.querySelectorAll<HTMLElement>(".column");
+    columns?.forEach((col) => {
+      col.style.zIndex = "";
+    });
+    gsap.to(items, {
+      duration: 0.5,
+      ease: "power3.out",
+      x: 0,
+      y: 0,
+      rotate: 0,
+      scale: 1,
+    });
+  }, []);
+
+  const playEffect = useCallback(
+    (index: number) => {
+      const items = itemRefs.current.filter(Boolean) as HTMLElement[];
+      if (!items[index]) return;
+
+      const clicked = items[index];
+      const clickedRect = clicked.getBoundingClientRect();
+      const clickedCenterX = clickedRect.left + clickedRect.width / 2;
+      const clickedCenterY = clickedRect.top + clickedRect.height / 2;
+
+      // Elevate the entire column of the clicked item above others
+      const clickedColumn = clicked.closest<HTMLElement>(".column");
+      if (clickedColumn) {
+        const allColumns = containerRef.current?.querySelectorAll<HTMLElement>(".column");
+        allColumns?.forEach((col) => {
+          col.style.zIndex = col === clickedColumn ? "1000" : "";
+        });
+      }
+
+      clicked.style.zIndex = "2000";
+      gsap.to(clicked, {
+        duration,
+        ease,
+        scale,
+      });
+
+      items.forEach((item, i) => {
+        if (i === index) return;
+        const rect = item.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = centerX - clickedCenterX;
+        const dy = centerY - clickedCenterY;
+        const distance = Math.hypot(dx, dy);
+        const influence = Math.max(0, Math.min(1, 1 - distance / maxDistance));
+        if (influence <= 0) {
+          gsap.to(item, { duration: 0.6, ease: "power3.out", x: 0, y: 0, rotate: 0, scale: 1 });
+          return;
         }
+        const norm = distance === 0 ? { x: 0, y: 0 } : { x: dx / distance, y: dy / distance };
+        const push = spread * influence;
+        const rot = (Math.random() * 2 - 1) * maxRotation * influence;
+        gsap.to(item, {
+          duration,
+          ease,
+          x: norm.x * push,
+          y: norm.y * push,
+          rotate: rot,
+          scale: 1,
+        });
+      });
+    },
+    [duration, ease, maxDistance, maxRotation, spread, scale]
+  );
 
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            document.body.style.overflow = 'auto';
-        };
-    }, [isOpen, onClose, onPrev, onNext]);
+  const handleItemClick = useCallback(
+    (index: number) => {
+      if (activeIndex === index) {
+        setActiveIndex(null);
+        resetAll();
+      } else {
+        setActiveIndex(index);
+        resetAll();
+        requestAnimationFrame(() => playEffect(index));
+      }
+    },
+    [activeIndex, playEffect, resetAll]
+  );
 
-    if (!isOpen) return null;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveIndex(null);
+        resetAll();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [resetAll]);
 
-    return (
-        <div
-            className="fixed inset-0 bg-black/95 z-50 flex justify-center items-center p-10"
-            onClick={(e) => e.target === e.currentTarget && onClose()}
-            style={{
-                backdropFilter: 'blur(8px)'
-            }}
-        >
-            <button
-                className="absolute right-8 top-8 text-white text-4xl font-bold hover:text-gray-300 transition-colors duration-300"
-                onClick={onClose}
-                aria-label="Close modal"
-            >
-                &times;
-            </button>
-            <button
-                className="absolute left-8 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white text-2xl py-4 px-6 rounded-lg transition-colors duration-300"
-                onClick={onPrev}
-                aria-label="Previous image"
-            >
-                &lt;
-            </button>
-            <div className="relative max-w-[90%] max-h-[90vh]">
-                <img
-                    src={currentImage}
-                    alt="Enlarged project"
-                    className="max-w-full max-h-[90vh] object-contain rounded-lg"
-                    style={{
-                        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.5)'
-                    }}
-                />
-            </div>
-            <button
-                className="absolute right-8 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white text-2xl py-4 px-6 rounded-lg transition-colors duration-300"
-                onClick={onNext}
-                aria-label="Next image"
-            >
-                &gt;
-            </button>
+  // compute global start indices for each column
+  const col1Start = 0;
+  const col2Start = images.col1.length;
+  const col3Start = images.col1.length + images.col2.length;
+
+  return (
+    <div ref={containerRef} className={`${styles.playgroundRoot} ${styles.playground2}`}>
+      <div className="max-w-[1120px] mx-auto pt-24 md:pt-32 px-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Playground</h1>
+      </div>
+      <main className={styles.main}>
+        <div className="columns">
+          <div className="column">
+            {images.col1.map((src, idx) => {
+              const globalIndex = col1Start + idx;
+              return (
+                <figure
+                  key={`c1-${idx}`}
+                  className="column__item"
+                  ref={(el) => {
+                    itemRefs.current[globalIndex] = el;
+                  }}
+                  onClick={() => handleItemClick(globalIndex)}
+                  aria-label={`Grid item ${globalIndex + 1}`}
+                >
+                  <div className="column__item-imgwrap">
+                    <div
+                      className="column__item-img"
+                      style={{ backgroundImage: `url(${src})` }}
+                    />
+                  </div>
+                </figure>
+              );
+            })}
+          </div>
+          <div className="column">
+            {images.col2.map((src, idx) => {
+              const globalIndex = col2Start + idx;
+              return (
+                <figure
+                  key={`c2-${idx}`}
+                  className="column__item"
+                  ref={(el) => {
+                    itemRefs.current[globalIndex] = el;
+                  }}
+                  onClick={() => handleItemClick(globalIndex)}
+                  aria-label={`Grid item ${globalIndex + 1}`}
+                >
+                  <div className="column__item-imgwrap">
+                    <div
+                      className="column__item-img"
+                      style={{ backgroundImage: `url(${src})` }}
+                    />
+                  </div>
+                </figure>
+              );
+            })}
+          </div>
+          <div className="column">
+            {images.col3.map((src, idx) => {
+              const globalIndex = col3Start + idx;
+              return (
+                <figure
+                  key={`c3-${idx}`}
+                  className="column__item"
+                  ref={(el) => {
+                    itemRefs.current[globalIndex] = el;
+                  }}
+                  onClick={() => handleItemClick(globalIndex)}
+                  aria-label={`Grid item ${globalIndex + 1}`}
+                >
+                  <div className="column__item-imgwrap">
+                    <div
+                      className="column__item-img"
+                      style={{ backgroundImage: `url(${src})` }}
+                    />
+                  </div>
+                </figure>
+              );
+            })}
+          </div>
         </div>
-    );
-}
-
-const playgroundItems: PlaygroundItem[] = [
-    {
-        id: "cinefatic",
-        image: "/images/play/Cinefatic Thumb.png",
-        bgColor: "rgba(203, 194, 255, 0.5)",
-        hoverBgColor: "rgba(213, 207, 255, 0.8)",
-        darkBgColor: "rgba(59, 31, 46, 0.7)",
-        darkHoverBgColor: "rgba(76, 42, 59, 0.9)",
-        alt: "Cinefatic Mobile App"
-    },
-    {
-        id: "cinefatic-web",
-        image: "/images/play/Cinefatic Web Thumb.png",
-        bgColor: "rgba(199, 210, 254, 0.5)",
-        hoverBgColor: "rgba(224, 231, 255, 0.8)",
-        darkBgColor: "rgba(55, 48, 163, 0.5)",
-        darkHoverBgColor: "rgba(67, 56, 202, 0.7)",
-        alt: "Cinefatic Web App"
-    },
-    {
-        id: "blog",
-        image: "/images/play/Blog.png",
-        bgColor: "rgba(254, 226, 179, 0.5)",
-        hoverBgColor: "rgba(255, 241, 221, 0.8)",
-        darkBgColor: "rgba(146, 64, 14, 0.5)",
-        darkHoverBgColor: "rgba(180, 83, 9, 0.7)",
-        alt: "Blog Website"
-    },
-    {
-        id: "gallery-app",
-        image: "/images/play/Gallleryapp.png",
-        bgColor: "rgba(221, 214, 254, 0.5)",
-        hoverBgColor: "rgba(233, 229, 255, 0.8)",
-        darkBgColor: "rgba(109, 40, 217, 0.4)",
-        darkHoverBgColor: "rgba(124, 58, 237, 0.6)",
-        alt: "Gallery App"
-    },
-    {
-        id: "picture-app",
-        image: "/images/play/pictureapp.png",
-        bgColor: "rgba(249, 199, 228, 0.5)",
-        hoverBgColor: "rgba(252, 219, 236, 0.8)",
-        darkBgColor: "rgba(131, 24, 67, 0.5)",
-        darkHoverBgColor: "rgba(157, 23, 77, 0.7)",
-        alt: "Picture App"
-    },
-    {
-        id: "job-portal",
-        image: "/images/play/jobapp.png",
-        bgColor: "rgba(254, 202, 202, 0.5)",
-        hoverBgColor: "rgba(254, 226, 226, 0.8)",
-        darkBgColor: "rgba(153, 27, 27, 0.5)",
-        darkHoverBgColor: "rgba(185, 28, 28, 0.7)",
-        alt: "Job Search App"
-    },
-    {
-        id: "inbounding",
-        image: "/images/play/inbounding.png",
-        bgColor: "rgba(186, 230, 253, 0.5)",
-        hoverBgColor: "rgba(224, 242, 254, 0.8)",
-        darkBgColor: "rgba(3, 105, 161, 0.5)",
-        darkHoverBgColor: "rgba(7, 89, 133, 0.7)",
-        alt: "Inbounding Website"
-    },
-    {
-        id: "techniax",
-        image: "/images/play/techniax.png",
-        bgColor: "rgba(167, 243, 208, 0.5)",
-        hoverBgColor: "rgba(209, 250, 229, 0.8)",
-        darkBgColor: "rgba(6, 78, 59, 0.5)",
-        darkHoverBgColor: "rgba(4, 120, 87, 0.7)",
-        alt: "Techniax Agency"
-    },
-    {
-        id: "profileapp",
-        image: "/images/play/Profile Thumb.png",
-        bgColor: "rgba(191, 219, 254, 0.5)",
-        hoverBgColor: "rgba(219, 234, 254, 0.8)",
-        darkBgColor: "rgba(30, 58, 138, 0.5)",
-        darkHoverBgColor: "rgba(30, 64, 175, 0.7)",
-        alt: "Profile Design"
-    },
-    {
-        id: "saas",
-        image: "/images/play/saasapp.png",
-        bgColor: "rgba(153, 246, 228, 0.5)",
-        hoverBgColor: "rgba(204, 251, 241, 0.8)",
-        darkBgColor: "rgba(17, 94, 89, 0.5)",
-        darkHoverBgColor: "rgba(15, 118, 110, 0.7)",
-        alt: "SaaS Dashboard"
-    }
-];
-
-function PlaygroundContent() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    // Create chunks of items for the alternating grid pattern
-    const firstRow = playgroundItems.slice(0, 2);
-    const secondRow = playgroundItems.slice(2, 5);
-    const thirdRow = playgroundItems.slice(5, 7);
-    const fourthRow = playgroundItems.slice(7, 10);
-
-    const handleCardClick = (index: number) => {
-        setCurrentImageIndex(index);
-        setModalOpen(true);
-    };
-
-    const handlePrevImage = () => {
-        setCurrentImageIndex((prev) => (prev - 1 + playgroundItems.length) % playgroundItems.length);
-    };
-
-    const handleNextImage = () => {
-        setCurrentImageIndex((prev) => (prev + 1) % playgroundItems.length);
-    };
-
-    const handleCloseModal = () => {
-        setModalOpen(false);
-    };
-
-    return (
-        <>
-            <div className="pt-24 md:pt-32 pb-16 mx-auto">
-                <div className="mb-12 md:mb-16">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-6">Playground</h1>
-                </div>
-
-                <div className="grid grid-cols-1 gap-8">
-                    <GridRow items={firstRow} columns={2} onCardClick={handleCardClick} />
-                    <GridRow items={secondRow} columns={3} onCardClick={handleCardClick} />
-                    <GridRow items={thirdRow} columns={2} onCardClick={handleCardClick} />
-                    <GridRow items={fourthRow} columns={3} onCardClick={handleCardClick} />
-                </div>
-            </div>
-
-            <ImageModal
-                isOpen={modalOpen}
-                onClose={handleCloseModal}
-                currentImage={getImagePath(playgroundItems[currentImageIndex].image)}
-                onPrev={handlePrevImage}
-                onNext={handleNextImage}
-            />
-
-            <Footer />
-        </>
-    );
-}
-
-export default function Playground() {
-    return (
-        <Suspense fallback={<div>Loading playground...</div>}>
-            <SearchParamsProvider>
-                <PlaygroundContent />
-            </SearchParamsProvider>
-        </Suspense>
-    );
+      </main>
+      <div className="max-w-[1120px] mx-auto px-4">
+        <Footer />
+      </div>
+    </div>
+  );
 } 

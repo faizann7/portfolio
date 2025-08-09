@@ -1,0 +1,74 @@
+.playgroundRoot {
+  --color-text: inherit;
+  --color-bg: transparent;
+  --color-link: inherit;
+  --color-link-hover: inherit;
+  --grid-item-translate: 0px;
+  --grid-item-ratio: 1;
+  --grid-item-radius: 20px;
+  --grid-gap: 1vw;
+  --grid-columns: 3;
+  --grid-width: 100%;
+  --grid-max-width: 1200px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.main {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.playground2 {}
+
+.playground2 :global(.columns) {
+  width: var(--grid-width);
+  max-width: var(--grid-max-width);
+  position: relative;
+  padding: 10vh 0;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
+}
+
+.playground2 :global(.column) {
+  width: 100%;
+  position: relative;
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: 100%;
+  will-change: transform;
+}
+
+.playground2 :global(.column__item) {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.playground2 :global(.column__item-imgwrap) {
+  width: 100%;
+  aspect-ratio: var(--grid-item-ratio);
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--grid-item-radius);
+}
+
+.playground2 :global(.column__item-img) {
+  position: absolute;
+  top: calc(-1 * var(--grid-item-translate));
+  left: calc(-1 * var(--grid-item-translate));
+  height: calc(100% + var(--grid-item-translate) * 2);
+  width: calc(100% + var(--grid-item-translate) * 2);
+  background-size: cover;
+  background-position: 50% 20%;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
