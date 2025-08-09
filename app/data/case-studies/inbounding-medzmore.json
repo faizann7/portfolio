@@ -1,0 +1,32 @@
+{
+  "id": "inbounding-medzmore",
+  "title": "Inbounding - MEDZnMORE",
+  "description": "Created a real-time data validation tool ensuring 99% accuracy and <0.5% errors",
+  "role": "Product Designer",
+  "duration": "2021",
+  "tools": "Figma, Sheets",
+  "platform": "Web app",
+  "team": "Product + Data Ops",
+  "problem": "MEDZnMORE needed a specialized tool to validate pharmaceutical inventory data with extremely high accuracy, as any errors could potentially affect patient safety.",
+  "whatIDid": "Worked with pharmacists to understand critical data points, designed step-by-step validation workflows, and created error prevention mechanisms.",
+  "keyResults": [
+    { "value": "99%", "label": "Data accuracy achieved" },
+    { "value": "<0.5%", "label": "Error rate achieved" }
+  ],
+  "overview": "Building a custom data validation system for medical supplies inventory.",
+  "overviewHeading": "Overview",
+  "goal": "Ensure near-perfect accuracy in inbounding workflows across teams.",
+  "sections": [
+    {
+      "title": "Designing for Reliability",
+      "content": [
+        { "type": "paragraph", "text": "Introduced guardrails like validation checks, warnings, and confirmations to reduce human error in high-throughput data entry." },
+        { "type": "image", "src": "/images/MEDZnMORE%20Thumb.png", "alt": "Inbounding tool", "width": 768, "height": 500, "fullWidth": false }
+      ]
+    }
+  ],
+  "results": "Data teams were able to consistently maintain high accuracy with improved confidence in the workflow.",
+  "finalScreens": [
+    { "title": "Inbounding Tool", "description": "Data validation workflow UI", "image": "/images/MEDZnMORE%20Thumb.png" }
+  ]
+} 

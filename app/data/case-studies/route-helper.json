@@ -1,0 +1,32 @@
+{
+  "id": "route-helper",
+  "title": "Route Helper - Retailo Technologies",
+  "description": "Overhauled route planning with real-time dashboards, cut planning time by 51%",
+  "role": "Product Designer",
+  "duration": "2021",
+  "tools": "Figma, Miro",
+  "platform": "Web app (SaaS)",
+  "team": "Product + Operations",
+  "problem": "Retailo Technologies needed a more efficient route planning system that could handle complex logistics operations while providing real-time insights to reduce planning time and improve delivery accuracy.",
+  "whatIDid": "Spent time with operations teams, structured information architecture for complex data, and created interactive prototypes that reduced route planning time.",
+  "keyResults": [
+    { "value": "51%", "label": "Reduction in planning time" },
+    { "value": "23%", "label": "Reduction in manual effort" }
+  ],
+  "overview": "Creating an intuitive dashboard for logistics route planning.",
+  "overviewHeading": "Overview",
+  "goal": "Reduce planning time while improving accuracy and team visibility.",
+  "sections": [
+    {
+      "title": "From Spreadsheets to Dashboards",
+      "content": [
+        { "type": "paragraph", "text": "Transformed manual, spreadsheet-based planning into a real-time dashboard with automated metrics and clear priorities." },
+        { "type": "image", "src": "/images/Pre%20Route%20Helper.png", "alt": "Route Helper dashboard", "width": 1400, "height": 800, "fullWidth": true }
+      ]
+    }
+  ],
+  "results": "Planning time reduced dramatically with better collaboration between ops and sales teams.",
+  "finalScreens": [
+    { "title": "Dashboard", "description": "Pre-Route planning dashboard", "image": "/images/Pre%20Route%20Helper.png" }
+  ]
+} 

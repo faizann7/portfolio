@@ -1,0 +1,95 @@
+{
+  "id": "swapp",
+  "title": "Swapp - Car Rental",
+  "description": "Improving booking conversion rate from 1.3 to 3%",
+  "role": "Product Designer",
+  "duration": "2022-Present",
+  "tools": "Figma, Principle, Analytics",
+  "platform": "Web + Mobile",
+  "team": "Product + Engineering",
+  "problem": "The existing car rental checkout process had high abandonment rates and complex user flows, leading to poor conversion rates and frustrated customers.",
+  "whatIDid": "Analyzed user drop-off points, redesigned the checkout flow with A/B testing, improved information hierarchy, and implemented a cleaner interface that increased conversion rates.",
+  "keyResults": [
+    { "value": "130%", "label": "Increase in conversion rates" },
+    { "value": "25%", "label": "Reduction in support inquiries" }
+  ],
+  "overview": "Redesigning the rental experience for both tenants and landlords to improve conversion rates and user satisfaction.",
+  "overviewHeading": "Overview",
+  "goal": "To redesign the car rental booking experience to increase conversion rates from 1.3% to 3% while maintaining a seamless user experience.",
+  "sections": [
+    {
+      "title": "The Challenge",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Swapp was experiencing low conversion rates in their car rental booking process. Users were dropping off at various points in the journey, leading to a conversion rate of only 1.3%."
+        },
+        {
+          "type": "paragraph",
+          "text": "The main issues identified were:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Complex booking flow with too many steps",
+            "Unclear pricing and availability information",
+            "Poor mobile experience",
+            "Lack of trust indicators"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Research & Analysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "I conducted user research to understand the pain points in the current booking experience. This included user interviews, analytics analysis, and competitive research."
+        },
+        {
+          "type": "image",
+          "src": "/images/swapp/research-insights.png",
+          "alt": "User research insights",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        }
+      ]
+    },
+    {
+      "title": "Design Solution",
+      "content": [
+        {
+          "type": "heading",
+          "text": "Simplified Booking Flow",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "I redesigned the booking flow to reduce the number of steps and make the process more intuitive."
+        },
+        {
+          "type": "image",
+          "src": "/images/swapp/booking-flow.png",
+          "alt": "New booking flow design",
+          "width": 1400,
+          "height": 800,
+          "fullWidth": true
+        }
+      ]
+    }
+  ],
+  "results": "The redesigned booking experience led to a significant improvement in conversion rates, achieving the target of 3% conversion rate. User satisfaction scores also improved by 40%.",
+  "finalScreens": [
+    {
+      "title": "Homepage",
+      "description": "Redesigned homepage with clear value proposition",
+      "image": "/images/swapp/homepage.png"
+    },
+    {
+      "title": "Booking Flow",
+      "description": "Streamlined booking process",
+      "image": "/images/swapp/booking.png"
+    }
+  ]
+} 

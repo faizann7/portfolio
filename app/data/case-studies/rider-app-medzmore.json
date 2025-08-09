@@ -1,0 +1,193 @@
+{
+  "id": "rider-app",
+  "title": "Rider App",
+  "description": "Shift Management for Tabiyat.pk Riders",
+  "role": "UX / Product Design",
+  "duration": "4 weeks",
+  "platform": "Mobile (Android)",
+  "team": "UX / Product Design",
+  "impact": "Anticipated improvements in punctuality, operational efficiency, and accessibility",
+  "tags": ["B2B", "Mobile App", "Accessibility", "Shift Scheduling", "Logistics"],
+  "problem": "Tabiyat.pk’s rider app was designed for ad-hoc trip assignments, causing missed deliveries, chaotic dispatching, and scalability issues.",
+  "whatIDid": "Conducted field research in rider warehouses, validated accessibility issues through outdoor usability testing, mapped rider journeys, and designed a high-contrast, shift-based scheduling system with clear break management",
+  "keyResults": [
+    { "value": "15s", "label": "Shift start — Riders started day in ~15 s during outdoor tests" },
+    { "value": "AA", "label": "Contrast outdoors — Key actions legible in direct sunlight" }
+  ],
+  "heroImage": "/images/riderapp/riderapp_heroimage.webp",
+  "overview": "Tabiyat.pk is a pharmacy delivery service in Pakistan, operated by MEDZnMORE. As the customer base grew, their existing rider app—initially designed around ad-hoc, trip-by-trip assignments—became hard to manage and scale effectively. Riders didn't have clear schedules, resulting in late deliveries and operational stress. I led the UX design initiative to transition from chaotic, on-demand trips to a structured, shift-based scheduling model, enhancing rider clarity, operational efficiency, and scalability.",
+  "goal": "We urgently needed a scalable, predictable shift system. Riders needed to clearly know when to start their day, eliminating confusion and minimizing delays.",
+  "sections": [
+    {
+      "title": "The Problem & Business Context",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "As Tabiyat.pk’s customer base rapidly expanded, the rider operations struggled to keep pace. The absence of a structured rider schedule led to significant operational problems:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Missed Deliveries: Riders didn’t have a clear \"clock-in\" time, resulting in late arrivals, frustrated customers, and damaged brand reputation.",
+            "Inefficient Dispatch: Managers scrambled to assign deliveries in real-time, causing bottlenecks, poor resource management, and unnecessary stress.",
+            "Poor Scalability: The existing ad-hoc approach couldn’t effectively handle sudden spikes in orders or increased rider numbers, limiting growth potential."
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/images/riderapp/Old Screen.png",
+          "alt": "Rider app",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        },
+        {
+          "type": "paragraph",
+          "text": "We urgently needed a scalable, predictable shift system. Riders needed to clearly know when to start their day, eliminating confusion and minimizing delays."
+        }
+      ]
+    },
+    {
+      "title": "Discovery & Key Insights",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Together with the product manager, I visited rider warehouses to observe users in real-world conditions, noting their interactions with the app in bright, loud, and busy environments."
+        },
+        {
+          "type": "paragraph",
+          "text": "This onsite research revealed several key insights:" 
+        },
+        { "type": "heading", "level": 3, "text": "No Clear Start Time" },
+        {
+          "type": "paragraph",
+          "text": "Riders logged hours but had no clear \"clock-in\" step. This ambiguity caused delays and confusion, negatively affecting on-time deliveries."
+        },
+        { "type": "heading", "level": 3, "text": "Last-Minute Chaos" },
+        {
+          "type": "paragraph",
+          "text": "Without pre-scheduled shifts, managers frantically assigned trips reactively, creating inefficiencies and rider frustration."
+        },
+        { "type": "heading", "level": 3, "text": "Accessibility Challenges & Hard-to-See UI" },
+        {
+          "type": "paragraph",
+          "text": "During my initial personal usage of the rider app, I formed a hypothesis that the existing primary brand color (#00ABE3) might not meet accessibility standards, especially in bright, outdoor environments where riders typically used the app."
+        },
+        {
+          "type": "paragraph",
+          "text": "To validate this, I performed quick, guerrilla-style usability tests during our warehouse visits. These tests involved riders interacting with various screens outdoors, allowing me to observe their behaviors in a natural setting without interference or bias."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Riders struggled to read small text and subtle UI elements due to poor color contrast.",
+            "Riders frequently overlooked text-heavy instructions, instead depending heavily on clear, prominent buttons and visual indicators.",
+            "Immediate visual cues indicating their shift status (e.g., whether they were on time or late) were critical to rider clarity."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Through this real-time testing, my hypothesis was confirmed: the brand’s original primary color failed WCAG contrast guidelines for outdoor readability. The app needed visual improvements to address these accessibility issues, ensuring it remained clearly usable under the actual working conditions of the riders."
+        },
+        { "type": "heading", "level": 3, "text": "Break-Time Confusion" },
+        {
+          "type": "paragraph",
+          "text": "Riders lacked clear and timely alerts about their break durations. Without straightforward reminders or visual cues, riders unintentionally exceeded breaks, resulting in penalties and disruptions to the overall delivery schedule."
+        }
+      ]
+    },
+    {
+      "title": "Design Approach",
+      "content": [
+        { "type": "heading", "level": 3, "text": "User Journeys & Wireframes" },
+        {
+          "type": "paragraph",
+          "text": "Mapped a clear, step-by-step rider journey—from arriving at the warehouse, clocking in for shifts, accepting new trips, to handling breaks. This helped ensure we designed realistic and intuitive user flows."
+        },
+        { "type": "heading", "level": 3, "text": "Rapid Sketching and Feedback" },
+        {
+          "type": "paragraph",
+          "text": "Quick, low-fidelity wireframes were created for key actions like “Start My Day,” “Take a Break,” and accepting trips. Short, iterative feedback sessions with operational managers ensured the language was simple, familiar, and actionable (e.g., “Start My Day” instead of “Mark Present”)."
+        },
+        { "type": "heading", "level": 3, "text": "Accessible & Actionable Visuals" },
+        {
+          "type": "paragraph",
+          "text": "Selected a high-contrast palette that’s easily readable outdoors. Shift statuses (on-time, late, break exceeded) were highlighted clearly through bold color choices, solving critical accessibility concerns identified during initial research."
+        },
+        { "type": "heading", "level": 3, "text": "Core Goals for the Design" },
+        {
+          "type": "list",
+          "items": [
+            "Simple shift-overview screens to clearly show daily schedules.",
+            "Intuitive buttons for clock-in actions, minimizing confusion and delays.",
+            "Enhanced readability for outdoor usage by adjusting color contrasts."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Final Design",
+      "content": [
+        { "type": "heading", "level": 3, "text": "Calendar & Shift Cards" },
+        {
+          "type": "paragraph",
+          "text": "The homepage clearly displays upcoming and current shifts, enabling riders to plan their day at a glance. The empty state provides clear, reassuring messaging if no shifts are available yet."
+        },
+        { "type": "image", "src": "/images/riderapp/Calendar.webp", "alt": "Calendar and shift cards", "width": 768, "height": 500, "fullWidth": false },
+        { "type": "heading", "level": 3, "text": "Clocking In (Start Your Day)" },
+        {
+          "type": "paragraph",
+          "text": "The \"Start your day\" action becomes available precisely 15 minutes before shifts, reducing confusion and late arrivals. Once riders confirm, they're taken directly into their shift overview, streamlining the process."
+        },
+        { "type": "image", "src": "/images/riderapp/clockin.webp", "alt": "Clocking in", "width": 768, "height": 500, "fullWidth": false },
+        { "type": "heading", "level": 3, "text": "Accepting New Trips" },
+        {
+          "type": "paragraph",
+          "text": "Riders receive timely alerts for new trips. Accepted trips appear neatly organized under clear categories such as \"Active Trips,\" \"Upcoming Trips,\" and \"Completed Trips,\" simplifying task management."
+        },
+        { "type": "image", "src": "/images/riderapp/newtrips.webp", "alt": "Accepting new trips", "width": 768, "height": 500, "fullWidth": false },
+        { "type": "heading", "level": 3, "text": "Break Management" },
+        {
+          "type": "paragraph",
+          "text": "Riders have a dedicated interface for managing their 15-minute breaks. Clear, visual countdowns inform riders exactly how long they’ve been on break, with explicit warnings about potential penalties for exceeding break time."
+        },
+        { "type": "image", "src": "/images/riderapp/break.webp", "alt": "Break management", "width": 768, "height": 500, "fullWidth": false }
+      ]
+    },
+    {
+      "title": "Results & Anticipated Outcomes",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Since the company ceased operations shortly after launching this feature, we didn’t have the chance to measure concrete results. However, based on our initial research and user validation, we anticipated the following improvements:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Improved rider punctuality through clearly communicated shift start times.",
+            "Reduced friction in daily tasks due to enhanced accessibility and visibility under bright sunlight.",
+            "Decreased confusion and operational bottlenecks, making it easier for managers to handle rider schedules and shifts."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reflection & Learnings",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "This project reinforced the critical role that real-world observation plays in product design. Observing riders on-site highlighted issues—such as accessibility gaps and overlooked usability challenges—that desk research alone would never surface."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Real-world visibility matters: Designing for harsh outdoor environments requires going beyond standard accessibility checks.",
+            "Talk less, watch more: Observing users at work provided richer insights than traditional surveys or interviews.",
+            "Don’t underestimate clarity: Simple language and intuitive visual cues greatly impact task completion and user satisfaction.",
+            "If I were to approach this again, I'd prioritize even earlier field observations and incorporate real-life environmental constraints sooner into our initial design decisions."
+          ]
+        }
+      ]
+    }
+  ]
+}

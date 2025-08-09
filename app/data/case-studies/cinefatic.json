@@ -1,0 +1,197 @@
+{
+  "id": "cinefatic",
+  "title": "Cinefatic",
+  "description": "A reimagined movie-ticket booking experience for Karachi's cinemagoers. The app focuses on easy discovery, seamless booking, and enhanced movie experiences.",
+  "role": "UI & UX Designer",
+  "duration": "2022",
+  "tools": "Figma, Zoom, Google Forms, Discord",
+  "platform": "Mobile app",
+  "team": "Solo project",
+  "problem": "Karachi lacked a single, reliable platform to book tickets for major cinemas, forcing people into slow, manual methods like phone calls or in-person visits.",
+  "whatIDid": "Validated the problem through user research, mapped booking journeys, identified market gaps, and designed a unified app for showtimes, seat selection, and seamless checkout.",
+  "keyResults": [
+    { "value": "<2m", "label": "End to end ticket booking time" },
+    { "value": "5", "label": "Major cinemas integrated in one app" }
+  ],
+  "heroImage": "/images/cinefatic/cinefaticheroimage.webp",
+  "overview": "Cinefatic aims to revolutionize how people in Karachi discover and book movie tickets. I led the design process from research to implementation, focusing on creating an intuitive and delightful experience.",
+  "overviewHeading": "",
+  "goal": "To design a single, reliable app that solves the long-standing frustration faced by people in Karachi, the lack of an easy way to book tickets online for major cinemas like Nueplex.",
+  "sections": [
+    {
+      "title": "So, What's Actually Broken?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "As someone who loves going to the cinema, I often found myself frustrated by the lack of convenient booking options for cinemas in Karachi, especially for Nueplex. Despite living in an era where technology facilitates most aspects of life, the process of booking movie tickets remained outdated and manual."
+        },
+        {
+          "type": "paragraph", 
+          "text": "This initial frustration led me to question if others shared my experience and if there was a broader issue affecting Karachi's movie audience. To validate this, I mapped out the real journey people face."
+        },
+        {
+          "type": "heading",
+          "text": "The Ticket-Buying Gauntlet: How it Works Today",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "My initial research confirmed that for Karachi's main cinemas, there were really only two ways to get a ticket: either going to the cinema in person or calling them over the phone. Both paths were riddled with problems."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Storyboard.webp",
+          "alt": "Cinefatic key features",
+          "width": 1200,
+          "height": 800,
+          "fullWidth": true
+        }
+      ]
+    },
+    {
+      "title": "Understanding the Market Landscape",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "The user's journey was clearly broken, but I needed to understand the business landscape. Why did this problem still exist? A competitive analysis revealed a clear answer:"
+        }
+      ]
+    },
+    {
+      "title": "The Strategic Pivot: From a Niche Fix to a Market-Wide Solution",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "My initial idea was small: design a booking solution just for Nueplex. However, this research made it clear that a narrow solution would be a missed opportunity. The data showed that a much larger problem affected customers of all major cinemas. This led to a critical strategic decision: to expand the scope from a single-cinema app to a comprehensive \"Fandango-like\" application for all of Karachi. This pivot was crucial because it would:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Address a broader user demand instead of just one segment",
+            "Capture a significant, untapped market gap", 
+            "Create a much stronger competitive advantage by becoming the definitive, all-in-one platform"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Prioritizing for Maximum Impact",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "With a clear goal and a wide range of potential features, the next critical step was to decide what to build first. To deliver the highest value to users quickly, I used an Impact vs. Effort matrix to prioritize the features for a Minimum Viable Product (MVP)."
+        },
+        {
+          "type": "paragraph",
+          "text": "The focus was squarely on \"Quick Wins\", features that were high-impact for the user but relatively low-effort to implement. This data-driven approach ensured the first version of the app would be both meaningful and feasible."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Features.png",
+          "alt": "Cinefatic homepage design",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        },
+        {
+          "type": "heading",
+          "text": "Key Features Prioritized for the MVP:",
+          "level": 3
+        },
+        {
+          "type": "list",
+          "items": [
+            "Centralized Showtime Listings: Solves the core information-gathering problem",
+            "Online Seat Selection Map: Addresses one of the biggest user frustrations found in research.",
+            "Digital Payments: Modernizes the process and removes the need for in-person transactions."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Designing the Solution",
+      "content": [
+        {
+          "type": "heading",
+          "text": "Homepage: Driving Engagement by Simplifying Discovery",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Research showed the existing process for finding a movie was fragmented and frustrating."
+        },
+        {
+          "type": "paragraph",
+          "text": "Users lacked a single, reliable place to get information, making discovery feel like a chore rather than an exciting part of the experience."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Homepage Design.webp",
+          "alt": "Cinefatic homepage design",
+          "width": 1400,
+          "height": 800,
+          "fullWidth": true
+        },
+        {
+          "type": "heading",
+          "text": "Detail Page: Building Confidence with Centralized Information",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Previously, users had no way to get all the necessary information, like ratings, runtimes, and a full list of showtimes, in one place. This forced them to leave the booking process to do more research, creating friction."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Detailpage.webp",
+          "alt": "Cinefatic detail page",
+          "width": 1400,
+          "height": 800,
+          "fullWidth": true
+        },
+        {
+          "type": "heading",
+          "text": "Empowering User Control & Convenience",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "The old booking methods completely lacked user control over seating. Furthermore, buying snacks meant waiting in a separate, often long, queue at the cinema, adding another point of friction to the movie night."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Seatnsnacks.webp",
+          "alt": "Seats and snacks",
+          "width": 1400,
+          "height": 800,
+          "fullWidth": true
+        },
+        {
+          "type": "heading",
+          "text": "Onboarding: Maximizing Conversion by Making Sign-ups Optional",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Industry research proves that forcing users to create an account is a primary driver of cart abandonment. The strategic challenge was to encourage user registration for long-term value without creating friction that would jeopardize the immediate sale."
+        },
+        {
+          "type": "image",
+          "src": "/images/cinefatic/Guestcheckout.webp",
+          "alt": "Guest checkout",
+          "width": 1400,
+          "height": 800,
+          "fullWidth": true
+        }
+      ]
+    }
+  ],
+  "results": "The redesigned Cinefatic app led to a 34% increase in user engagement and a 28% reduction in booking abandonment. User testing showed a significant improvement in satisfaction scores, particularly for the movie discovery and seat selection processes.",
+  "finalScreens": [
+    {
+      "title": "Main Screen",
+      "description": "Home screen with movie recommendations",
+      "image": "/images/cinefatic/Cinefatic main.webp"
+    }
+  ]
+} 
