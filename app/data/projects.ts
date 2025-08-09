@@ -51,18 +51,6 @@ export const projects: Project[] = [
         comingSoon: true
     },
     {
-        id: "inbounding-medzmore",
-        title: "Inbounding - MEDZnMORE",
-        subtitle: "Created a real-time data validation tool ensuring 99% accuracy and <0.5% errors",
-        summary: "Building a custom data validation system for medical supplies inventory.",
-        tags: ["Product Design", "SaaS", "B2B", "Web App", "Inventory Management", "Data Validation"],
-        image: `${basePath}/images/MEDZnMORE Thumb.png`,
-        year: "2021",
-        color: "var(--bg-cinefatic)",
-        hoverColor: "var(--bg-cinefatic-hover)",
-        comingSoon: true
-    },
-    {
         id: "rider-app-medzmore",
         title: "Rider App - MEDZnMORE",
         subtitle: "Last-mile delivery app for Tabiyat.pk with live tracking and optimized rider navigation",

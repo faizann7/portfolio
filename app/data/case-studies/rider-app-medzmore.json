@@ -133,7 +133,7 @@
           "type": "paragraph",
           "text": "The homepage clearly displays upcoming and current shifts, enabling riders to plan their day at a glance. The empty state provides clear, reassuring messaging if no shifts are available yet."
         },
-        { "type": "image", "src": "/images/riderapp/Calendar.webp", "alt": "Calendar and shift cards", "width": 768, "height": 500, "fullWidth": false },
+        { "type": "image", "src": "/images/riderapp/calendar.webp", "alt": "Calendar and shift cards", "width": 768, "height": 500, "fullWidth": false },
         { "type": "heading", "level": 3, "text": "Clocking In (Start Your Day)" },
         {
           "type": "paragraph",

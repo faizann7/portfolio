@@ -68,30 +68,32 @@ function HomeContent() {
           <TextReveal delay={1.0}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-1">
-                <WorkCard
-                  title={projects[0].title}
-                  subtitle={projects[0].subtitle}
-                  image={projects[0].image}
-                  link={`/work/${projects[0].id}`}
-                  tags={projects[0].tags}
-                  index={0}
-                  color={projects[0].color}
-                  hoverColor={projects[0].hoverColor}
-                  comingSoon={projects[0].comingSoon}
-                />
+                {(() => { const p = projects.find(p => p.id === 'cinefatic')!; return (
+                  <WorkCard
+                    title={p.title}
+                    subtitle={p.subtitle}
+                    image={p.image}
+                    link={`/work/${p.id}`}
+                    tags={p.tags}
+                    index={0}
+                    color={p.color}
+                    hoverColor={p.hoverColor}
+                    comingSoon={p.comingSoon}
+                  /> ); })()}
               </div>
               <div className="md:col-span-1">
-                <WorkCard
-                  title={projects[1].title}
-                  subtitle={projects[1].subtitle}
-                  image={projects[1].image}
-                  link={`/work/${projects[1].id}`}
-                  tags={projects[1].tags}
-                  index={1}
-                  color={projects[1].color}
-                  hoverColor={projects[1].hoverColor}
-                  comingSoon={projects[1].comingSoon}
-                />
+                {(() => { const p = projects.find(p => p.id === 'swapp')!; return (
+                  <WorkCard
+                    title={p.title}
+                    subtitle={p.subtitle}
+                    image={p.image}
+                    link={`/work/${p.id}`}
+                    tags={p.tags}
+                    index={1}
+                    color={p.color}
+                    hoverColor={p.hoverColor}
+                    comingSoon={p.comingSoon}
+                  /> ); })()}
               </div>
             </div>
           </TextReveal>
@@ -100,30 +102,32 @@ function HomeContent() {
           <TextReveal delay={1.2}>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <div className="md:col-span-3">
-                <WorkCard
-                  title={projects[2].title}
-                  subtitle={projects[2].subtitle}
-                  image={projects[2].image}
-                  link={`/work/${projects[2].id}`}
-                  tags={projects[2].tags}
-                  index={2}
-                  color={projects[2].color}
-                  hoverColor={projects[2].hoverColor}
-                  comingSoon={projects[2].comingSoon}
-                />
+                {(() => { const p = projects.find(p => p.id === 'route-helper')!; return (
+                  <WorkCard
+                    title={p.title}
+                    subtitle={p.subtitle}
+                    image={p.image}
+                    link={`/work/${p.id}`}
+                    tags={p.tags}
+                    index={2}
+                    color={p.color}
+                    hoverColor={p.hoverColor}
+                    comingSoon={p.comingSoon}
+                  /> ); })()}
               </div>
               <div className="md:col-span-2">
-                <WorkCard
-                  title={projects[4].title}
-                  subtitle={projects[4].subtitle}
-                  image={projects[4].image}
-                  link={`/work/${projects[4].id}`}
-                  tags={projects[4].tags}
-                  index={3}
-                  color={projects[4].color}
-                  hoverColor={projects[4].hoverColor}
-                  comingSoon={projects[4].comingSoon}
-                />
+                {(() => { const p = projects.find(p => p.id === 'rider-app-medzmore')!; return (
+                  <WorkCard
+                    title={p.title}
+                    subtitle={p.subtitle}
+                    image={p.image}
+                    link={`/work/${p.id}`}
+                    tags={p.tags}
+                    index={3}
+                    color={p.color}
+                    hoverColor={p.hoverColor}
+                    comingSoon={p.comingSoon}
+                  /> ); })()}
               </div>
             </div>
           </TextReveal>

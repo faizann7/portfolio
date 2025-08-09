@@ -6,13 +6,9 @@ import { loadCaseStudyData, CaseStudyData } from "../../utils/caseStudyLoader";
 
 // Add generateStaticParams function to specify all possible project values
 export async function generateStaticParams() {
-    return [
-        { project: "cinefatic" },
-        { project: "swapp" },
-        { project: "route-helper" },
-        { project: "inbounding-medzmore" },
-        { project: "rider-app-medzmore" }
-    ];
+    // Only generate pages for active (non-coming soon) projects
+    const active = projects.filter((p) => !p.comingSoon);
+    return active.map((p) => ({ project: p.id }));
 }
 
 // Updated PageProps interface to match Next.js App Router expectations
@@ -30,6 +26,11 @@ export default async function ProjectPage({ params }: PageProps) {
     const project = projects.find((p) => p.id === projectId);
 
     if (!project) {
+        notFound();
+    }
+
+    // Disallow direct access to coming soon projects
+    if (project.comingSoon) {
         notFound();
     }
 
