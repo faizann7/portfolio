@@ -27,10 +27,15 @@ export default function StackedWorkCards({ currentProjectId }: StackedWorkCardsP
 
   return (
     <div className="pt-2" ref={containerRef}>
-      
+      {/* Heading placed outside sticky flow to avoid overlap */}
+      <div className="mx-auto text-center mb-4 relative z-10" style={{ maxWidth: '768px' }}>
+        <h2 className="text-3xl font-bold">- view other work</h2>
+      </div>
+      {/* Spacer so the first sticky card doesn't cover the heading */}
+      <div className="h-12 md:h-16" />
 
       {/* Stacking, sticky cards inspired by Olivier Larose's pattern */}
-      <div className="relative">
+      <div className="relative z-0">
         {displayProjects.map((p, i) => {
           const targetScale = 1 - (displayProjects.length - i) * 0.04;
           const start = i * (1 / displayProjects.length);
@@ -38,7 +43,7 @@ export default function StackedWorkCards({ currentProjectId }: StackedWorkCardsP
           const scale = useTransform(scrollYProgress, range, [1, targetScale]);
 
           return (
-            <div key={p.id} className="h-[60vh] flex items-center justify-center sticky top-24">
+            <div key={p.id} className="h-[60vh] flex items-center justify-center sticky top-32">
               <motion.div
                 style={{ scale, top: `calc(-6vh + ${i * 24}px)` }}
                 className="relative origin-top w-[min(900px,92vw)]"

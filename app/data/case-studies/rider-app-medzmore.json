@@ -14,7 +14,7 @@
     { "value": "15s", "label": "Shift start — Riders started day in ~15 s during outdoor tests" },
     { "value": "AA", "label": "Contrast outdoors — Key actions legible in direct sunlight" }
   ],
-  "heroImage": "/images/riderapp/riderapp_heroimage.webp",
+  "heroImage": "/images/riderapp/riderappheroimage.webp",
   "overview": "Tabiyat.pk is a pharmacy delivery service in Pakistan, operated by MEDZnMORE. As the customer base grew, their existing rider app—initially designed around ad-hoc, trip-by-trip assignments—became hard to manage and scale effectively. Riders didn't have clear schedules, resulting in late deliveries and operational stress. I led the UX design initiative to transition from chaotic, on-demand trips to a structured, shift-based scheduling model, enhancing rider clarity, operational efficiency, and scalability.",
   "goal": "We urgently needed a scalable, predictable shift system. Riders needed to clearly know when to start their day, eliminating confusion and minimizing delays.",
   "sections": [
