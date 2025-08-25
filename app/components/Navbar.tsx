@@ -55,7 +55,7 @@ export default function Navbar() {
         { href: "/#work", label: "work" },
         { href: "/playground", label: "playground" },
         { href: "/about", label: "about" },
-        { href: "https://drive.google.com/file/d/1vPWe3o9xRmlmzUq4PdGSKXmd7-zHPhVa/view?usp=sharing", label: "resume", isExternal: true },
+        { href: "https://drive.google.com/file/d/1_TDOryfI7Ij6o_ivQGHiSUrZ6NuHOxzo/view?usp=sharing", label: "resume", isExternal: true },
     ];
 
     return (
