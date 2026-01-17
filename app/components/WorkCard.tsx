@@ -15,6 +15,7 @@ interface WorkCardProps {
     color?: string;
     hoverColor?: string;
     comingSoon?: boolean;
+    isProtected?: boolean;
 }
 
 const WorkCard = ({
@@ -26,7 +27,8 @@ const WorkCard = ({
     index,
     color = "var(--card-bg)",
     hoverColor = "var(--card-hover-bg)",
-    comingSoon = false
+    comingSoon = false,
+    isProtected = false
 }: WorkCardProps) => {
     // Extract or use the color values correctly
     const getBgColor = (colorValue: string) => {
@@ -81,8 +83,13 @@ const WorkCard = ({
                 />
                 <div className="pt-6 px-6 h-full flex flex-col relative z-10">
                     <div className="mb-auto">
-                        <div className="flex items-center mb-2">
+                        <div className="flex items-center gap-2 mb-2">
                             <h3 className="text-2xl font-medium">{title}</h3>
+                            {isProtected && (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-50">
+                                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                </svg>
+                            )}
                         </div>
                         <p className="text-lg mb-4">{subtitle}</p>
                     </div>

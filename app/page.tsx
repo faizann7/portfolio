@@ -68,32 +68,38 @@ function HomeContent() {
           <TextReveal delay={1.0}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-1">
-                {(() => { const p = projects.find(p => p.id === 'cinefatic')!; return (
-                  <WorkCard
-                    title={p.title}
-                    subtitle={p.subtitle}
-                    image={p.image}
-                    link={`/work/${p.id}`}
-                    tags={p.tags}
-                    index={0}
-                    color={p.color}
-                    hoverColor={p.hoverColor}
-                    comingSoon={p.comingSoon}
-                  /> ); })()}
+                {(() => {
+                  const p = projects.find(p => p.id === 'cinefatic')!; return (
+                    <WorkCard
+                      title={p.title}
+                      subtitle={p.subtitle}
+                      image={p.image}
+                      link={`/work/${p.id}`}
+                      tags={p.tags}
+                      index={0}
+                      color={p.color}
+                      hoverColor={p.hoverColor}
+                      comingSoon={p.comingSoon}
+                      isProtected={p.isProtected}
+                    />);
+                })()}
               </div>
               <div className="md:col-span-1">
-                {(() => { const p = projects.find(p => p.id === 'swapp')!; return (
-                  <WorkCard
-                    title={p.title}
-                    subtitle={p.subtitle}
-                    image={p.image}
-                    link={`/work/${p.id}`}
-                    tags={p.tags}
-                    index={1}
-                    color={p.color}
-                    hoverColor={p.hoverColor}
-                    comingSoon={p.comingSoon}
-                  /> ); })()}
+                {(() => {
+                  const p = projects.find(p => p.id === 'swapp')!; return (
+                    <WorkCard
+                      title={p.title}
+                      subtitle={p.subtitle}
+                      image={p.image}
+                      link={`/work/${p.id}`}
+                      tags={p.tags}
+                      index={1}
+                      color={p.color}
+                      hoverColor={p.hoverColor}
+                      comingSoon={p.comingSoon}
+                      isProtected={p.isProtected}
+                    />);
+                })()}
               </div>
             </div>
           </TextReveal>
@@ -102,32 +108,38 @@ function HomeContent() {
           <TextReveal delay={1.2}>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <div className="md:col-span-3">
-                {(() => { const p = projects.find(p => p.id === 'route-helper')!; return (
-                  <WorkCard
-                    title={p.title}
-                    subtitle={p.subtitle}
-                    image={p.image}
-                    link={`/work/${p.id}`}
-                    tags={p.tags}
-                    index={2}
-                    color={p.color}
-                    hoverColor={p.hoverColor}
-                    comingSoon={p.comingSoon}
-                  /> ); })()}
+                {(() => {
+                  const p = projects.find(p => p.id === 'route-helper')!; return (
+                    <WorkCard
+                      title={p.title}
+                      subtitle={p.subtitle}
+                      image={p.image}
+                      link={`/work/${p.id}`}
+                      tags={p.tags}
+                      index={2}
+                      color={p.color}
+                      hoverColor={p.hoverColor}
+                      comingSoon={p.comingSoon}
+                      isProtected={p.isProtected}
+                    />);
+                })()}
               </div>
               <div className="md:col-span-2">
-                {(() => { const p = projects.find(p => p.id === 'rider-app-medzmore')!; return (
-                  <WorkCard
-                    title={p.title}
-                    subtitle={p.subtitle}
-                    image={p.image}
-                    link={`/work/${p.id}`}
-                    tags={p.tags}
-                    index={3}
-                    color={p.color}
-                    hoverColor={p.hoverColor}
-                    comingSoon={p.comingSoon}
-                  /> ); })()}
+                {(() => {
+                  const p = projects.find(p => p.id === 'rider-app-medzmore')!; return (
+                    <WorkCard
+                      title={p.title}
+                      subtitle={p.subtitle}
+                      image={p.image}
+                      link={`/work/${p.id}`}
+                      tags={p.tags}
+                      index={3}
+                      color={p.color}
+                      hoverColor={p.hoverColor}
+                      comingSoon={p.comingSoon}
+                      isProtected={p.isProtected}
+                    />);
+                })()}
               </div>
             </div>
           </TextReveal>

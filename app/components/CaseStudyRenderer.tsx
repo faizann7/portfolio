@@ -33,7 +33,7 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
           {content.text}
         </p>
       );
-    
+
     case 'heading':
       const HeadingTag = `h${content.level || 3}` as keyof JSX.IntrinsicElements;
       return (
@@ -41,12 +41,12 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
           {content.text}
         </HeadingTag>
       );
-    
+
     case 'image':
       if (!content.src) return null;
-      
+
       const processedSrc = getImagePath(content.src);
-      
+
       if (content.fullWidth) {
         // Full width image (viewport width)
         return (
@@ -80,7 +80,7 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
           </div>
         );
       }
-    
+
     case 'list':
       if (!content.items) return null;
       return (
@@ -92,7 +92,7 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
           ))}
         </ul>
       );
-    
+
     default:
       return null;
   }

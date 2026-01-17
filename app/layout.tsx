@@ -89,102 +89,17 @@ export default function RootLayout({
         />
 
         {/* Font preloading with GitHub Pages-aware paths */}
-        <link
-          rel="preload"
-          href={bookFontUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={mediumFontUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={boldFontUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={garamondFontUrl}
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={garamondItalicFontUrl}
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+        <link rel="preload" href={bookFontUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={mediumFontUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={boldFontUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={garamondFontUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href={garamondItalicFontUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
 
-        {/* Add Poly font preloads */}
-        <link
-          rel="preload"
-          href={polySlimUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={polyNeutralUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={polyMedianUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href={polyBulkyUrl}
-          as="font"
-          type="font/woff"
-          crossOrigin="anonymous"
-        />
-
-        {/* GitHub Pages Specific: Inline script to fix font loading issues in production */}
-        <Script id="font-loading-fix" strategy="beforeInteractive">
-          {`
-            // This script helps preload fonts with the correct paths in production
-            (function() {
-              const fontFiles = [
-                'CircularStd-Book.woff', 
-                'CircularStd-Medium.woff', 
-                'CircularStd-Bold.woff',
-                'EBGaramond-VariableFont_wght.woff2',
-                'EBGaramond-Italic-VariableFont_wght.woff2',
-                'headings/poly-slim.woff',
-                'headings/poly-neutral.woff',
-                'headings/poly-median.woff',
-                'headings/poly-bulky.woff'
-              ];
-              const prefix = window.location.hostname.includes('github.io') ? '/portfolio' : '';
-              
-              fontFiles.forEach(function(file) {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.href = prefix + '/fonts/' + file;
-                link.as = 'font';
-                link.type = file.endsWith('.woff2') ? 'font/woff2' : 'font/woff';
-                link.crossOrigin = 'anonymous';
-                document.head.appendChild(link);
-              });
-            })();
-          `}
-        </Script>
+        {/* Poly font preloads */}
+        <link rel="preload" href={polySlimUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={polyNeutralUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={polyMedianUrl} as="font" type="font/woff" crossOrigin="anonymous" />
+        <link rel="preload" href={polyBulkyUrl} as="font" type="font/woff" crossOrigin="anonymous" />
 
         {/* Hotjar Tracking Code */}
         <Script id="hotjar-tracking" strategy="afterInteractive">

@@ -9,6 +9,7 @@ export interface Project {
     color: string;
     hoverColor: string;
     comingSoon?: boolean;
+    isProtected?: boolean;
 }
 
 // The base path for GitHub Pages
@@ -36,7 +37,7 @@ export const projects: Project[] = [
         year: "2022-Present",
         color: "var(--bg-swapp)",
         hoverColor: "var(--bg-swapp-hover)",
-        comingSoon: true
+        isProtected: true
     },
     {
         id: "route-helper",

@@ -60,6 +60,7 @@ export default function StackedWorkCards({ currentProjectId }: StackedWorkCardsP
                     color={p.color}
                     hoverColor={p.hoverColor}
                     comingSoon={p.comingSoon}
+                    isProtected={p.isProtected}
                   />
                 </div>
               </motion.div>
