@@ -272,7 +272,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
         <Suspense fallback={<div>Loading project...</div>}>
             <SearchParamsProvider>
                 {project.isProtected ? (
-                    <PasswordGate>
+                    <PasswordGate projectId={projectId}>
                         {content}
                     </PasswordGate>
                 ) : (

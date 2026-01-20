@@ -1,3 +1,5 @@
+import { THEME } from './portfolio-config';
+
 export interface Project {
     id: string;
     title: string;
@@ -22,10 +24,10 @@ export const projects: Project[] = [
         subtitle: "Reimagined Karachi's movie-ticket booking experience",
         summary: "Leading the UX/UI design for a revolutionary movie booking app in Karachi.",
         tags: ["Mobile App", "UX Design", "Ticketing", "Entertainment"],
-        image: `${basePath}/images/cinefaticthumb.png`,
+        image: THEME.projects.cinefatic.image,
         year: "2023",
-        color: "var(--bg-cinefatic)",
-        hoverColor: "var(--bg-cinefatic-hover)"
+        color: THEME.projects.cinefatic.bg,
+        hoverColor: THEME.projects.cinefatic.hover,
     },
     {
         id: "swapp",
@@ -33,10 +35,10 @@ export const projects: Project[] = [
         subtitle: "Improving booking conversion rate from 1.3 to 3%",
         summary: "Redesigning the rental experience for both tenants and landlords.",
         tags: ["Mobile App", "UX Design", "Car Rental", "Conversion Rate"],
-        image: `${basePath}/images/Swapp Thumb.png`,
+        image: THEME.projects.swapp.image,
         year: "2022-Present",
-        color: "var(--bg-swapp)",
-        hoverColor: "var(--bg-swapp-hover)",
+        color: THEME.projects.swapp.bg,
+        hoverColor: THEME.projects.swapp.hover,
         isProtected: true
     },
     {
@@ -45,10 +47,10 @@ export const projects: Project[] = [
         subtitle: "Overhauled route planning with real-time dashboards, cut planning time by 51%",
         summary: "Creating an intuitive dashboard for logistics route planning.",
         tags: ["Product Design", "SaaS", "B2B", "Web App", "Route Optimization", "Logistics"],
-        image: `${basePath}/images/Pre Route Helper.png`,
+        image: THEME.projects['route-helper'].image,
         year: "2021",
-        color: "var(--bg-retailo)",
-        hoverColor: "var(--bg-retailo-hover)",
+        color: THEME.projects['route-helper'].bg,
+        hoverColor: THEME.projects['route-helper'].hover,
         comingSoon: true
     },
     {
@@ -57,9 +59,22 @@ export const projects: Project[] = [
         subtitle: "Last-mile delivery app for Tabiyat.pk with live tracking and optimized rider navigation",
         summary: "Designing a mobile app for delivery riders to optimize routes and track orders.",
         tags: ["Mobile App", "Operations", "Fleet Management", "Delivery"],
-        image: `${basePath}/images/Rider App Thumb.png`,
+        image: THEME.projects['rider-app-medzmore'].image,
         year: "2020",
-        color: "var(--bg-rider-app)",
-        hoverColor: "var(--bg-rider-app-hover)"
+        color: THEME.projects['rider-app-medzmore'].bg,
+        hoverColor: THEME.projects['rider-app-medzmore'].hover,
+    },
+    {
+        id: "swapp-payments",
+        title: "Swapp - Payments",
+        subtitle: "Enterprise payment orchestration and settlement system",
+        summary: "Designing a seamless payment and settlement platform for the car rental ecosystem.",
+        tags: ["Fintech", "Product Design", "Payments", "Dashboard"],
+        image: THEME.projects['swapp-payments'].image,
+        year: "2024",
+        color: THEME.projects['swapp-payments'].bg,
+        hoverColor: THEME.projects['swapp-payments'].hover,
+        comingSoon: true,
+        isProtected: true
     }
-]; 
+];

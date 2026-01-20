@@ -12,6 +12,7 @@ import FluidSimulation from "./components/fluid-simulation";
 import Toast from "./components/Toast";
 import TextReveal from "./components/TextReveal";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import Explorations from "./components/Explorations";
 
 function HomeContent() {
   const [showToast, setShowToast] = useState(false);
@@ -64,12 +65,12 @@ function HomeContent() {
         </TextReveal>
 
         <div className="grid grid-cols-1 gap-6">
-          {/* Row 1: 50% 50% - Cinefatic and Swapp */}
+          {/* Row 1: 50% 50% - Swapp Car Rental and Swapp Payments */}
           <TextReveal delay={1.0}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-1">
                 {(() => {
-                  const p = projects.find(p => p.id === 'cinefatic')!; return (
+                  const p = projects.find(p => p.id === 'swapp')!; return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}
@@ -86,7 +87,7 @@ function HomeContent() {
               </div>
               <div className="md:col-span-1">
                 {(() => {
-                  const p = projects.find(p => p.id === 'swapp')!; return (
+                  const p = projects.find(p => p.id === 'swapp-payments')!; return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}
@@ -145,6 +146,8 @@ function HomeContent() {
           </TextReveal>
         </div>
       </div>
+
+      <Explorations />
 
       <Footer />
       <Toast
