@@ -67,7 +67,7 @@ export const projects: Project[] = [
     {
         id: "swapp-payments",
         title: "Swapp - Payments",
-        subtitle: "Enterprise payment orchestration and settlement system",
+        subtitle: "Restoring financial trust to reduce payment disputes by 72%",
         summary: "Designing a seamless payment and settlement platform for the car rental ecosystem.",
         tags: ["Fintech", "Product Design", "Payments", "Dashboard"],
         image: THEME.projects['swapp-payments'].image,
