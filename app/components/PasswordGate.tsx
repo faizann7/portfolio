@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, Lock, Mail, Linkedin } from "lucide-react";
-import ScribbleLink from "./ScribbleLink";
 import StackedWorkCards from "./StackedWorkCards";
 import Toast from "./Toast";
 
