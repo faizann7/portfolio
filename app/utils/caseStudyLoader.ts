@@ -5,10 +5,14 @@ export interface CaseStudyData {
   id: string;
   title: string;
   description: string;
+  mainHeadline?: string;
+  subtitle?: string;
+  prototypeUrl?: string;
+  tldrUrl?: string;
   role: string;
   duration: string;
   tools: string;
-  overview: string;
+  overview?: string;
   overviewHeading?: string;
   goal?: string;
   // Snapshot fields (optional)
@@ -19,6 +23,24 @@ export interface CaseStudyData {
   keyResults?: Array<{ value: string; label: string }>;
   // Hero image (optional)
   heroImage?: string;
+  tldr?: {
+    title: string;
+    readTime?: string;
+    roleTitle: string;
+    roleSubtitle?: string;
+    collaboration?: string;
+    timelineTitle: string;
+    timelineSubtitle?: string;
+    deliverables?: string;
+    impactStat: string;
+    impactLabel: string;
+    frictionTitle: string;
+    frictionDescription: string;
+    userPerception?: string;
+    strategyTitle: string;
+    strategyDescription: string;
+    strategyVisual?: string;
+  };
   sections: CaseStudySection[];
   results: string;
   finalScreens: FinalScreen[];
@@ -30,7 +52,7 @@ export interface CaseStudySection {
 }
 
 export interface CaseStudyContent {
-  type: 'paragraph' | 'heading' | 'image' | 'list';
+  type: 'paragraph' | 'heading' | 'image' | 'list' | 'feature_grid';
   text?: string;
   level?: number;
   src?: string;
@@ -38,7 +60,7 @@ export interface CaseStudyContent {
   width?: number;
   height?: number;
   fullWidth?: boolean;
-  items?: string[];
+  items?: string[] | { title: string; text: string; icon?: string }[];
 }
 
 export interface FinalScreen {

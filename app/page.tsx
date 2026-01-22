@@ -70,7 +70,9 @@ function HomeContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-1">
                 {(() => {
-                  const p = projects.find(p => p.id === 'swapp')!; return (
+                  const p = projects.find(p => p.id === 'swapp');
+                  if (!p) return null;
+                  return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}
@@ -87,7 +89,9 @@ function HomeContent() {
               </div>
               <div className="md:col-span-1">
                 {(() => {
-                  const p = projects.find(p => p.id === 'swapp-payments')!; return (
+                  const p = projects.find(p => p.id === 'swapp-payments');
+                  if (!p) return null;
+                  return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}
@@ -105,12 +109,14 @@ function HomeContent() {
             </div>
           </TextReveal>
 
-          {/* Row 2: 60% 40% - Route Helper and Rider App */}
+          {/* Row 2: 60% 40% - Retailo and Rider App */}
           <TextReveal delay={1.2}>
             <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <div className="md:col-span-3">
                 {(() => {
-                  const p = projects.find(p => p.id === 'route-helper')!; return (
+                  const p = projects.find(p => p.id === 'route-helper');
+                  if (!p) return null;
+                  return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}
@@ -127,7 +133,9 @@ function HomeContent() {
               </div>
               <div className="md:col-span-2">
                 {(() => {
-                  const p = projects.find(p => p.id === 'rider-app-medzmore')!; return (
+                  const p = projects.find(p => p.id === 'rider-app-medzmore');
+                  if (!p) return null;
+                  return (
                     <WorkCard
                       title={p.title}
                       subtitle={p.subtitle}

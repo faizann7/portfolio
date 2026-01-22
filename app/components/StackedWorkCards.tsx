@@ -11,7 +11,7 @@ type StackedWorkCardsProps = {
 
 export default function StackedWorkCards({ currentProjectId }: StackedWorkCardsProps) {
   const displayProjects = useMemo(
-    () => projects.filter((p) => p.id !== currentProjectId),
+    () => projects.filter((p) => p.id !== currentProjectId && !p.comingSoon),
     [currentProjectId]
   );
   const containerRef = useRef<HTMLDivElement | null>(null);

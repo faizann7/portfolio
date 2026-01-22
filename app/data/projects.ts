@@ -12,23 +12,13 @@ export interface Project {
     hoverColor: string;
     comingSoon?: boolean;
     isProtected?: boolean;
+    isConceptual?: boolean;
 }
 
 // The base path for GitHub Pages
 const basePath = process.env.NODE_ENV === 'production' ? '/portfolio' : '';
 
 export const projects: Project[] = [
-    {
-        id: "cinefatic",
-        title: "Cinefatic",
-        subtitle: "Reimagined Karachi's movie-ticket booking experience",
-        summary: "Leading the UX/UI design for a revolutionary movie booking app in Karachi.",
-        tags: ["Mobile App", "UX Design", "Ticketing", "Entertainment"],
-        image: THEME.projects.cinefatic.image,
-        year: "2023",
-        color: THEME.projects.cinefatic.bg,
-        hoverColor: THEME.projects.cinefatic.hover,
-    },
     {
         id: "swapp",
         title: "Swapp - Car Rental",
@@ -39,7 +29,31 @@ export const projects: Project[] = [
         year: "2022-Present",
         color: THEME.projects.swapp.bg,
         hoverColor: THEME.projects.swapp.hover,
-        isProtected: true
+        comingSoon: true,
+    },
+    {
+        id: "swapp-payments",
+        title: "Swapp Payments",
+        subtitle: "How we reduced payments-related confusion by 72% with a unified financial transparency system",
+        summary: "Redesigning the financial experience for Swapp, a car rental platform in the Careem super app.",
+        tags: ["Product Design", "Fintech", "UX Research", "Mobile App"],
+        image: THEME.projects['swapp-payments'].image,
+        year: "2023",
+        color: THEME.projects['swapp-payments'].bg,
+        hoverColor: THEME.projects['swapp-payments'].hover,
+        isProtected: true,
+    },
+    {
+        id: "cinefatic",
+        title: "Cinefatic",
+        subtitle: "Reimagined Karachi's movie-ticket booking experience",
+        summary: "Leading the UX/UI design for a revolutionary movie booking app in Karachi.",
+        tags: ["Mobile App", "UX Design", "Ticketing", "Entertainment"],
+        image: THEME.projects.cinefatic.image,
+        year: "2023",
+        color: THEME.projects.cinefatic.bg,
+        hoverColor: THEME.projects.cinefatic.hover,
+        isConceptual: true
     },
     {
         id: "route-helper",
@@ -51,7 +65,7 @@ export const projects: Project[] = [
         year: "2021",
         color: THEME.projects['route-helper'].bg,
         hoverColor: THEME.projects['route-helper'].hover,
-        comingSoon: true
+        comingSoon: true,
     },
     {
         id: "rider-app-medzmore",
@@ -63,18 +77,5 @@ export const projects: Project[] = [
         year: "2020",
         color: THEME.projects['rider-app-medzmore'].bg,
         hoverColor: THEME.projects['rider-app-medzmore'].hover,
-    },
-    {
-        id: "swapp-payments",
-        title: "Swapp - Payments",
-        subtitle: "Enterprise payment orchestration and settlement system",
-        summary: "Designing a seamless payment and settlement platform for the car rental ecosystem.",
-        tags: ["Fintech", "Product Design", "Payments", "Dashboard"],
-        image: THEME.projects['swapp-payments'].image,
-        year: "2024",
-        color: THEME.projects['swapp-payments'].bg,
-        hoverColor: THEME.projects['swapp-payments'].hover,
-        comingSoon: true,
-        isProtected: true
     }
 ];

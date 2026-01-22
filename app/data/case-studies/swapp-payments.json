@@ -1,0 +1,232 @@
+{
+    "id": "swapp-payments",
+    "title": "Swapp Payments",
+    "mainHeadline": "Restoring financial trust to reduce payment disputes by 72%",
+    "subtitle": "How we reduced payments-related confusion by 72% with a unified financial transparency system",
+    "heroImage": "/images/paymentsthumb.png",
+    "prototypeUrl": "https://figma.com/...",
+    "tldrUrl": "#tldr",
+    "role": "Lead Product Designer",
+    "duration": "4 Months",
+    "tools": "Figma, Analytics, User Research",
+    "results": "72% reduction in payment-related confusion and a significant drop in support tickets.",
+    "tldr": {
+        "title": "Project snapshot",
+        "roleTitle": "Lead Product Designer",
+        "roleSubtitle": "Solo contributor (Payments)",
+        "collaboration": "Worked with 1 PM & 2 Engineers",
+        "timelineTitle": "6 Weeks",
+        "timelineSubtitle": "From concept to shipping",
+        "deliverables": "Info Architecture, System Design",
+        "impactStat": "72%",
+        "impactLabel": "Reduction in disputes",
+        "frictionTitle": "The friction: \"Ambiguous billing\"",
+        "frictionDescription": "Dubai traffic fines take 14 days to process. The original app was silent about this delay, causing unexpected charges to appear weeks later.",
+        "userPerception": "User perception: \"This app is scamming me.\"",
+        "strategyTitle": "The strategy: \"Traceable history\"",
+        "strategyDescription": "We moved from a static receipt model to a dynamic Financial Ledger. By unbundling payment history, we gave every charge a clear source.",
+        "strategyVisual": "Receipt -> Traceable ledger"
+    },
+    "sections": [
+        {
+            "title": "Context",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "text": "Swapp is a car rental platform embedded within the Careem Super App, serving both short-term renters and long-term subscribers in the UAE. While the booking journey is seamless, the financial lifecycle of a rental in this market is uniquely complex."
+                },
+                {
+                    "type": "heading",
+                    "text": "The challenge",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "In Dubai, the cost of a rental isn't just the booking fee. It is a continuous stream of operational charges: Salik (tolls), traffic fines, and parking penalties. The friction lies in the data chain, as these charges are rarely real-time."
+                },
+                {
+                    "type": "feature_grid",
+                    "fullWidth": true,
+                    "items": [
+                        {
+                            "title": "The delay",
+                            "text": "Tolls take ~24 hours to process, while traffic fines can take up to 14-30 days to travel from the Police to the Fleet Supplier, and finally to Swapp.",
+                            "icon": "Clock"
+                        },
+                        {
+                            "title": "The markup",
+                            "text": "Even valid charges can look unfamiliar when they appear later, posted with added processing/handling components that change the total.",
+                            "icon": "Coins"
+                        },
+                        {
+                            "title": "The \"rolling debt\"",
+                            "text": "A user on a 6-month subscription could be in Month 3 and suddenly receive a bill for a violation from Month 1.",
+                            "icon": "TrendingUp"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "The Core Friction",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "When Silence Looks Like Fraud",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The previous design didn't account for this lag. It treated the \"Booking Summary\" as a simple, closed receipt. When a fine from 3 weeks ago suddenly appeared on a user’s card without explanation, it didn't look like a valid charge, it looked like a hidden fee."
+                },
+                {
+                    "type": "heading",
+                    "text": "The Consequences:",
+                    "level": 3
+                },
+                {
+                    "type": "consequences_grid"
+                }
+            ]
+        },
+        {
+            "title": "The \"before\" state",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Anatomy of a trust failure",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We audited the existing Booking Summary to pinpoint why it was failing. It presented dynamic, ongoing charges as a static, finished bill."
+                },
+                {
+                    "type": "image",
+                    "src": "/images/swapp/payments/thebeforestate.webp",
+                    "alt": "Anatomy of a trust failure - Audit of the previous state",
+                    "fullWidth": true
+                }
+            ]
+        },
+        {
+            "title": "The strategy",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Shifting from \"timing\" to \"transparency\"",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Initially, we framed this as a \"delayed charge\" problem. We were wrong. We couldn't speed up the Dubai Police database. The real issue was that users had no stable source of truth to track their financial history."
+                },
+                {
+                    "type": "mental_model_shift"
+                }
+            ]
+        },
+        {
+            "title": "The solution",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Design decision 01: Unbundling the experience",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We stripped the booking summary down to a lightweight \"trip snapshot.\" We removed the financial clutter and replaced it with a payments widget that shows only two things: total paid till now (for reassurance) and the last transaction (for immediate context)."
+                },
+                {
+                    "type": "image",
+                    "src": "/images/swapp/payments/dd01.webp",
+                    "alt": "Design Decision 01 - Unbundling the experience",
+                    "fullWidth": true
+                },
+                {
+                    "type": "heading",
+                    "text": "Design decision 02: Traceability & the ledger",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We built a dedicated history view where every transaction, whether a rental renewal, Salik toll, or fine, is a distinct, traceable line item."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "The key to reducing disputes was context. We moved the explanation out of the hidden PDF and directly onto the screen. Instead of a generic \"Adjustment,\" the UI now clearly identifies the specific charge type alongside the date it was processed."
+                },
+                {
+                    "type": "image",
+                    "src": "/images/swapp/payments/dd02.webp",
+                    "alt": "Design Decision 02 - Traceability & the ledger",
+                    "fullWidth": true
+                },
+                {
+                    "type": "heading",
+                    "text": "Design decision 03: The \"unpaid\" banner",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Previously, the app had no system for handling failed payments. If a charge didn't go through, the app remained silent, forcing the Operations team to manually chase users via phone or email."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We introduced a conditional \"Action Required\" banner that appears automatically when a balance is due. Tapping it doesn't just open the payments page; it auto-filters the view to show only the unpaid items. This turns a manual ops task into a self-serve loop."
+                },
+                {
+                    "type": "image",
+                    "src": "/images/swapp/payments/dd03.webp",
+                    "alt": "Design Decision 03 - The unpaid banner with smart filtering",
+                    "fullWidth": true
+                },
+                {
+                    "type": "paragraph",
+                    "text": "To close the loop, we leveraged the broader Careem ecosystem sending alerts via Careem Pay and email to prompt users to check the Swapp ledger, ensuring no fine went unnoticed."
+                }
+            ]
+        },
+        {
+            "title": "Implementation",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "What shipped vs. what was planned",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "We designed a full \"Pay Now\" flow where users could settle balances directly in the app. However, due to backend complexity, we sequenced the rollout."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Phase 1 (shipped): visibility. We prioritized the ledger and the invoice breakdown to stop the bleeding on \"fraud\" accusations and disputes."
+                },
+                {
+                    "type": "paragraph",
+                    "text": "Phase 2 (planned): action. The \"Pay Now\" button was deferred. For now, the banner raises awareness, allowing Ops to collect payments faster."
+                }
+            ]
+        },
+        {
+            "title": "Impact",
+            "content": [
+                {
+                    "type": "heading",
+                    "text": "Turning \"scams\" into \"service\"",
+                    "level": 3
+                },
+                {
+                    "type": "paragraph",
+                    "text": "By moving from a \"receipt\" model to a \"ledger\" model, we fundamentally changed the user relationship with the product."
+                },
+                {
+                    "type": "impact_metrics"
+                }
+            ]
+        }
+    ],
+    "finalScreens": []
+}

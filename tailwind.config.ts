@@ -12,6 +12,7 @@ const config: Config = {
                 sans: ['CircularStd', 'sans-serif'],
                 mono: ['var(--font-geist-mono)'],
                 heading: ['Poly', 'sans-serif'],
+                serif: ['EB Garamond', 'serif'],
             },
             maxWidth: {
                 site: '1120px',

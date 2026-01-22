@@ -1,18 +1,51 @@
 {
   "id": "rider-app",
   "title": "Rider App",
-  "description": "Shift Management for Tabiyat.pk Riders",
+  "mainHeadline": "Reducing rider shift-start time to 15s with a structured scheduling system",
+  "subtitle": "How we eliminated operational ambiguity and improved outdoor accessibility for Tabiyat.pk's delivery fleet",
+  "prototypeUrl": "#",
+  "tldrUrl": "#tldr",
+  "tldr": {
+    "title": "Project snapshot",
+    "readTime": "5 min read",
+    "roleTitle": "UX / Product Designer",
+    "roleSubtitle": "Solo Lead",
+    "collaboration": "Worked with 1 PM & 1 Ops Manager",
+    "timelineTitle": "4 Weeks",
+    "timelineSubtitle": "Research to Hifi",
+    "deliverables": "Field Research, High-Contrast UI",
+    "impactStat": "15s",
+    "impactLabel": "Rider 'clock-in' speed",
+    "frictionTitle": "The friction: \"Operational Ambiguity\"",
+    "frictionDescription": "Riders lacked a structured 'start day' action. Combined with poor screen visibility in sunlight, this caused missed deliveries and shift bottlenecks.",
+    "userPerception": "Rider perception: \"I don't know when I'm actually on duty.\"",
+    "strategyTitle": "The strategy: \"High-Contrast Shifts\"",
+    "strategyDescription": "Moved from chaotic ad-hoc assignments to a structured, shift-based model with an accessible UI optimized for harsh outdoor conditions.",
+    "strategyVisual": "Ad-hoc Trips -> Structured Shifts"
+  },
   "role": "UX / Product Design",
   "duration": "4 weeks",
   "platform": "Mobile (Android)",
   "team": "UX / Product Design",
   "impact": "Anticipated improvements in punctuality, operational efficiency, and accessibility",
-  "tags": ["B2B", "Mobile App", "Accessibility", "Shift Scheduling", "Logistics"],
+  "tags": [
+    "B2B",
+    "Mobile App",
+    "Accessibility",
+    "Shift Scheduling",
+    "Logistics"
+  ],
   "problem": "Tabiyat.pk’s rider app was designed for ad-hoc trip assignments, causing missed deliveries, chaotic dispatching, and scalability issues.",
   "whatIDid": "Conducted field research in rider warehouses, validated accessibility issues through outdoor usability testing, mapped rider journeys, and designed a high-contrast, shift-based scheduling system with clear break management",
   "keyResults": [
-    { "value": "15s", "label": "Shift start — Riders started day in ~15 s during outdoor tests" },
-    { "value": "AA", "label": "Contrast outdoors — Key actions legible in direct sunlight" }
+    {
+      "value": "15s",
+      "label": "Shift start — Riders started day in ~15 s during outdoor tests"
+    },
+    {
+      "value": "AA",
+      "label": "Contrast outdoors — Key actions legible in direct sunlight"
+    }
   ],
   "heroImage": "/images/riderapp/riderappheroimage.webp",
   "overview": "Tabiyat.pk is a pharmacy delivery service in Pakistan, operated by MEDZnMORE. As the customer base grew, their existing rider app—initially designed around ad-hoc, trip-by-trip assignments—became hard to manage and scale effectively. Riders didn't have clear schedules, resulting in late deliveries and operational stress. I led the UX design initiative to transition from chaotic, on-demand trips to a structured, shift-based scheduling model, enhancing rider clarity, operational efficiency, and scalability.",
@@ -56,19 +89,31 @@
         },
         {
           "type": "paragraph",
-          "text": "This onsite research revealed several key insights:" 
+          "text": "This onsite research revealed several key insights:"
         },
-        { "type": "heading", "level": 3, "text": "No Clear Start Time" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "No Clear Start Time"
+        },
         {
           "type": "paragraph",
           "text": "Riders logged hours but had no clear \"clock-in\" step. This ambiguity caused delays and confusion, negatively affecting on-time deliveries."
         },
-        { "type": "heading", "level": 3, "text": "Last-Minute Chaos" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Last-Minute Chaos"
+        },
         {
           "type": "paragraph",
           "text": "Without pre-scheduled shifts, managers frantically assigned trips reactively, creating inefficiencies and rider frustration."
         },
-        { "type": "heading", "level": 3, "text": "Accessibility Challenges & Hard-to-See UI" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Accessibility Challenges & Hard-to-See UI"
+        },
         {
           "type": "paragraph",
           "text": "During my initial personal usage of the rider app, I formed a hypothesis that the existing primary brand color (#00ABE3) might not meet accessibility standards, especially in bright, outdoor environments where riders typically used the app."
@@ -89,7 +134,11 @@
           "type": "paragraph",
           "text": "Through this real-time testing, my hypothesis was confirmed: the brand’s original primary color failed WCAG contrast guidelines for outdoor readability. The app needed visual improvements to address these accessibility issues, ensuring it remained clearly usable under the actual working conditions of the riders."
         },
-        { "type": "heading", "level": 3, "text": "Break-Time Confusion" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Break-Time Confusion"
+        },
         {
           "type": "paragraph",
           "text": "Riders lacked clear and timely alerts about their break durations. Without straightforward reminders or visual cues, riders unintentionally exceeded breaks, resulting in penalties and disruptions to the overall delivery schedule."
@@ -99,22 +148,38 @@
     {
       "title": "Design Approach",
       "content": [
-        { "type": "heading", "level": 3, "text": "User Journeys & Wireframes" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "User Journeys & Wireframes"
+        },
         {
           "type": "paragraph",
           "text": "Mapped a clear, step-by-step rider journey—from arriving at the warehouse, clocking in for shifts, accepting new trips, to handling breaks. This helped ensure we designed realistic and intuitive user flows."
         },
-        { "type": "heading", "level": 3, "text": "Rapid Sketching and Feedback" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Rapid Sketching and Feedback"
+        },
         {
           "type": "paragraph",
           "text": "Quick, low-fidelity wireframes were created for key actions like “Start My Day,” “Take a Break,” and accepting trips. Short, iterative feedback sessions with operational managers ensured the language was simple, familiar, and actionable (e.g., “Start My Day” instead of “Mark Present”)."
         },
-        { "type": "heading", "level": 3, "text": "Accessible & Actionable Visuals" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Accessible & Actionable Visuals"
+        },
         {
           "type": "paragraph",
           "text": "Selected a high-contrast palette that’s easily readable outdoors. Shift statuses (on-time, late, break exceeded) were highlighted clearly through bold color choices, solving critical accessibility concerns identified during initial research."
         },
-        { "type": "heading", "level": 3, "text": "Core Goals for the Design" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Core Goals for the Design"
+        },
         {
           "type": "list",
           "items": [
@@ -128,30 +193,74 @@
     {
       "title": "Final Design",
       "content": [
-        { "type": "heading", "level": 3, "text": "Calendar & Shift Cards" },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Calendar & Shift Cards"
+        },
         {
           "type": "paragraph",
           "text": "The homepage clearly displays upcoming and current shifts, enabling riders to plan their day at a glance. The empty state provides clear, reassuring messaging if no shifts are available yet."
         },
-        { "type": "image", "src": "/images/riderapp/calendar.webp", "alt": "Calendar and shift cards", "width": 768, "height": 500, "fullWidth": false },
-        { "type": "heading", "level": 3, "text": "Clocking In (Start Your Day)" },
+        {
+          "type": "image",
+          "src": "/images/riderapp/calendar.webp",
+          "alt": "Calendar and shift cards",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Clocking In (Start Your Day)"
+        },
         {
           "type": "paragraph",
           "text": "The \"Start your day\" action becomes available precisely 15 minutes before shifts, reducing confusion and late arrivals. Once riders confirm, they're taken directly into their shift overview, streamlining the process."
         },
-        { "type": "image", "src": "/images/riderapp/clockin.webp", "alt": "Clocking in", "width": 768, "height": 500, "fullWidth": false },
-        { "type": "heading", "level": 3, "text": "Accepting New Trips" },
+        {
+          "type": "image",
+          "src": "/images/riderapp/clockin.webp",
+          "alt": "Clocking in",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Accepting New Trips"
+        },
         {
           "type": "paragraph",
           "text": "Riders receive timely alerts for new trips. Accepted trips appear neatly organized under clear categories such as \"Active Trips,\" \"Upcoming Trips,\" and \"Completed Trips,\" simplifying task management."
         },
-        { "type": "image", "src": "/images/riderapp/newtrips.webp", "alt": "Accepting new trips", "width": 768, "height": 500, "fullWidth": false },
-        { "type": "heading", "level": 3, "text": "Break Management" },
+        {
+          "type": "image",
+          "src": "/images/riderapp/newtrips.webp",
+          "alt": "Accepting new trips",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Break Management"
+        },
         {
           "type": "paragraph",
           "text": "Riders have a dedicated interface for managing their 15-minute breaks. Clear, visual countdowns inform riders exactly how long they’ve been on break, with explicit warnings about potential penalties for exceeding break time."
         },
-        { "type": "image", "src": "/images/riderapp/break.webp", "alt": "Break management", "width": 768, "height": 500, "fullWidth": false }
+        {
+          "type": "image",
+          "src": "/images/riderapp/break.webp",
+          "alt": "Break management",
+          "width": 768,
+          "height": 500,
+          "fullWidth": false
+        }
       ]
     },
     {

@@ -6,14 +6,14 @@
 export const THEME = {
     // Project Specific Themes
     projects: {
-        cinefatic: {
+        'cinefatic': {
             id: 'cinefatic',
             bg: '#3B1F2E',
             hover: '#422937',
             accent: '#E11D48',
             image: '/images/cinefaticthumb.png',
         },
-        swapp: {
+        'swapp': {
             id: 'swapp',
             bg: '#6D2C39',
             hover: '#57232E',

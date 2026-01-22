@@ -1,7 +1,29 @@
 {
   "id": "swapp",
   "title": "Swapp - Car Rental",
-  "description": "Improving booking conversion rate from 1.3 to 3%",
+  "mainHeadline": "Achieving 3% conversion rate with a redesigned car rental booking flow",
+  "subtitle": "How we optimized the end-to-end rental experience to increase conversions by 130%",
+  "prototypeUrl": "#",
+  "tldrUrl": "#tldr",
+  "heroImage": "/images/Swapp Thumb.png",
+  "tldr": {
+    "title": "Project snapshot",
+    "readTime": "4 min read",
+    "roleTitle": "Product Designer",
+    "roleSubtitle": "Core Contributor",
+    "collaboration": "Worked with Product & Engineering",
+    "timelineTitle": "2022",
+    "timelineSubtitle": "Long-term contract",
+    "deliverables": "Flow Optimization, UI Design",
+    "impactStat": "130%",
+    "impactLabel": "Increase in conversion",
+    "frictionTitle": "The friction: \"Leaking Funnel\"",
+    "frictionDescription": "The original booking process was long and complex, leading to massive drop-offs at the checkout stage and a meager 1.3% conversion rate.",
+    "userPerception": "User perception: \"This is taking too long, I'll check elsewhere.\"",
+    "strategyTitle": "The strategy: \"Clarity & Speed\"",
+    "strategyDescription": "We stripped away unnecessary steps, clarified pricing early in the journey, and optimized the mobile experience for quick bookings.",
+    "strategyVisual": "1.3% Conversion -> 3% Conversion"
+  },
   "role": "Product Designer",
   "duration": "2022-Present",
   "tools": "Figma, Principle, Analytics",
@@ -10,8 +32,14 @@
   "problem": "The existing car rental checkout process had high abandonment rates and complex user flows, leading to poor conversion rates and frustrated customers.",
   "whatIDid": "Analyzed user drop-off points, redesigned the checkout flow with A/B testing, improved information hierarchy, and implemented a cleaner interface that increased conversion rates.",
   "keyResults": [
-    { "value": "130%", "label": "Increase in conversion rates" },
-    { "value": "25%", "label": "Reduction in support inquiries" }
+    {
+      "value": "130%",
+      "label": "Increase in conversion rates"
+    },
+    {
+      "value": "25%",
+      "label": "Reduction in support inquiries"
+    }
   ],
   "overview": "Redesigning the rental experience for both tenants and landlords to improve conversion rates and user satisfaction.",
   "overviewHeading": "Overview",
@@ -92,4 +120,4 @@
       "image": "/images/swapp/booking.png"
     }
   ]
-} 
+}
