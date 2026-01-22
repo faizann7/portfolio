@@ -77,5 +77,18 @@ export const projects: Project[] = [
         year: "2020",
         color: THEME.projects['rider-app-medzmore'].bg,
         hoverColor: THEME.projects['rider-app-medzmore'].hover,
+    },
+    {
+        id: "swapp-payments",
+        title: "Swapp - Payments",
+        subtitle: "Enterprise payment orchestration and settlement system",
+        summary: "Designing a seamless payment and settlement platform for the car rental ecosystem.",
+        tags: ["Fintech", "Product Design", "Payments", "Dashboard"],
+        image: THEME.projects['swapp-payments'].image,
+        year: "2024",
+        color: THEME.projects['swapp-payments'].bg,
+        hoverColor: THEME.projects['swapp-payments'].hover,
+        comingSoon: true,
+        isProtected: true
     }
 ];
