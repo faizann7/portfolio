@@ -76,7 +76,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                     {/* Hero image for modern layout */}
                     {projectId === 'swapp-payments' ? (
                         <div className="w-full max-w-[950px] mb-10 overflow-hidden">
-                            <ParallaxPhones images={SWAPP_TRIO} />
+                            <ParallaxPhones images={SWAPP_TRIO.map(processImagePath)} />
                         </div>
                     ) : (
                         <div className="w-full mb-10 overflow-hidden">

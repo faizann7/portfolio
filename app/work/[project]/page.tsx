@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { projects } from "../../data/projects";
 import ProjectClient from "./ProjectClient";
 import Footer from "../../components/Footer";
@@ -9,6 +10,38 @@ export async function generateStaticParams() {
     // Only generate pages for active (non-coming soon) projects
     const active = projects.filter((p) => !p.comingSoon);
     return active.map((p) => ({ project: p.id }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { project: projectId } = await params;
+    const project = projects.find((p) => p.id === projectId);
+
+    if (!project) {
+        return {
+            title: "Project Not Found",
+        };
+    }
+
+    const title = `${project.title} | Muhammad Faizan`;
+    const description = project.summary;
+    const images = project.image ? [project.image] : [];
+
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            images,
+            type: 'article',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images,
+        },
+    };
 }
 
 // Updated PageProps interface to match Next.js App Router expectations
