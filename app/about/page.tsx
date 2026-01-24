@@ -4,7 +4,6 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import { SearchParamsProvider } from "../components/SearchParamsProvider";
-import ScribbleLink from "../components/ScribbleLink";
 import { getImagePath } from "../utils/assets";
 import Footer from "../components/Footer";
 

@@ -1,5 +1,4 @@
-'use client';
-
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import TextReveal from "./TextReveal";
@@ -45,15 +44,25 @@ function ExplorationCard({
     delay,
     className = ""
 }: ExplorationCardProps) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <TextReveal delay={delay} className={`h-full relative z-10 hover:z-20 ${className}`}>
             <Link href={link} className="group block h-full">
                 <motion.div
                     className="relative w-full h-full"
                     initial="messy"
-                    whileHover="organized"
+                    animate={isMobile ? "organized" : undefined}
+                    whileHover={isMobile ? undefined : "organized"}
                 >
-                    {/* Inner Clipped Container */}
+                    {/* Inner Clipped Container - Handles BG and Content */}
                     <div
                         className="absolute inset-0 border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col p-6 transition-colors duration-500"
                         style={{
@@ -86,7 +95,7 @@ function ExplorationCard({
                                 <h3 className={`${contentPosition === 'top' ? 'text-3xl lg:text-3xl' : 'text-2xl'} font-medium leading-tight mb-2 tracking-tight text-white`}>
                                     {title}
                                 </h3>
-                                <p className={`${contentPosition === 'top' ? 'text-lg' : 'text-lg'} text-white/70 leading-relaxed mb-6 gap-2`}>
+                                <p className={`${contentPosition === 'top' ? 'text-lg' : 'text-lg'} text-white/70 leading-relaxed mb-6`}>
                                     {description}
                                 </p>
 
@@ -102,8 +111,10 @@ function ExplorationCard({
                         </div>
                     </div>
 
-                    {/* Visuals */}
-                    {children}
+                    {/* Visuals moved OUTSIDE for breakout on desktop, and wrapped to hide on mobile */}
+                    <div className="hidden lg:block">
+                        {children}
+                    </div>
                 </motion.div>
             </Link>
         </TextReveal>
@@ -123,7 +134,6 @@ export default function Explorations() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-0 max-w-[1120px] mx-auto">
 
-                {/* Left Tile */}
                 <ExplorationCard
                     title={multidisciplinary.title}
                     description={multidisciplinary.description}
@@ -137,9 +147,9 @@ export default function Explorations() {
                         glow: multidisciplinary.colors.glow,
                     }}
                     delay={0.3}
-                    className="min-h-[500px] lg:min-h-[640px]"
+                    className="min-h-[400px] lg:min-h-[640px]"
                 >
-                    <div className="absolute inset-x-0 bottom-0 top-16 pointer-events-none perspective-[1000px] flex items-center justify-center z-10">
+                    <div className="hidden lg:flex absolute inset-x-0 bottom-0 top-16 pointer-events-none perspective-[1000px] items-center justify-center z-10">
                         <div className="relative w-full h-full">
                             <motion.div
                                 className="absolute left-1/2 top-1/2 w-56 aspect-square bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden border border-white/10 z-20"
@@ -193,6 +203,13 @@ export default function Explorations() {
                             </motion.div>
                         </div>
                     </div>
+
+                    {/* Mobile Simplified Visual */}
+                    <div className="lg:hidden absolute bottom-0 right-0 w-full h-1/2 pointer-events-none overflow-hidden opacity-20">
+                        <div className="relative w-full h-full translate-y-1/4 translate-x-1/4 rotate-12">
+                            <Image src={getImagePath("/images/playground/Card-1.webp")} alt="System" width={300} height={300} className="rounded-2xl" />
+                        </div>
+                    </div>
                 </ExplorationCard>
 
                 {/* Right Column Stack */}
@@ -205,7 +222,7 @@ export default function Explorations() {
                         link={cinefatic.link}
                         ctaText="Coming soon"
                         contentPosition="bottom"
-                        textMaxWidth="max-w-[45%]"
+                        textMaxWidth="max-w-full lg:max-w-[45%]"
                         colors={{
                             bg: cinefatic.colors.bg,
                             glow: cinefatic.colors.glow,
@@ -214,9 +231,9 @@ export default function Explorations() {
                             text: cinefatic.colors.text
                         }}
                         delay={0.4}
-                        className="flex-1 min-h-[320px]"
+                        className="flex-1 min-h-[300px] lg:min-h-[320px]"
                     >
-                        <div className="absolute -top-12 -right-4 w-[340px] h-[480px] pointer-events-none">
+                        <div className="hidden lg:block absolute -top-12 -right-4 w-[340px] h-[480px] pointer-events-none">
                             <motion.div
                                 className="absolute w-[140px] rounded-[24px] overflow-hidden shadow-2xl border border-white/10"
                                 style={{ left: '80px', top: '20px', zIndex: 10, transformOrigin: 'center center' }}
@@ -260,9 +277,9 @@ export default function Explorations() {
                             text: vibeCoded.colors.text
                         }}
                         delay={0.5}
-                        className="flex-1 min-h-[320px]"
+                        className="flex-1 min-h-[300px] lg:min-h-[320px]"
                     >
-                        <div className="absolute top-0 right-0 w-full h-full pointer-events-none z-10 overflow-hidden rounded-2xl">
+                        <div className="hidden lg:block absolute top-0 right-0 w-full h-full pointer-events-none z-10 overflow-hidden rounded-2xl">
                             <div className="relative w-full h-full">
                                 {/* Tool 1: Cursor */}
                                 <motion.div

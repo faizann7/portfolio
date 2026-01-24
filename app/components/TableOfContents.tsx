@@ -45,13 +45,13 @@ export default function TableOfContents({ sections }: TOCProps) {
     const TOCContent = ({ showClose = false }: { showClose?: boolean }) => (
         <>
             <div className="flex items-center justify-between mb-6">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 font-sans">In this case study</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/60 font-sans">In this case study</p>
                 {showClose && (
                     <button
                         onClick={() => setIsOpen(false)}
-                        className="text-white/40 hover:text-white transition-colors cursor-pointer"
+                        className="text-white/60 hover:text-white transition-colors cursor-pointer p-2 -mr-2"
                     >
-                        <X size={14} />
+                        <X size={16} />
                     </button>
                 )}
             </div>
@@ -80,33 +80,40 @@ export default function TableOfContents({ sections }: TOCProps) {
 
     return (
         <>
-            {/* LARGE MONITOR TOC - Always visible (>= 2xl / 1536px) */}
-            <div className="hidden 2xl:block fixed left-6 top-1/2 -translate-y-1/2 z-40 w-56">
-                <div className="p-5 rounded-2xl bg-[#1a1216]/80 border border-white/10 backdrop-blur-md shadow-xl">
+            {/* DESKTOP SIDEBAR - (>= xl / 1280px) */}
+            <div className="hidden xl:block fixed left-6 top-1/2 -translate-y-1/2 z-40 w-56 text-left">
+                <div className="p-5">
                     <TOCContent />
                 </div>
             </div>
 
-            {/* LAPTOP/TABLET/MOBILE TOC - Slide-in panel (< 2xl / 1536px) */}
-            <div className="2xl:hidden fixed left-0 top-1/2 -translate-y-1/2 z-40">
-                {/* Trigger Tab - attached to left edge */}
+            {/* MOBILE & LAPTOP SIDE TAB - (All screens < xl / 1280px) */}
+            <div className="xl:hidden fixed left-0 top-1/2 -translate-y-1/2 z-50 flex items-start">
+                {/* Side Tab Trigger */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    onMouseEnter={() => setIsOpen(true)}
-                    className={`absolute top-1/2 -translate-y-1/2 bg-[#1a1216]/90 hover:bg-[#1a1216] border-y border-r border-white/10 backdrop-blur-md px-2 py-4 rounded-r-lg cursor-pointer transition-all duration-300 shadow-lg ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    className={`bg-[#1a1216]/90 hover:bg-[#1a1216] border-y border-r border-white/10 backdrop-blur-md px-2.5 py-5 rounded-r-xl cursor-pointer transition-all duration-300 shadow-xl flex flex-col items-center gap-3 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
                         }`}
                 >
                     <span className="text-[9px] font-bold uppercase tracking-widest text-white/50 [writing-mode:vertical-lr] rotate-180">Contents</span>
                 </button>
 
-                {/* Panel */}
+                {/* Draw-out Panel */}
                 <div
                     onMouseLeave={() => setIsOpen(false)}
-                    className={`w-64 bg-[#1a1216]/95 backdrop-blur-xl border-y border-r border-white/10 rounded-r-2xl p-5 shadow-2xl transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
-                        }`}
+                    className={`w-72 max-w-[85vw] bg-[#1a1216]/95 backdrop-blur-xl border-y border-r border-white/10 rounded-r-2xl p-6 shadow-2xl transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                        } absolute left-0 top-1/2 -translate-y-1/2`}
                 >
                     <TOCContent showClose />
                 </div>
+
+                {/* Mobile Backdrop Overlay - helps close when tapping outside */}
+                {isOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/20 backdrop-blur-[2px] -z-10 h-screen w-screen"
+                        onClick={() => setIsOpen(false)}
+                    />
+                )}
             </div>
         </>
     );

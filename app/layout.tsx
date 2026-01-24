@@ -16,6 +16,19 @@ export const metadata: Metadata = {
   title: "Muhammad Faizan | UX/Product Designer",
   description: "Portfolio of Muhammad Faizan, a UX/Product designer specializing in early-stage startups and impactful digital experiences.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://faizann7.github.io/portfolio'),
+  openGraph: {
+    title: "Muhammad Faizan | UX/Product Designer",
+    description: "Building Real Impact Through Human-Centered Design",
+    url: 'https://faizann7.github.io/portfolio',
+    siteName: 'Faizan Portfolio',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Muhammad Faizan | UX/Product Designer",
+    description: "Building Real Impact Through Human-Centered Design",
+  },
   // GitHub Pages Specific: Hardcoded paths for icons to ensure they work in static export
   icons: {
     icon: `${process.env.NODE_ENV === 'production' ? '/portfolio/images/Tab Logo.png' : '/images/Tab Logo.png'}?v=2`,

@@ -1,8 +1,11 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
+import { X, Maximize2 } from 'lucide-react';
+import { useLightbox } from '../ui/LightboxContext';
+import { getImagePath } from '../../utils/assets';
 
 interface ParallaxPhonesProps {
     images: string[]; // Expects [Left, Center, Right]
@@ -13,6 +16,26 @@ interface ParallaxPhonesProps {
 
 export default function ParallaxPhones({ images, className, offsetX = 0, offsetY = 0 }: ParallaxPhonesProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const { images: globalImages, openLightbox } = useLightbox();
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const handleImageClick = (src: string) => {
+        const processedSrc = src.startsWith('http') || src.startsWith('/') ? src : getImagePath(src);
+        const index = globalImages.findIndex(img => img.src === processedSrc);
+        if (index !== -1) {
+            openLightbox(index);
+        }
+    };
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start end', 'end start'],
@@ -27,6 +50,48 @@ export default function ParallaxPhones({ images, className, offsetX = 0, offsetY
     // Smooth easing equivalent to a gentle landing without overshoot
     const smoothTransition = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as any };
 
+    if (isMobile) {
+        return (
+            <div
+                ref={containerRef}
+                className={`relative mx-auto mt-12 mb-8 ${className || ''}`}
+                style={{
+                    width: '100%',
+                    height: '400px',
+                    transform: `translate(${offsetX}px, ${offsetY}px)`,
+                }}
+            >
+                <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Static stack for mobile */}
+                    <div
+                        className="absolute w-[160px] translate-x-[-70px] translate-y-[20px] rotate-[-10deg] opacity-60 grayscale-[0.2] cursor-pointer"
+                        onClick={() => handleImageClick(images[0])}
+                    >
+                        <Image src={images[0]} alt="Left Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-2xl" />
+                    </div>
+                    <div
+                        className="absolute w-[160px] translate-x-[70px] translate-y-[20px] rotate-[10deg] opacity-60 grayscale-[0.2] cursor-pointer"
+                        onClick={() => handleImageClick(images[2])}
+                    >
+                        <Image src={images[2]} alt="Right Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-2xl" />
+                    </div>
+                    <div
+                        className="absolute w-[190px] z-10 cursor-pointer group"
+                        onClick={() => handleImageClick(images[1])}
+                    >
+                        <Image src={images[1]} alt="Main Screen" width={400} height={800} className="w-full h-auto drop-shadow-2xl rounded-3xl" priority />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="bg-black/50 backdrop-blur-md p-3 rounded-full text-white">
+                                <Maximize2 size={24} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Default Desktop View
     return (
         <div
             ref={containerRef}

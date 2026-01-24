@@ -8,6 +8,8 @@ import MentalModelShift from "./visuals/MentalModelShift";
 import ImpactMetrics from "./visuals/ImpactMetrics";
 import { slugify } from "../utils/slugify";
 import { TYPOGRAPHY } from "../data/typography-config";
+import { useLightbox } from "./ui/LightboxContext";
+import { useEffect, useMemo } from "react";
 
 interface CaseStudyContent {
   type: 'paragraph' | 'heading' | 'image' | 'list' | 'feature_grid' | 'consequences_grid' | 'mental_model_shift' | 'impact_metrics';
@@ -37,7 +39,7 @@ const IconComponent = ({ name, className }: { name: string, className?: string }
 };
 
 // Component for rendering individual content blocks
-const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
+const ContentBlock = ({ content, onImageClick }: { content: CaseStudyContent, onImageClick: (src: string) => void }) => {
   switch (content.type) {
     case 'paragraph':
       return (
@@ -48,7 +50,7 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
 
     case 'heading':
       const level = content.level || 3;
-      const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+      const HeadingTag = `h${level}` as any;
       const headingConfig = (TYPOGRAPHY.headings as any)[`h${level}`] || TYPOGRAPHY.headings.h3;
 
       return (
@@ -72,9 +74,10 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
                 alt={content.alt || ''}
                 width={content.width || 1400}
                 height={content.height || 800}
-                className="w-full h-auto rounded-xl"
+                className="w-full h-auto rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 1120px"
+                onClick={() => onImageClick(processedSrc)}
               />
             </div>
           </div>
@@ -88,9 +91,10 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
               alt={content.alt || ''}
               width={content.width || 768}
               height={content.height || 500}
-              className="w-full h-auto rounded-xl"
+              className="w-full h-auto rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, 768px"
+              onClick={() => onImageClick(processedSrc)}
             />
           </div>
         );
@@ -166,6 +170,15 @@ const ContentBlock = ({ content }: { content: CaseStudyContent }) => {
 
 // Main component for rendering case study sections
 export default function CaseStudyRenderer({ sections }: CaseStudyRendererProps) {
+  const { images, openLightbox } = useLightbox();
+
+  const handleImageClick = (src: string) => {
+    const index = images.findIndex(img => img.src === src);
+    if (index !== -1) {
+      openLightbox(index);
+    }
+  };
+
   return (
     <div className="space-y-32">
       {sections.map((section, sectionIndex) => (
@@ -175,7 +188,11 @@ export default function CaseStudyRenderer({ sections }: CaseStudyRendererProps) 
           </h2>
           <div className="">
             {section.content.map((content, contentIndex) => (
-              <ContentBlock key={contentIndex} content={content} />
+              <ContentBlock
+                key={contentIndex}
+                content={content}
+                onImageClick={handleImageClick}
+              />
             ))}
           </div>
         </div>

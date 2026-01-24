@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "./fonts.css";
 
+/* Hide Navbar when Lightbox is open */
+body.lightbox-open nav {
+  display: none !important;
+}
+
 :root {
   --background: #121212;
   --foreground: #ffffff;
@@ -38,10 +43,16 @@ html {
 
 body {
   background: var(--bg-dark);
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: var(--foreground);
   font-family: 'CircularStd', sans-serif;
   transition: var(--theme-transition);
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 /* Text hierarchy styles */

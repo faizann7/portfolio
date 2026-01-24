@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect, useMemo } from "react";
 import { SearchParamsProvider } from "../../components/SearchParamsProvider";
 import { CaseStudyData } from "../../utils/caseStudyLoader";
 import { getImagePath } from "../../utils/assets";
@@ -14,7 +14,9 @@ import StackedWorkCards from "../../components/StackedWorkCards";
 import PasswordGate from "../../components/PasswordGate";
 import TableOfContents from "../../components/TableOfContents";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldAlert, Lightbulb, Target, ArrowRight, Clock, Zap, Layers, MessageSquare, ArrowRightLeft, FileText, List } from "lucide-react";
+import { ShieldAlert, Lightbulb, Target, ArrowRight, Clock, Zap, Layers, MessageSquare, ArrowRightLeft, FileText, List, X } from "lucide-react";
+import { LightboxProvider, useLightbox } from "../../components/ui/LightboxContext";
+import Lightbox from "../../components/ui/Lightbox";
 
 // Helper function for image paths
 const processImagePath = (path: string) => getImagePath(path);
@@ -32,72 +34,108 @@ interface ProjectClientProps {
     projectId: string;
 }
 
-export default function ProjectClient({ project, caseStudyData, projectId }: ProjectClientProps) {
-    const [isTLDROpen, setIsTLDROpen] = useState(false);
+// Sub-component to manage global gallery registration
+function GalleryManager({ caseStudyData, projectId, SWAPP_TRIO }: { caseStudyData: CaseStudyData, projectId: string, SWAPP_TRIO: string[] }) {
+    const { registerImages } = useLightbox();
 
-    // Check if this is a new JSON-based case study
+    const allVisuals = useMemo(() => {
+        const visuals: { src: string; alt: string }[] = [];
+
+        // 1. Hero Visuals
+        if (projectId === 'swapp-payments') {
+            SWAPP_TRIO.forEach(src => visuals.push({ src: getImagePath(src), alt: "Interface Detail" }));
+        } else if (caseStudyData.heroImage) {
+            visuals.push({ src: getImagePath(caseStudyData.heroImage), alt: "Project Hero" });
+        }
+
+        // 2. Section Images
+        caseStudyData.sections?.forEach(section => {
+            section.content?.forEach(content => {
+                if (content.type === 'image' && content.src) {
+                    visuals.push({
+                        src: getImagePath(content.src),
+                        alt: content.alt || section.title
+                    });
+                }
+            });
+        });
+
+        // 3. Final Screens
+        caseStudyData.finalScreens?.forEach(screen => {
+            if (screen.image) {
+                visuals.push({
+                    src: getImagePath(screen.image),
+                    alt: screen.title
+                });
+            }
+        });
+
+        return visuals;
+    }, [caseStudyData, projectId, SWAPP_TRIO]);
+
+    useEffect(() => {
+        if (allVisuals.length > 0) {
+            registerImages(allVisuals);
+        }
+    }, [allVisuals, registerImages]);
+
+    return null;
+}
+
+// Inner component that can access Lightbox context
+function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientProps) {
+    const [isTLDROpen, setIsTLDROpen] = useState(false);
+    const { openLightbox, images: galleryImages } = useLightbox();
+
     const isNewCaseStudy = caseStudyData && 'sections' in caseStudyData && Array.isArray(caseStudyData.sections) && caseStudyData.sections.length > 0 && typeof caseStudyData.sections[0].content === 'object';
 
-    // ... existing activeProjects logic ...
-    const activeProjects = projects.filter((p) => !p.comingSoon && !p.isConceptual);
-    const hasActive = activeProjects.length > 0;
-    const currentActiveIndex = hasActive
-        ? Math.max(0, activeProjects.findIndex((p) => p.id === projectId))
-        : 0;
-    const previousProject = hasActive
-        ? activeProjects[(currentActiveIndex - 1 + activeProjects.length) % activeProjects.length]
-        : project;
-    const nextProject = hasActive
-        ? activeProjects[(currentActiveIndex + 1) % activeProjects.length]
-        : project;
+    const handleHeroClick = (src: string) => {
+        const processedSrc = getImagePath(src);
+        const index = galleryImages.findIndex(img => img.src === processedSrc);
+        if (index !== -1) {
+            openLightbox(index);
+        }
+    };
 
-    const showExploreCard = previousProject.id !== nextProject.id;
-
-    const content = (
+    return (
         <div className="pt-24 md:pt-24 pb-16 max-w-5xl mx-auto px-4 sm:px-6 relative">
             {/* Show TOC for specific case studies */}
             {(projectId === 'swapp-payments' || projectId === 'cinefatic' || projectId === 'rider-app-medzmore') && caseStudyData.sections && (
                 <TableOfContents sections={caseStudyData.sections} />
             )}
 
-            <Link href="/#work" className="inline-flex items-center black mb-8 group transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 group-hover:-translate-x-1 transition-transform">
-                    <path d="m15 18-6-6 6-6" />
-                </svg>
+            <Link href="/#work" className="inline-flex items-center text-white/50 hover:text-white mb-12 group transition-colors font-sans text-sm font-medium">
+                <ArrowRight className="mr-2 w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
                 Back to all work
             </Link>
 
             {/* Header content */}
             {caseStudyData.mainHeadline ? (
                 <div className="text-left mb-16">
-                    <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-bold mb-8 leading-[1.1] tracking-tight text-white">
                         {caseStudyData.mainHeadline}
                     </h1>
-                    {/* {caseStudyData.subtitle && (
-                        <p className="text-xl md:text-xl font-heading font-medium mb-12 opacity-80 max-w-3xl leading-relaxed">
-                            {caseStudyData.subtitle}
-                        </p>
-                    )} */}
 
                     {/* Hero image for modern layout */}
                     {projectId === 'swapp-payments' ? (
-                        <div className="w-full max-w-[950px] mb-10 overflow-hidden">
+                        <div className="w-full max-w-[950px] mb-16 overflow-visible">
                             <ParallaxPhones images={SWAPP_TRIO.map(processImagePath)} />
                         </div>
                     ) : (
-                        <div className="w-full mb-10 overflow-hidden">
+                        <div className="w-full mb-16 overflow-hidden">
                             <Image
                                 src={processImagePath(caseStudyData.heroImage || "")}
                                 alt={`${project.title} main screen`}
                                 width={1400}
                                 height={800}
-                                className="w-full h-auto rounded-xl md:rounded-2xl"
+                                className="w-full h-auto rounded-xl md:rounded-2xl shadow-2xl cursor-pointer hover:opacity-95 transition-opacity"
+                                onClick={() => handleHeroClick(caseStudyData.heroImage || "")}
                             />
                         </div>
                     )}
 
                     {/* Primary CTAs */}
-                    <div className="flex flex-wrap justify-center gap-4 mb-20">
+                    <div className="flex flex-wrap justify-center gap-4 mb-24">
                         {caseStudyData.prototypeUrl && (
                             <Button href={caseStudyData.prototypeUrl} variant="outline" target="_blank">
                                 View prototype
@@ -108,7 +146,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                                 onClick={() => setIsTLDROpen(!isTLDROpen)}
                                 variant="outline"
                             >
-                                TL;DR
+                                Project Snapshot
                             </Button>
                         )}
                     </div>
@@ -121,113 +159,92 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                                className="overflow-hidden mb-20"
+                                className="overflow-hidden mb-24"
                             >
-                                <div className="bg-white/[0.03] rounded-2xl p-6 relative border border-white/10 backdrop-blur-sm">
+                                <div className="bg-white/[0.03] rounded-[2rem] p-8 md:p-12 relative border border-white/10 backdrop-blur-sm">
                                     <button
                                         onClick={() => setIsTLDROpen(false)}
-                                        className="absolute top-8 right-8 p-2 rounded-full hover:bg-white/10 transition-colors text-white/50 hover:text-white z-20 cursor-pointer"
+                                        className="absolute top-8 right-8 p-3 rounded-full hover:bg-white/10 transition-colors text-white/40 hover:text-white z-20 cursor-pointer"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-                                        </svg>
+                                        <X size={24} />
                                     </button>
 
                                     {/* Header */}
-                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                                        <div className="flex items-center gap-3">
-                                            <div className="bg-white text-black text-[12px] font-bold px-3 py-2 rounded-lg tracking-tighter uppercase font-sans leading-none flex items-center justify-center">TL;DR</div>
-                                            <h2 className="text-2xl font-bold text-white tracking-tight font-sans">{caseStudyData.tldr.title}</h2>
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+                                        <div className="flex items-center gap-4">
+                                            <div className="bg-white text-black text-[12px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase font-sans leading-none flex items-center justify-center">Snapshot</div>
+                                            <h2 className="text-3xl font-bold text-white tracking-tight font-sans">{caseStudyData.tldr.title}</h2>
                                         </div>
                                         {caseStudyData.tldr.readTime && (
-                                            <div className="flex items-center gap-2 text-white/40 text-sm font-medium">
+                                            <div className="flex items-center gap-2 text-white/30 text-sm font-medium uppercase tracking-widest">
                                                 <Clock size={16} />
-                                                {caseStudyData.tldr.readTime}
+                                                <span>{caseStudyData.tldr.readTime} read</span>
                                             </div>
                                         )}
                                     </div>
 
-                                    {/* Top Row: Cards */}
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                                        {/* Role Card */}
-                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5">
-                                            <h3 className="text-white/30 uppercase tracking-widest text-[10px] font-bold mb-3 font-sans">Project Role</h3>
+                                    {/* Snapshot content cards */}
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                                            <h3 className="text-white/20 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Role</h3>
                                             <div className="text-xl font-bold text-white leading-tight mb-1 font-sans">{caseStudyData.tldr.roleTitle}</div>
-                                            {caseStudyData.tldr.roleSubtitle && (
-                                                <p className="text-white/40 text-sm font-sans">{caseStudyData.tldr.roleSubtitle}</p>
-                                            )}
+                                            <p className="text-white/30 text-sm font-sans">{caseStudyData.tldr.roleSubtitle}</p>
                                         </div>
-
-                                        {/* Timeline Card */}
-                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5">
-                                            <h3 className="text-white/30 uppercase tracking-widest text-[10px] font-bold mb-3 font-sans">Timeline</h3>
+                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                                            <h3 className="text-white/20 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Timeline</h3>
                                             <div className="text-xl font-bold text-white leading-tight mb-1 font-sans">{caseStudyData.tldr.timelineTitle}</div>
-                                            {caseStudyData.tldr.timelineSubtitle && (
-                                                <p className="text-white/40 text-sm font-sans">{caseStudyData.tldr.timelineSubtitle}</p>
-                                            )}
+                                            <p className="text-white/30 text-sm font-sans">{caseStudyData.tldr.timelineSubtitle}</p>
                                         </div>
-
-                                        {/* Outcome Card */}
-                                        <div className="bg-emerald-500/[0.06] border border-emerald-500/10 rounded-2xl p-5 flex flex-col justify-center">
-                                            <h3 className="text-emerald-400/50 uppercase tracking-widest text-[10px] font-bold mb-3 font-sans">Outcome</h3>
-                                            <div className="text-7xl font-black text-emerald-400 tracking-tighter mb-1">
-                                                {caseStudyData.tldr.impactStat}
-                                            </div>
-                                            <p className="text-sm font-bold text-emerald-400/80 leading-snug font-sans">
-                                                {caseStudyData.tldr.impactLabel}
-                                            </p>
+                                        <div className="bg-emerald-500/[0.05] border border-emerald-500/10 rounded-2xl p-6 flex flex-col justify-center">
+                                            <h3 className="text-emerald-400/30 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Headline Result</h3>
+                                            <div className="text-6xl font-black text-emerald-400 tracking-tighter mb-1">{caseStudyData.tldr?.impactStat}</div>
+                                            <p className="text-[13px] font-bold text-emerald-400/70 leading-snug font-sans uppercase tracking-wide">{caseStudyData.tldr?.impactLabel}</p>
                                         </div>
                                     </div>
 
-                                    {/* Bottom Row: Detailed Context */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {/* Friction Block */}
-                                        <div className="bg-red-400/[0.02] border border-red-400/10 rounded-2xl p-8 space-y-6">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-red-400/10 flex items-center justify-center text-red-400">
-                                                    <Zap size={16} fill="currentColor" />
+                                    {/* Snapshot context blocks */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div className="bg-red-400/[0.02] border border-red-400/10 rounded-3xl p-8 space-y-6">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-red-400/10 flex items-center justify-center text-red-500 shadow-inner">
+                                                    <Zap size={18} fill="currentColor" />
                                                 </div>
                                                 <h3 className="text-white font-bold leading-tight text-xl font-sans">{caseStudyData.tldr.frictionTitle}</h3>
                                             </div>
-                                            <p className="text-white/90 text-lg leading-relaxed font-sans font-medium">
+                                            <p className="text-white/70 text-lg leading-relaxed font-sans">
                                                 {caseStudyData.tldr.frictionDescription}
                                             </p>
                                             {caseStudyData.tldr.userPerception && (
-                                                <div className="bg-red-400/[0.04] rounded-xl p-4 flex items-start gap-3 border border-red-400/5">
-                                                    <MessageSquare size={14} className="text-red-400/60 mt-0.5" />
-                                                    <p className="text-[14px] italic text-red-400/90 font-semibold font-sans">
+                                                <div className="bg-white/[0.03] rounded-2xl p-5 flex items-start gap-4 border border-white/5 italic shadow-xl">
+                                                    <MessageSquare size={16} className="text-white/20 mt-1" />
+                                                    <p className="text-[15px] text-white/80 font-medium font-sans">
                                                         {caseStudyData.tldr.userPerception}
                                                     </p>
                                                 </div>
                                             )}
                                         </div>
 
-                                        {/* Strategy Block */}
-                                        <div className="bg-blue-400/[0.02] border border-blue-400/10 rounded-2xl p-8 space-y-6">
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-blue-400/10 flex items-center justify-center text-blue-400">
-                                                    <Layers size={16} fill="currentColor" />
+                                        <div className="bg-blue-400/[0.02] border border-blue-400/10 rounded-3xl p-8 space-y-6">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-blue-400/10 flex items-center justify-center text-blue-400 shadow-inner">
+                                                    <Layers size={18} fill="currentColor" />
                                                 </div>
                                                 <h3 className="text-white font-bold leading-tight text-xl font-sans">{caseStudyData.tldr.strategyTitle}</h3>
                                             </div>
-                                            <p className="text-white/90 text-lg leading-relaxed font-sans font-medium">
+                                            <p className="text-white/70 text-lg leading-relaxed font-sans">
                                                 {caseStudyData.tldr.strategyDescription}
                                             </p>
                                             {caseStudyData.tldr.strategyVisual && (
-                                                <div className="bg-blue-400/[0.04] rounded-xl p-4 border border-blue-400/5 font-sans">
-                                                    <div className="flex items-center justify-between gap-2">
-                                                        {/* Before State */}
-                                                        <div className="flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded-lg border border-dashed border-blue-200/20 bg-blue-400/[0.02] text-blue-200/40">
-                                                            <FileText size={12} />
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider truncate">{caseStudyData.tldr.strategyVisual.split(' -> ')[0]}</span>
+                                                <div className="bg-white/[0.03] rounded-2xl p-5 border border-white/5 font-sans shadow-xl">
+                                                    <div className="flex items-center justify-between gap-4">
+                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-xl bg-white/[0.02] text-white/30 border border-white/5">
+                                                            <span className="text-[9px] font-black uppercase tracking-widest opacity-50">Before</span>
+                                                            <span className="text-[11px] font-bold uppercase tracking-tight">{caseStudyData.tldr.strategyVisual.split(' -> ')[0]}</span>
                                                         </div>
-
-                                                        <ArrowRight size={14} className="text-blue-400/20 shrink-0" />
-
-                                                        {/* After State */}
-                                                        <div className="flex-1 flex items-center justify-center gap-2 px-2 py-2 rounded-lg border border-blue-400/30 bg-blue-400/10 text-blue-200 shadow-sm">
-                                                            <List size={12} className="text-blue-400" />
-                                                            <span className="text-[10px] font-bold uppercase tracking-wider truncate">{caseStudyData.tldr.strategyVisual.split(' -> ')[1]}</span>
+                                                        <ArrowRight size={16} className="text-white/10 shrink-0" />
+                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-xl bg-blue-500/10 text-blue-300 border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                                                            <span className="text-[9px] font-black uppercase tracking-widest">After</span>
+                                                            <span className="text-[11px] font-bold uppercase tracking-tight">{caseStudyData.tldr.strategyVisual.split(' -> ')[1]}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,246 +257,57 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
                     </AnimatePresence>
                 </div>
             ) : (
-                <>
-                    <div className="mx-auto text-center mb-16" style={{ maxWidth: "768px" }}>
-                        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">{project.title}</h1>
-                        {projectId === "rider-app-medzmore" && (
-                            <h2 className="text-xl font-heading font-medium mb-12">Shift Management for tabiyat.pk Riders</h2>
-                        )}
-                        {projectId !== "rider-app-medzmore" && (
-                            <p className="text-xl mb-12">{caseStudyData.description}</p>
-                        )}
+                <div className="mx-auto text-center mb-16" style={{ maxWidth: "768px" }}>
+                    <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">{project.title}</h1>
+                    <p className="text-xl mb-12 opacity-70">{caseStudyData.description}</p>
+                </div>
+            )}
 
-                        {/* Project details in 3 columns */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-left">
-                            <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">Timeline</h3>
-                                <p className="text-lg">{caseStudyData.duration || (projectId === "rider-app-medzmore" ? "4 weeks" : "")}</p>
-                            </div>
-                            <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">Role</h3>
-                                <p className="text-lg">{caseStudyData.role || (projectId === "rider-app-medzmore" ? "UX / Product Design" : "")}</p>
-                            </div>
-                            <div>
-                                <h3 className="text-sm uppercase opacity-80 mb-1 font-heading font-medium">{caseStudyData.platform ? 'Platform' : 'Team'}</h3>
-                                <p className="text-lg">{caseStudyData.platform || caseStudyData.team || (projectId === "cinefatic" ? "Mobile app" : "Solo project")}</p>
-                            </div>
-                        </div>
-
-                        {/* Problem Statement */}
-                        <div className="mt-10 mb-8 text-left">
-                            <h3 className="text-xl mb-2 font-heading font-medium">Problem</h3>
-                            <p className="text-xl">
-                                {caseStudyData.problem || (
-                                    projectId === "cinefatic"
-                                        ? "Karachi lacked a single, reliable platform to book tickets for major cinemas, forcing people into slow, manual methods like phone calls or in-person visits."
-                                        : projectId === "rider-app-medzmore"
-                                            ? "As Tabiyat.pk's customer base rapidly expanded, the rider operations struggled to keep pace. The absence of a structured rider schedule led to missed deliveries, inefficient dispatch, and poor scalability."
-                                            : projectId === "swapp"
-                                                ? "The existing car rental checkout process had high abandonment rates and complex user flows, leading to poor conversion rates and frustrated customers."
-                                                : projectId === "route-helper"
-                                                    ? "Retailo Technologies needed a more efficient route planning system that could handle complex logistics operations while providing real-time insights to reduce planning time and improve delivery accuracy."
-                                                    : "The project required solving complex user experience challenges while meeting business objectives and technical constraints."
-                                )}
-                            </p>
-                        </div>
-
-                        {/* What I did & achieved */}
-                        <div className="mb-8 text-left">
-                            <h3 className="text-xl mb-2 font-heading font-medium">What I did</h3>
-                            <p className="text-xl">
-                                {caseStudyData.whatIDid || (
-                                    projectId === "cinefatic"
-                                        ? "Validated the problem through user research, mapped booking journeys, identified market gaps, and designed a unified app for showtimes, seat selection, and seamless checkout."
-                                        : projectId === "rider-app-medzmore"
-                                            ? "Conducted field research with riders, redesigned the app for outdoor accessibility, implemented shift-based scheduling, and created intuitive break management systems."
-                                            : projectId === "swapp"
-                                                ? "Analyzed user drop-off points, redesigned the checkout flow with A/B testing, and implemented a cleaner interface that increased conversion rates by 130%."
-                                                : projectId === "route-helper"
-                                                    ? "Spent time with operations teams, structured information architecture for complex data, and created interactive prototypes that reduced route planning time by 51%."
-                                                    : "Led the complete design process from research to implementation, ensuring the solution met user needs and business objectives."
-                                )}
-                            </p>
-                        </div>
-
-                        {/* Key Metrics */}
-                        <div className="mb-16 text-left">
-                            <h3 className="text-xl mb-4 font-heading font-medium">Key results</h3>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                {/* First metric */}
-                                <div>
-                                    <div className="text-6xl font-bold mb-2 font-heading">
-                                        {(caseStudyData.keyResults && caseStudyData.keyResults[0]?.value) || (projectId === "cinefatic" ? "<2m" : projectId === "rider-app-medzmore" ? "18%" : projectId === "swapp" ? "130%" : projectId === "route-helper" ? "51%" : "40%")}
-                                    </div>
-                                    <p className="text-base">
-                                        {(caseStudyData.keyResults && caseStudyData.keyResults[0]?.label) || (projectId === "cinefatic"
-                                            ? "End to end ticket booking time"
-                                            : projectId === "rider-app-medzmore"
-                                                ? "Reduction in delivery times"
-                                                : projectId === "swapp"
-                                                    ? "Increase in conversion rates"
-                                                    : projectId === "route-helper"
-                                                        ? "Reduction in planning time"
-                                                        : "Improvement in key metrics")}
-                                    </p>
-                                </div>
-                                {/* Second metric */}
-                                <div>
-                                    <div className="text-6xl font-bold mb-2 font-heading">
-                                        {(caseStudyData.keyResults && caseStudyData.keyResults[1]?.value) || (projectId === "cinefatic" ? "5" : projectId === "rider-app-medzmore" ? "99.7%" : projectId === "swapp" ? "25%" : projectId === "route-helper" ? "23%" : "60%")}
-                                    </div>
-                                    <p className="text-base">
-                                        {(caseStudyData.keyResults && caseStudyData.keyResults[1]?.label) || (projectId === "cinefatic"
-                                            ? "Major cinemas integrated in one app"
-                                            : projectId === "rider-app-medzmore"
-                                                ? "Delivery accuracy achieved"
-                                                : projectId === "swapp"
-                                                    ? "Reduction in support inquiries"
-                                                    : projectId === "route-helper"
-                                                        ? "Reduction in manual effort"
-                                                        : "Other key result")}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Hero image section - classic full width */}
-                    <div className="w-full mb-16 rounded-xl overflow-hidden">
-                        <Image
-                            src={processImagePath(caseStudyData.heroImage || (projectId === "rider-app-medzmore" ? "/images/riderapp/riderapp_main.png" : "/images/cinefatic/Cinefatic main.webp"))}
-                            alt={`${project.title} main screen`}
-                            width={1400}
-                            height={800}
-                            className="w-full h-auto"
-                        />
-                    </div>
-                </>
-            )
-            }
-
-            {/* Goal section for new case studies */}
-            {
-                isNewCaseStudy && caseStudyData.goal && (
-                    <div className="mx-auto mb-16" style={{ maxWidth: "814px" }}>
-                        <div
-                            style={{ background: "#42292E", color: "#fff", borderRadius: "1rem", padding: "2rem" }}
-                        >
-                            <h2 className="text-3xl font-bold mb-4 flex items-center">The Goal <span className="ml-2">🎯</span></h2>
-                            <p className="text-lg">
-                                {caseStudyData.goal}
-                            </p>
-                        </div>
-                    </div>
-                )
-            }
-
-            {/* Cinefatic Goal section - legacy */}
-            {
-                projectId === "cinefatic" && !isNewCaseStudy && (
-                    <div className="mx-auto mb-16" style={{ maxWidth: "814px" }}>
-                        <div
-                            style={{ background: "#42292E", color: "#fff", borderRadius: "1rem", padding: "2rem" }}
-                        >
-                            <h2 className="text-3xl font-bold mb-4 flex items-center">The Goal <span className="ml-2">🎯</span></h2>
-                            <p className="text-lg">
-                                To design a single, reliable app that solves the long-standing frustration faced by people in Karachi, the lack of an easy way to book tickets online for major cinemas like Nueplex.
-                            </p>
-                        </div>
-                    </div>
-                )
-            }
-
-            {/* Main content wrapper with max-width */}
+            {/* Main content sections */}
             <div className="mx-auto" style={{ maxWidth: "768px" }}>
-                {/* Overview section */}
                 {caseStudyData.overview && (
                     <div className="mb-24">
-                        {caseStudyData.overviewHeading && caseStudyData.overviewHeading !== '' && (
-                            <h2 className="text-4xl font-bold mb-10">
+                        {caseStudyData.overviewHeading && (
+                            <h2 className="text-4xl font-bold mb-10 text-white leading-tight">
                                 {caseStudyData.overviewHeading}
                             </h2>
                         )}
-                        <div className="text-xl space-y-8">
-                            {caseStudyData.overview.split('\n\n').map((paragraph: string, index: number) => (
-                                <p key={index}>{paragraph}</p>
+                        <div className="text-xl space-y-8 text-white/80 leading-relaxed font-sans">
+                            {caseStudyData.overview.split('\n\n').map((p: string, i: number) => (
+                                <p key={i}>{p}</p>
                             ))}
                         </div>
                     </div>
                 )}
 
-                {/* Case study sections - use new renderer for JSON-based case studies */}
-                {isNewCaseStudy ? (
+                {isNewCaseStudy && (
                     <CaseStudyRenderer sections={caseStudyData.sections} />
-                ) : (
-                    /* Legacy case study sections */
-                    caseStudyData.sections?.map((section: any, index: number) => (
-                        <div key={index} className="mb-24">
-                            <h2 className="text-4xl font-bold mb-10">{section.title}</h2>
-                            <div className="text-xl">
-                                {section.content}
-                            </div>
-                        </div>
-                    ))
-                )}
-
-                {/* Results section - only show for projects that don't have custom sections */}
-                {(!caseStudyData.sections || caseStudyData.sections.length === 0) && (
-                    <div className="mb-24">
-                        <h2 className="text-4xl font-bold mb-10">Results</h2>
-                        <p className="text-xl">{caseStudyData.results}</p>
-
-                        <div className="mt-12 p-6 bg-gray-50 rounded-lg border border-gray-100">
-                            <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
-                            <p className="text-xl">This case study is currently in progress.</p>
-                        </div>
-                    </div>
-                )}
-
-                {/* Final screens */}
-                {caseStudyData.finalScreens?.length > 0 && (
-                    <div className="mb-24">
-                        <h2 className="text-4xl font-bold mb-10">Key Screens</h2>
-                        <div className="flex flex-col gap-8">
-                            {caseStudyData.finalScreens.map((screen: any, index: number) => (
-                                <div key={index} className="w-full rounded-xl overflow-hidden">
-                                    {screen.image && (
-                                        <Image
-                                            src={processImagePath(screen.image)}
-                                            alt={screen.title}
-                                            width={768}
-                                            height={400}
-                                            className="w-full h-auto"
-                                        />
-                                    )}
-                                    <div className="mt-4">
-                                        <p className="font-bold text-xl">{screen.title}</p>
-                                        <p className="text-gray-600">{screen.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 )}
             </div>
 
-            <div className="pt-16">
+            <div className="pt-32">
                 <StackedWorkCards currentProjectId={projectId} />
             </div>
-        </div >
+        </div>
     );
+}
 
+export default function ProjectClient({ project, caseStudyData, projectId }: ProjectClientProps) {
     return (
-        <Suspense fallback={<div>Loading project...</div>}>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-sans text-white/50 uppercase tracking-widest text-xs">Loading...</div>}>
             <SearchParamsProvider>
-                {project.isProtected ? (
-                    <PasswordGate projectId={projectId}>
-                        {content}
-                    </PasswordGate>
-                ) : (
-                    content
-                )}
+                <LightboxProvider>
+                    <GalleryManager caseStudyData={caseStudyData} projectId={projectId} SWAPP_TRIO={SWAPP_TRIO} />
+                    {project.isProtected ? (
+                        <PasswordGate projectId={projectId}>
+                            <CaseStudyContent project={project} caseStudyData={caseStudyData} projectId={projectId} />
+                        </PasswordGate>
+                    ) : (
+                        <CaseStudyContent project={project} caseStudyData={caseStudyData} projectId={projectId} />
+                    )}
+                    <Lightbox />
+                </LightboxProvider>
             </SearchParamsProvider>
         </Suspense>
     );
-} 
+}

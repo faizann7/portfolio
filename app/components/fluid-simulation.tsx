@@ -5,9 +5,14 @@ import { useEffect, useRef, useState } from "react"
 export default function FluidSimulation() {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const [programCache, setProgramCache] = useState<{ [key: string]: WebGLProgram }>({})
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        if (!canvasRef.current) return
+        const mobileCheck = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+        setIsMobile(mobileCheck);
+        if (mobileCheck) return;
+
+        if (!canvasRef.current) return;
 
         const canvas = canvasRef.current
         const { gl, ext } = getWebGLContext(canvas)
@@ -1107,7 +1112,6 @@ export default function FluidSimulation() {
         initFramebuffers()
 
         // Event listeners
-        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
         if (!isMobile) {
             canvas.addEventListener("mousedown", (e) => {
                 const pointer = pointers[0];
@@ -1164,6 +1168,8 @@ export default function FluidSimulation() {
             }
         }
     }, [canvasRef])
+
+    if (isMobile) return null;
 
     return <canvas ref={canvasRef} className="w-full h-full fixed top-0 left-0" />
 }
