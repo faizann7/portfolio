@@ -91,7 +91,7 @@ export default function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden w-8 h-8 flex items-center justify-center z-[110]"
+                    className="md:hidden w-8 h-8 flex items-center justify-center z-[110] cursor-pointer"
                     onClick={toggleMenu}
                     aria-label="Toggle menu"
                     aria-expanded={isMenuOpen}

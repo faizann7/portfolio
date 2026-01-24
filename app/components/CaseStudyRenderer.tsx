@@ -6,6 +6,7 @@ import * as LucideIcons from "lucide-react";
 import ConsequencesGrid from "./visuals/ConsequencesGrid";
 import MentalModelShift from "./visuals/MentalModelShift";
 import ImpactMetrics from "./visuals/ImpactMetrics";
+import { slugify } from "../utils/slugify";
 import { TYPOGRAPHY } from "../data/typography-config";
 
 interface CaseStudyContent {
@@ -168,7 +169,7 @@ export default function CaseStudyRenderer({ sections }: CaseStudyRendererProps) 
   return (
     <div className="space-y-32">
       {sections.map((section, sectionIndex) => (
-        <div key={sectionIndex} className="mb-32 text-left">
+        <div key={sectionIndex} id={slugify(section.title)} className="mb-32 text-left scroll-mt-32">
           <h2 className={TYPOGRAPHY.sectionTitle.classes}>
             {section.title}
           </h2>

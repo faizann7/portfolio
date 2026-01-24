@@ -78,7 +78,7 @@ export default function PasswordGate({ children, projectId = "" }: PasswordGateP
                                 <div className="flex items-center gap-3">
                                     <button
                                         onClick={copyEmailToClipboard}
-                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group cursor-pointer"
                                     >
                                         <Mail className="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors" />
                                         <span className="text-white/60 group-hover:text-white transition-colors">Email</span>
@@ -87,7 +87,7 @@ export default function PasswordGate({ children, projectId = "" }: PasswordGateP
                                         href="https://www.linkedin.com/in/faizann/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group cursor-pointer"
                                     >
                                         <Linkedin className="w-3.5 h-3.5 text-white/40 group-hover:text-white transition-colors" />
                                         <span className="text-white/60 group-hover:text-white transition-colors">LinkedIn</span>
@@ -113,7 +113,7 @@ export default function PasswordGate({ children, projectId = "" }: PasswordGateP
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-white/50 transition-colors"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-white/20 hover:text-white/50 transition-colors cursor-pointer"
                                     tabIndex={-1}
                                 >
                                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -122,7 +122,7 @@ export default function PasswordGate({ children, projectId = "" }: PasswordGateP
 
                             <button
                                 type="submit"
-                                className="w-full bg-white text-black font-semibold py-4 rounded-2xl hover:bg-opacity-90 active:scale-[0.98] transition-all text-lg shadow-lg shadow-white/5"
+                                className="w-full bg-white text-black font-semibold py-4 rounded-2xl hover:bg-opacity-90 active:scale-[0.98] transition-all text-lg shadow-lg shadow-white/5 cursor-pointer"
                             >
                                 Access Case Study
                             </button>
@@ -131,7 +131,7 @@ export default function PasswordGate({ children, projectId = "" }: PasswordGateP
                         <div className="mt-8 text-center">
                             <button
                                 onClick={() => window.history.back()}
-                                className="text-white/30 hover:text-white/60 transition-colors text-sm font-medium"
+                                className="text-white/30 hover:text-white/60 transition-colors text-sm font-medium cursor-pointer"
                             >
                                 ← Go back
                             </button>

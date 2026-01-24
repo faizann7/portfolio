@@ -12,6 +12,7 @@ import ParallaxPhones from "../../components/visuals/ParallaxPhones";
 import Button from "../../components/ui/Button";
 import StackedWorkCards from "../../components/StackedWorkCards";
 import PasswordGate from "../../components/PasswordGate";
+import TableOfContents from "../../components/TableOfContents";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldAlert, Lightbulb, Target, ArrowRight, Clock, Zap, Layers, MessageSquare, ArrowRightLeft, FileText, List } from "lucide-react";
 
@@ -53,7 +54,12 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
     const showExploreCard = previousProject.id !== nextProject.id;
 
     const content = (
-        <div className="pt-24 md:pt-24 pb-16 max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="pt-24 md:pt-24 pb-16 max-w-5xl mx-auto px-4 sm:px-6 relative">
+            {/* Show TOC for specific case studies */}
+            {(projectId === 'swapp-payments' || projectId === 'cinefatic' || projectId === 'rider-app-medzmore') && caseStudyData.sections && (
+                <TableOfContents sections={caseStudyData.sections} />
+            )}
+
             <Link href="/#work" className="inline-flex items-center black mb-8 group transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 group-hover:-translate-x-1 transition-transform">
                     <path d="m15 18-6-6 6-6" />
