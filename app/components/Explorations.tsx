@@ -64,7 +64,7 @@ function ExplorationCard({
                 >
                     {/* Inner Clipped Container - Handles BG and Content */}
                     <div
-                        className="absolute inset-0 border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col p-6 transition-colors duration-500"
+                        className="absolute inset-0 border border-white/10 rounded-[var(--radius-card)] overflow-hidden shadow-2xl flex flex-col p-[var(--card-padding-sm)] transition-colors duration-500"
                         style={{
                             backgroundColor: colors.bg,
                         }}
@@ -152,7 +152,7 @@ export default function Explorations() {
                     <div className="hidden lg:flex absolute inset-x-0 bottom-0 top-16 pointer-events-none perspective-[1000px] items-center justify-center z-10">
                         <div className="relative w-full h-full">
                             <motion.div
-                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden border border-white/10 z-20"
+                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-[#1e1e1e] rounded-[var(--radius-card)] shadow-2xl overflow-hidden border border-white/10 z-20"
                                 variants={{
                                     messy: { x: "-55%", y: "-15%", rotate: 5, scale: 1 },
                                     organized: { x: "-55%", y: "-15%", rotate: 0, scale: 1.05 }
@@ -162,7 +162,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/playground/Card-1.webp")} alt="System" fill className="object-cover opacity-90" />
                             </motion.div>
                             <motion.div
-                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 z-10"
+                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-[var(--radius-card)] shadow-xl overflow-hidden border border-gray-200 z-10"
                                 variants={{
                                     messy: { x: "-120%", y: "-65%", rotate: -15, scale: 0.9 },
                                     organized: { x: "-110%", y: "-65%", rotate: -4, scale: 0.9 }
@@ -172,7 +172,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/playground/Card-2.webp")} alt="UI" fill className="object-cover" />
                             </motion.div>
                             <motion.div
-                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 z-10"
+                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-[var(--radius-card)] shadow-xl overflow-hidden border border-gray-200 z-10"
                                 variants={{
                                     messy: { x: "10%", y: "-55%", rotate: 12, scale: 0.9 },
                                     organized: { x: "0%", y: "-65%", rotate: 4, scale: 0.9 }
@@ -182,7 +182,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/playground/Card-3.webp")} alt="UI" fill className="object-cover" />
                             </motion.div>
                             <motion.div
-                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 z-30"
+                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-[var(--radius-card)] shadow-xl overflow-hidden border border-gray-200 z-30"
                                 variants={{
                                     messy: { x: "-110%", y: "25%", rotate: -8, scale: 0.95 },
                                     organized: { x: "-110%", y: "35%", rotate: -2, scale: 0.9 }
@@ -192,7 +192,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/playground/Card-4.webp")} alt="UI" fill className="object-cover" />
                             </motion.div>
                             <motion.div
-                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 z-30"
+                                className="absolute left-1/2 top-1/2 w-56 aspect-square bg-white rounded-[var(--radius-card)] shadow-xl overflow-hidden border border-gray-200 z-30"
                                 variants={{
                                     messy: { x: "20%", y: "35%", rotate: 15, scale: 0.95 },
                                     organized: { x: "0%", y: "35%", rotate: 2, scale: 0.9 }
@@ -207,7 +207,7 @@ export default function Explorations() {
                     {/* Mobile Simplified Visual */}
                     <div className="lg:hidden absolute bottom-0 right-0 w-full h-1/2 pointer-events-none overflow-hidden opacity-20">
                         <div className="relative w-full h-full translate-y-1/4 translate-x-1/4 rotate-12">
-                            <Image src={getImagePath("/images/playground/Card-1.webp")} alt="System" width={300} height={300} className="rounded-2xl" />
+                            <Image src={getImagePath("/images/playground/Card-1.webp")} alt="System" width={300} height={300} className="rounded-[var(--radius-card)]" />
                         </div>
                     </div>
                 </ExplorationCard>
@@ -235,7 +235,7 @@ export default function Explorations() {
                     >
                         <div className="hidden lg:block absolute -top-12 -right-4 w-[340px] h-[480px] pointer-events-none">
                             <motion.div
-                                className="absolute w-[140px] rounded-[24px] overflow-hidden shadow-2xl border border-white/10"
+                                className="absolute w-[140px] rounded-[var(--radius-card)] overflow-hidden shadow-2xl border border-white/10"
                                 style={{ left: '80px', top: '20px', zIndex: 10, transformOrigin: 'center center' }}
                                 variants={{ messy: { rotate: 20, x: 0, y: 0 }, organized: { rotate: 15, x: -60, y: -30 } }}
                                 transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.05 }}
@@ -243,7 +243,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/cinefatic/thumbs/iPhone 14 Pro-1.webp")} alt="Parasite" width={140} height={295} className="w-full h-auto" />
                             </motion.div>
                             <motion.div
-                                className="absolute w-[160px] rounded-[32px] overflow-hidden shadow-2xl border border-white/20"
+                                className="absolute w-[160px] rounded-[var(--radius-card)] overflow-hidden shadow-2xl border border-white/20"
                                 style={{ left: '120px', top: '20px', zIndex: 20, transformOrigin: 'center center' }}
                                 variants={{ messy: { rotate: 30, x: 0, y: 0 }, organized: { rotate: 30, scale: 1.05, x: 0, y: 0 } }}
                                 transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -251,7 +251,7 @@ export default function Explorations() {
                                 <Image src={getImagePath("/images/cinefatic/thumbs/iPhone 14 Pro.webp")} alt="Cinefatic Main" width={160} height={338} className="w-full h-auto" />
                             </motion.div>
                             <motion.div
-                                className="absolute w-[140px] rounded-[24px] overflow-hidden shadow-2xl border border-white/10"
+                                className="absolute w-[140px] rounded-[var(--radius-card)] overflow-hidden shadow-2xl border border-white/10"
                                 style={{ right: '30px', top: '70px', zIndex: 5, transformOrigin: 'center center' }}
                                 variants={{ messy: { rotate: 40, x: 0, y: 0 }, organized: { rotate: 45, x: 60, y: 40 } }}
                                 transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.1 }}
@@ -279,7 +279,7 @@ export default function Explorations() {
                         delay={0.5}
                         className="flex-1 min-h-[300px] lg:min-h-[320px]"
                     >
-                        <div className="hidden lg:block absolute top-0 right-0 w-full h-full pointer-events-none z-10 overflow-hidden rounded-2xl">
+                        <div className="hidden lg:block absolute top-0 right-0 w-full h-full pointer-events-none z-10 overflow-hidden rounded-[var(--radius-card)]">
                             <div className="relative w-full h-full">
                                 {/* Tool 1: Cursor */}
                                 <motion.div

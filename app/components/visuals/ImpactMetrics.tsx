@@ -35,7 +35,7 @@ export default function ImpactMetrics() {
 
             {/* Primary Stat Card */}
             <motion.div
-                className="col-span-1 md:col-span-7 relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-rose-500/10 via-transparent to-transparent border border-rose-500/20 p-10 md:p-14 flex flex-col justify-between group min-h-[420px]"
+                className="col-span-1 md:col-span-7 relative overflow-hidden rounded-[var(--radius-card-lg)] bg-gradient-to-br from-rose-500/10 via-transparent to-transparent border border-rose-500/20 p-8 md:p-[var(--card-padding-xl)] flex flex-col justify-between group min-h-[420px]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -76,18 +76,18 @@ export default function ImpactMetrics() {
 
                 {/* Trust Card */}
                 <motion.div
-                    className="flex-1 relative overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/10 p-8 flex flex-col justify-between group"
+                    className="flex-1 relative overflow-hidden rounded-[var(--radius-card)] bg-white/[0.02] border border-white/10 p-[var(--card-padding)] flex flex-col justify-between group"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
-                    <div className="absolute top-0 right-0 p-8 text-emerald-500/10 group-hover:text-emerald-500/20 transition-colors duration-500">
+                    <div className="absolute top-0 right-0 p-[var(--card-padding)] text-emerald-500/10 group-hover:text-emerald-500/20 transition-colors duration-500">
                         <ShieldCheck size={120} />
                     </div>
 
                     <div className="relative z-10">
-                        <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
+                        <div className="w-12 h-12 rounded-[var(--radius-button)] bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-6">
                             <ShieldCheck size={28} />
                         </div>
                         <h4 className="text-2xl font-bold text-white mb-2">Trust Restored</h4>
@@ -99,18 +99,18 @@ export default function ImpactMetrics() {
 
                 {/* Efficiency Card */}
                 <motion.div
-                    className="flex-1 relative overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/10 p-8 flex flex-col justify-between group"
+                    className="flex-1 relative overflow-hidden rounded-[var(--radius-card)] bg-white/[0.02] border border-white/10 p-[var(--card-padding)] flex flex-col justify-between group"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                 >
-                    <div className="absolute top-0 right-0 p-8 text-blue-500/10 group-hover:text-blue-500/20 transition-colors duration-500">
+                    <div className="absolute top-0 right-0 p-[var(--card-padding)] text-blue-500/10 group-hover:text-blue-500/20 transition-colors duration-500">
                         <Zap size={120} />
                     </div>
 
                     <div className="relative z-10">
-                        <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-6">
+                        <div className="w-12 h-12 rounded-[var(--radius-button)] bg-blue-500/10 text-blue-400 flex items-center justify-center mb-6">
                             <Zap size={28} />
                         </div>
                         <h4 className="text-2xl font-bold text-white mb-2">Ops Efficiency</h4>

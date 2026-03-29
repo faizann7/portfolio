@@ -14,7 +14,7 @@ interface ButtonProps {
 }
 
 export default function Button({ href, onClick, children, variant = 'primary', className = '', target }: ButtonProps) {
-    const baseStyles = "inline-flex items-center justify-center px-8 py-3 rounded-[12px] transition-all duration-300 text-lg font-medium cursor-pointer";
+    const baseStyles = "inline-flex items-center justify-center px-8 py-3 rounded-[var(--radius-button)] transition-all duration-300 text-lg font-medium cursor-pointer";
 
     const variants = {
         primary: "bg-white text-black hover:bg-gray-200 border border-transparent",

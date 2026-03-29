@@ -27,6 +27,7 @@
         "strategyDescription": "We moved from a static receipt model to a dynamic Financial Ledger. By unbundling payment history, we gave every charge a clear source.",
         "strategyVisual": "Receipt -> Traceable ledger"
     },
+    "protectedFromSection": "The \"before\" state",
     "sections": [
         {
             "title": "Context",

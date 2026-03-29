@@ -35,6 +35,24 @@ body.lightbox-open nav {
   --bg-retailo-hover: #282E29;
   --bg-rider-app: #292C75;
   --bg-rider-app-hover: #1E205A;
+
+  /* Corner Radius System */
+  --radius-card-lg: 16px;
+  --radius-card: 16px;
+  --radius-card-inner: 16px;
+  --radius-button: 12px;
+  --radius-sm: 16px;
+  --radius-s: 8px;
+
+  /* Card Spacing System */
+  --card-padding-xl: 3.5rem;
+  /* 56px */
+  --card-padding-lg: 3rem;
+  /* 48px */
+  --card-padding: 2rem;
+  /* 32px */
+  --card-padding-sm: 1.5rem;
+  /* 24px */
 }
 
 html {
@@ -81,7 +99,7 @@ p {
 .card {
   height: 350px;
   position: relative;
-  border-radius: 16px;
+  border-radius: var(--radius-card);
   overflow: hidden;
   cursor: pointer;
 }

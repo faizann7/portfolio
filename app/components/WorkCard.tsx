@@ -68,7 +68,7 @@ const WorkCard = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group relative h-[300px] max-h-[300px] md:h-[460px] md:max-h-[460px] overflow-hidden rounded-2xl transition-all duration-300`}
+                className={`group relative h-[300px] max-h-[300px] md:h-[460px] md:max-h-[460px] overflow-hidden rounded-[var(--radius-card)] transition-all duration-300`}
                 style={{
                     backgroundColor: bgColor || 'var(--card-bg)',
                     color: 'var(--foreground)',
@@ -81,7 +81,7 @@ const WorkCard = ({
                         backgroundColor: hoverBgColor || 'var(--card-hover-bg)',
                     }}
                 />
-                <div className="pt-6 px-6 h-full flex flex-col relative z-10">
+                <div className="pt-[var(--card-padding-sm)] px-[var(--card-padding-sm)] pb-0 h-full flex flex-col relative z-10">
                     <div className="mb-auto">
                         <div className="flex items-center gap-2 mb-2">
                             <h3 className="text-2xl font-medium">{title}</h3>
@@ -93,7 +93,7 @@ const WorkCard = ({
                         </div>
                         <p className="text-lg mb-4">{subtitle}</p>
                     </div>
-                    <div className="relative w-[80%] mx-auto overflow-hidden rounded-md transform transition-transform duration-500 group-hover:scale-105">
+                    <div className="relative w-[80%] mx-auto overflow-hidden transform transition-transform duration-500 group-hover:scale-105">
                         <Image
                             src={processedImagePath}
                             alt={title}
@@ -108,7 +108,7 @@ const WorkCard = ({
                         />
                         {comingSoon && (
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="bg-gray-800/90 text-gray-100 font-semibold px-4 py-2 rounded-md shadow-lg">
+                                <span className="bg-gray-800/90 text-gray-100 font-semibold px-4 py-2 rounded-[var(--radius-s)] shadow-lg">
                                     Coming Soon
                                 </span>
                             </div>

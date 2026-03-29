@@ -44,6 +44,7 @@ export interface CaseStudyData {
   sections: CaseStudySection[];
   results: string;
   finalScreens: FinalScreen[];
+  protectedFromSection?: string;
 }
 
 export interface CaseStudySection {

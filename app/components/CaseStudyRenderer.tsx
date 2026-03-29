@@ -74,7 +74,7 @@ const ContentBlock = ({ content, onImageClick }: { content: CaseStudyContent, on
                 alt={content.alt || ''}
                 width={content.width || 1400}
                 height={content.height || 800}
-                className="w-full h-auto rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+                className="w-full h-auto rounded-[var(--radius-card-inner)] cursor-pointer hover:opacity-90 transition-opacity"
                 loading="lazy"
                 sizes="(max-width: 768px) 100vw, 1120px"
                 onClick={() => onImageClick(processedSrc)}
@@ -91,7 +91,7 @@ const ContentBlock = ({ content, onImageClick }: { content: CaseStudyContent, on
               alt={content.alt || ''}
               width={content.width || 768}
               height={content.height || 500}
-              className="w-full h-auto rounded-xl cursor-pointer hover:opacity-90 transition-opacity"
+              className="w-full h-auto rounded-[var(--radius-card-inner)] cursor-pointer hover:opacity-90 transition-opacity"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, 768px"
               onClick={() => onImageClick(processedSrc)}
@@ -124,9 +124,9 @@ const ContentBlock = ({ content, onImageClick }: { content: CaseStudyContent, on
           {content.items.map((item, index) => {
             if (typeof item === 'string') return null;
             return (
-              <div key={index} className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
+              <div key={index} className="p-[var(--card-padding)] rounded-[var(--radius-card)] bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1">
                 {item.icon && (
-                  <div className="p-3 w-fit rounded-xl bg-white/5 mb-6 text-white/90">
+                  <div className="p-3 w-fit rounded-[var(--radius-button)] bg-white/5 mb-6 text-white/90">
                     <IconComponent name={item.icon} className="w-6 h-6" />
                   </div>
                 )}

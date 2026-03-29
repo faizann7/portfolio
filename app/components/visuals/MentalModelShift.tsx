@@ -10,12 +10,12 @@ export default function MentalModelShift() {
 
                 {/* OLD MODEL */}
                 <motion.div
-                    className="relative group overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 flex flex-col items-center text-center"
+                    className="relative group overflow-hidden rounded-[var(--radius-card)] bg-white/[0.02] border border-white/10 p-[var(--card-padding)] flex flex-col items-center text-center"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
-                    <div className="mb-6 p-4 rounded-2xl bg-white/5 text-white/40">
+                    <div className="mb-6 p-4 rounded-[var(--radius-card-inner)] bg-white/5 text-white/40">
                         <Package size={32} />
                     </div>
                     <span className="text-xs uppercase tracking-[0.2em] text-white/30 font-bold mb-2">Old Mental Model</span>
@@ -42,13 +42,13 @@ export default function MentalModelShift() {
                 {/* NEW MODEL */}
                 <div className="grid grid-cols-1 gap-4">
                     <motion.div
-                        className="relative group overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500/10 to-transparent border border-emerald-500/20 p-6 flex items-center gap-6"
+                        className="relative group overflow-hidden rounded-[var(--radius-card-inner)] bg-gradient-to-r from-emerald-500/10 to-transparent border border-emerald-500/20 p-[var(--card-padding-sm)] flex items-center gap-[var(--card-padding-sm)]"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                     >
-                        <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400">
+                        <div className="p-3 rounded-[var(--radius-button)] bg-emerald-500/10 text-emerald-400">
                             <Car size={24} />
                         </div>
                         <div>
@@ -59,13 +59,13 @@ export default function MentalModelShift() {
                     </motion.div>
 
                     <motion.div
-                        className="relative group overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500/10 to-transparent border border-blue-500/20 p-6 flex items-center gap-6"
+                        className="relative group overflow-hidden rounded-[var(--radius-card-inner)] bg-gradient-to-r from-blue-500/10 to-transparent border border-blue-500/20 p-[var(--card-padding-sm)] flex items-center gap-[var(--card-padding-sm)]"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 }}
                     >
-                        <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400">
+                        <div className="p-3 rounded-[var(--radius-button)] bg-blue-500/10 text-blue-400">
                             <Receipt size={24} />
                         </div>
                         <div>

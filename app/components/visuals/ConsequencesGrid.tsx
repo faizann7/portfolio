@@ -48,7 +48,7 @@ export default function ConsequencesGrid() {
                 const Icon = testimonials[0].icon;
                 return (
                     <motion.div
-                        className={`col-span-1 md:col-span-7 md:row-span-2 relative group overflow-hidden rounded-3xl bg-gradient-to-br ${testimonials[0].gradient} border ${testimonials[0].border} backdrop-blur-sm p-6 flex flex-col justify-between min-h-[400px]`}
+                        className={`col-span-1 md:col-span-7 md:row-span-2 relative group overflow-hidden rounded-[var(--radius-card)] bg-gradient-to-br ${testimonials[0].gradient} border ${testimonials[0].border} backdrop-blur-sm p-[var(--card-padding-sm)] flex flex-col justify-between min-h-[400px]`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -92,7 +92,7 @@ export default function ConsequencesGrid() {
                 const Icon = testimonials[1].icon;
                 return (
                     <motion.div
-                        className={`col-span-1 md:col-span-5 relative group overflow-hidden rounded-3xl bg-gradient-to-br ${testimonials[1].gradient} border ${testimonials[1].border} backdrop-blur-sm p-6 flex flex-col justify-center min-h-[200px]`}
+                        className={`col-span-1 md:col-span-5 relative group overflow-hidden rounded-[var(--radius-card)] bg-gradient-to-br ${testimonials[1].gradient} border ${testimonials[1].border} backdrop-blur-sm p-[var(--card-padding-sm)] flex flex-col justify-center min-h-[200px]`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -132,7 +132,7 @@ export default function ConsequencesGrid() {
                 const Icon = testimonials[2].icon;
                 return (
                     <motion.div
-                        className={`col-span-1 md:col-span-5 relative group overflow-hidden rounded-3xl bg-gradient-to-br ${testimonials[2].gradient} border ${testimonials[2].border} backdrop-blur-sm p-6 flex flex-col justify-center min-h-[200px]`}
+                        className={`col-span-1 md:col-span-5 relative group overflow-hidden rounded-[var(--radius-card)] bg-gradient-to-br ${testimonials[2].gradient} border ${testimonials[2].border} backdrop-blur-sm p-[var(--card-padding-sm)] flex flex-col justify-center min-h-[200px]`}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}

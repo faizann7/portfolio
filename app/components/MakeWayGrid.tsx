@@ -159,8 +159,8 @@ export default function MakeWayGrid({
       {images.map((img, i) => (
         <div
           key={i}
-          ref={(el) => (itemRefs.current[i] = el)}
-          className="mw-grid__item relative aspect-square overflow-hidden rounded-xl cursor-pointer select-none bg-black/5 dark:bg-white/5"
+          ref={(el) => { itemRefs.current[i] = el; }}
+          className="mw-grid__item relative aspect-square overflow-hidden rounded-[var(--radius-button)] cursor-pointer select-none bg-black/5 dark:bg-white/5"
           onClick={() => handleItemClick(i)}
           aria-label={`Grid item ${i + 1}: ${img.alt}`}
         >

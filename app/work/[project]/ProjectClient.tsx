@@ -7,7 +7,7 @@ import { SearchParamsProvider } from "../../components/SearchParamsProvider";
 import { CaseStudyData } from "../../utils/caseStudyLoader";
 import { getImagePath } from "../../utils/assets";
 import CaseStudyRenderer from "../../components/CaseStudyRenderer";
-import { projects, Project } from "../../data/projects";
+import { Project } from "../../data/projects";
 import ParallaxPhones from "../../components/visuals/ParallaxPhones";
 import Button from "../../components/ui/Button";
 import StackedWorkCards from "../../components/StackedWorkCards";
@@ -87,7 +87,22 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
     const [isTLDROpen, setIsTLDROpen] = useState(false);
     const { openLightbox, images: galleryImages } = useLightbox();
 
-    const isNewCaseStudy = caseStudyData && 'sections' in caseStudyData && Array.isArray(caseStudyData.sections) && caseStudyData.sections.length > 0 && typeof caseStudyData.sections[0].content === 'object';
+    const { publicSections, protectedSections } = useMemo(() => {
+        if (!caseStudyData.sections) return { publicSections: [], protectedSections: [] };
+
+        const protectIndex = caseStudyData.protectedFromSection
+            ? caseStudyData.sections.findIndex(s => s.title === caseStudyData.protectedFromSection)
+            : -1;
+
+        if (protectIndex === -1 || !project.isProtected) {
+            return { publicSections: caseStudyData.sections, protectedSections: [] };
+        }
+
+        return {
+            publicSections: caseStudyData.sections.slice(0, protectIndex),
+            protectedSections: caseStudyData.sections.slice(protectIndex)
+        };
+    }, [caseStudyData.sections, caseStudyData.protectedFromSection, project.isProtected]);
 
     const handleHeroClick = (src: string) => {
         const processedSrc = getImagePath(src);
@@ -128,7 +143,7 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                                 alt={`${project.title} main screen`}
                                 width={1400}
                                 height={800}
-                                className="w-full h-auto rounded-xl md:rounded-2xl shadow-2xl cursor-pointer hover:opacity-95 transition-opacity"
+                                className="w-full h-auto rounded-[var(--radius-card-inner)] md:rounded-[var(--radius-card)] shadow-2xl cursor-pointer hover:opacity-95 transition-opacity"
                                 onClick={() => handleHeroClick(caseStudyData.heroImage || "")}
                             />
                         </div>
@@ -161,7 +176,7 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                                 className="overflow-hidden mb-24"
                             >
-                                <div className="bg-white/[0.03] rounded-[2rem] p-8 md:p-12 relative border border-white/10 backdrop-blur-sm">
+                                <div className="bg-white/[0.03] rounded-[var(--radius-card-lg)] p-[var(--card-padding)] md:p-[var(--card-padding-lg)] relative border border-white/10 backdrop-blur-sm">
                                     <button
                                         onClick={() => setIsTLDROpen(false)}
                                         className="absolute top-8 right-8 p-3 rounded-full hover:bg-white/10 transition-colors text-white/40 hover:text-white z-20 cursor-pointer"
@@ -185,17 +200,17 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
 
                                     {/* Snapshot content cards */}
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                                        <div className="bg-white/[0.02] border border-white/5 rounded-[var(--radius-card-inner)] p-[var(--card-padding-sm)]">
                                             <h3 className="text-white/20 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Role</h3>
                                             <div className="text-xl font-bold text-white leading-tight mb-1 font-sans">{caseStudyData.tldr.roleTitle}</div>
                                             <p className="text-white/30 text-sm font-sans">{caseStudyData.tldr.roleSubtitle}</p>
                                         </div>
-                                        <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6">
+                                        <div className="bg-white/[0.02] border border-white/5 rounded-[var(--radius-card-inner)] p-[var(--card-padding-sm)]">
                                             <h3 className="text-white/20 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Timeline</h3>
                                             <div className="text-xl font-bold text-white leading-tight mb-1 font-sans">{caseStudyData.tldr.timelineTitle}</div>
                                             <p className="text-white/30 text-sm font-sans">{caseStudyData.tldr.timelineSubtitle}</p>
                                         </div>
-                                        <div className="bg-emerald-500/[0.05] border border-emerald-500/10 rounded-2xl p-6 flex flex-col justify-center">
+                                        <div className="bg-emerald-500/[0.05] border border-emerald-500/10 rounded-[var(--radius-card-inner)] p-[var(--card-padding-sm)] flex flex-col justify-center">
                                             <h3 className="text-emerald-400/30 uppercase tracking-[0.2em] text-[10px] font-black mb-4 font-sans">Headline Result</h3>
                                             <div className="text-6xl font-black text-emerald-400 tracking-tighter mb-1">{caseStudyData.tldr?.impactStat}</div>
                                             <p className="text-[13px] font-bold text-emerald-400/70 leading-snug font-sans uppercase tracking-wide">{caseStudyData.tldr?.impactLabel}</p>
@@ -204,7 +219,7 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
 
                                     {/* Snapshot context blocks */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="bg-red-400/[0.02] border border-red-400/10 rounded-3xl p-8 space-y-6">
+                                        <div className="bg-red-400/[0.02] border border-red-400/10 rounded-[var(--radius-card)] p-[var(--card-padding)] space-y-6">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-10 h-10 rounded-full bg-red-400/10 flex items-center justify-center text-red-500 shadow-inner">
                                                     <Zap size={18} fill="currentColor" />
@@ -215,7 +230,7 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                                                 {caseStudyData.tldr.frictionDescription}
                                             </p>
                                             {caseStudyData.tldr.userPerception && (
-                                                <div className="bg-white/[0.03] rounded-2xl p-5 flex items-start gap-4 border border-white/5 italic shadow-xl">
+                                                <div className="bg-white/[0.03] rounded-[var(--radius-card-inner)] p-5 flex items-start gap-4 border border-white/5 italic shadow-xl">
                                                     <MessageSquare size={16} className="text-white/20 mt-1" />
                                                     <p className="text-[15px] text-white/80 font-medium font-sans">
                                                         {caseStudyData.tldr.userPerception}
@@ -224,7 +239,7 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                                             )}
                                         </div>
 
-                                        <div className="bg-blue-400/[0.02] border border-blue-400/10 rounded-3xl p-8 space-y-6">
+                                        <div className="bg-blue-400/[0.02] border border-blue-400/10 rounded-[var(--radius-card)] p-[var(--card-padding)] space-y-6">
                                             <div className="flex items-center gap-4">
                                                 <div className="w-10 h-10 rounded-full bg-blue-400/10 flex items-center justify-center text-blue-400 shadow-inner">
                                                     <Layers size={18} fill="currentColor" />
@@ -235,14 +250,14 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                                                 {caseStudyData.tldr.strategyDescription}
                                             </p>
                                             {caseStudyData.tldr.strategyVisual && (
-                                                <div className="bg-white/[0.03] rounded-2xl p-5 border border-white/5 font-sans shadow-xl">
+                                                <div className="bg-white/[0.03] rounded-[var(--radius-card-inner)] p-5 border border-white/5 font-sans shadow-xl">
                                                     <div className="flex items-center justify-between gap-4">
-                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-xl bg-white/[0.02] text-white/30 border border-white/5">
+                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-[var(--radius-button)] bg-white/[0.02] text-white/30 border border-white/5">
                                                             <span className="text-[9px] font-black uppercase tracking-widest opacity-50">Before</span>
                                                             <span className="text-[11px] font-bold uppercase tracking-tight">{caseStudyData.tldr.strategyVisual.split(' -> ')[0]}</span>
                                                         </div>
                                                         <ArrowRight size={16} className="text-white/10 shrink-0" />
-                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-xl bg-blue-500/10 text-blue-300 border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
+                                                        <div className="flex-1 flex flex-col items-center gap-2 p-3 rounded-[var(--radius-button)] bg-blue-500/10 text-blue-300 border border-blue-500/20 shadow-[0_0_20px_rgba(59,130,246,0.1)]">
                                                             <span className="text-[9px] font-black uppercase tracking-widest">After</span>
                                                             <span className="text-[11px] font-bold uppercase tracking-tight">{caseStudyData.tldr.strategyVisual.split(' -> ')[1]}</span>
                                                         </div>
@@ -280,13 +295,23 @@ function CaseStudyContent({ project, caseStudyData, projectId }: ProjectClientPr
                     </div>
                 )}
 
-                {isNewCaseStudy && (
-                    <CaseStudyRenderer sections={caseStudyData.sections} />
+                {/* Render Public Sections */}
+                {publicSections.length > 0 && (
+                    <div className="mb-8">
+                        <CaseStudyRenderer sections={publicSections} />
+                    </div>
                 )}
-            </div>
 
-            <div className="pt-32">
-                <StackedWorkCards currentProjectId={projectId} />
+                {/* Render Protected Sections */}
+                {protectedSections.length > 0 && (
+                    <PasswordGate projectId={projectId} isInline>
+                        <CaseStudyRenderer sections={protectedSections} />
+                    </PasswordGate>
+                )}
+
+                <div className="pt-32">
+                    <StackedWorkCards currentProjectId={projectId} />
+                </div>
             </div>
         </div>
     );
@@ -298,13 +323,7 @@ export default function ProjectClient({ project, caseStudyData, projectId }: Pro
             <SearchParamsProvider>
                 <LightboxProvider>
                     <GalleryManager caseStudyData={caseStudyData} projectId={projectId} SWAPP_TRIO={SWAPP_TRIO} />
-                    {project.isProtected ? (
-                        <PasswordGate projectId={projectId}>
-                            <CaseStudyContent project={project} caseStudyData={caseStudyData} projectId={projectId} />
-                        </PasswordGate>
-                    ) : (
-                        <CaseStudyContent project={project} caseStudyData={caseStudyData} projectId={projectId} />
-                    )}
+                    <CaseStudyContent project={project} caseStudyData={caseStudyData} projectId={projectId} />
                     <Lightbox />
                 </LightboxProvider>
             </SearchParamsProvider>

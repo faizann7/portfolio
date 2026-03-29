@@ -67,19 +67,19 @@ export default function ParallaxPhones({ images, className, offsetX = 0, offsetY
                         className="absolute w-[160px] translate-x-[-70px] translate-y-[20px] rotate-[-10deg] opacity-60 grayscale-[0.2] cursor-pointer"
                         onClick={() => handleImageClick(images[0])}
                     >
-                        <Image src={images[0]} alt="Left Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-2xl" />
+                        <Image src={images[0]} alt="Left Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-[var(--radius-card-inner)]" />
                     </div>
                     <div
                         className="absolute w-[160px] translate-x-[70px] translate-y-[20px] rotate-[10deg] opacity-60 grayscale-[0.2] cursor-pointer"
                         onClick={() => handleImageClick(images[2])}
                     >
-                        <Image src={images[2]} alt="Right Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-2xl" />
+                        <Image src={images[2]} alt="Right Screen" width={300} height={600} className="w-full h-auto drop-shadow-xl rounded-[var(--radius-card-inner)]" />
                     </div>
                     <div
                         className="absolute w-[190px] z-10 cursor-pointer group"
                         onClick={() => handleImageClick(images[1])}
                     >
-                        <Image src={images[1]} alt="Main Screen" width={400} height={800} className="w-full h-auto drop-shadow-2xl rounded-3xl" priority />
+                        <Image src={images[1]} alt="Main Screen" width={400} height={800} className="w-full h-auto drop-shadow-2xl rounded-[var(--radius-card)]" priority />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <div className="bg-black/50 backdrop-blur-md p-3 rounded-full text-white">
                                 <Maximize2 size={24} />
