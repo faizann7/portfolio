@@ -48,6 +48,14 @@ jobs:
           NODE_ENV=production NODE_OPTIONS="--max-old-space-size=4096" npm run build
         env:
           NEXT_PUBLIC_BASE_URL: https://faizann7.github.io/portfolio
+
+      - name: Verify static export output
+        run: |
+          if [ ! -d "./out" ]; then
+            echo "Error: ./out directory not found after build"
+            exit 1
+          fi
+          ls -la ./out
           
       - name: Create .nojekyll file
         run: touch ./out/.nojekyll
