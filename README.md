@@ -70,7 +70,7 @@ This project is configured for GitHub Pages deployment using GitHub Actions.
 
 ### Automatic Deployment
 
-1. Push changes to the main branch
+1. Push changes to the default branch (`master` in this repository)
 2. GitHub Actions will automatically build and deploy the site
 3. The site will be available at `https://yourusername.github.io/portfolio/`
 
