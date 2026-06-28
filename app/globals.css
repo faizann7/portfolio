@@ -21,8 +21,10 @@ body.lightbox-open nav {
   --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
-  /* Dark theme gradient */
-  --bg-dark: linear-gradient(180deg, #3F272A 0%, #101218 100%);
+  /* Dark theme gradient — swap these two to experiment with color */
+  --bg-color-top: #0D1A14;
+  --bg-color-bottom: #0D1A14;
+  --bg-dark: linear-gradient(180deg, var(--bg-color-top) 0%, var(--bg-color-bottom) 100%);
 
   /* Project-specific backgrounds with their hover states */
   --bg-cinefatic: #3B1F2E;
@@ -67,11 +69,6 @@ body {
   transition: var(--theme-transition);
 }
 
-@media (min-width: 1024px) {
-  body {
-    background-attachment: fixed;
-  }
-}
 
 /* Text hierarchy styles */
 h1,
